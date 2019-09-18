@@ -1,0 +1,126 @@
+/*Estilos generales*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+audio, video {
+    width: 50%;
+    height: auto;
+}
+
+audio {
+    margin-top: 4em;
+}
+
+.container {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.cliqueables{
+  width: 75%;
+  cursor: pointer;
+}
+
+.exportar{
+  text-align: right;
+  margin-right: 10%;
+}
+
+#pieMenu{
+text-align: center;
+}
+
+
+
+.col-cards-container {
+    margin-bottom: 1em;
+}
+.png-ico {
+    width: 4em;
+    height: auto;
+    cursor: pointer;
+
+}
+
+.png-ico:hover {
+    filter:contrast(200%);
+}
+
+.item-hide {
+    display: none;
+}
+
+
+
+.jumbotron {
+    background-color: beige;
+    padding: 0.5em 1em;
+}
+
+.resaltada {
+    border: solid 2px red;
+}
+
+.img-ico {
+    width: 5%;
+    height: auto;
+}
+
+.spn-ico {
+    font-size: 1em;
+    color: brown;
+    cursor: pointer;
+    margin: 1em;
+}
+
+.lnk-ico {
+    cursor: pointer;
+}
+
+.lnk-ico:hover {
+    /*color: crimson; */
+    color: #fff;
+    background-color: brown;
+    padding: 0.4em;
+    border-radius: 10px;
+}
+
+.col-loading-ajax {
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+.div-shadow {
+    z-index: 999;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center
+}
+
+.img-ajax-loading {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+#btnExportar{
+  cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}

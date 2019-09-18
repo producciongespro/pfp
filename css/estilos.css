@@ -1,0 +1,279 @@
+.col-info {
+    color: brown;
+    border: solid 1px brown;
+    border-radius: 10px;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.jumbo-encabezado {
+    padding: 2rem 2rem;
+    margin-bottom: 1rem;
+
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.container-form {
+    margin-left: 6%;
+
+}
+
+.logo-banner {
+    height: 7em;
+}
+
+.alert-custom {
+   height: 5em;
+   padding-top: 1em;
+   box-sizing: border-box;
+
+}
+
+.col-menu-botonera, .col-login {
+    margin-top: 2%;
+    padding: 1% 4% 2% 4%;
+    background-color: #e9ecef;
+    border-radius: 15px;
+    margin: 1%;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.btn-menu {
+    margin-top: 1em;
+}
+
+
+
+
+
+.control-disabled {
+    background-color: bisque;
+}
+
+
+.cursor-pointer {
+    cursor: pointer;
+    
+}
+
+.cursor-pointer:hover {
+    color: blueviolet;
+}
+
+.alert-no-click {
+    cursor: not-allowed;
+}
+
+.alert-objetivos:hover {
+    border: solid 2px blue;
+}
+
+.fa-btn-obj {
+    font-size: 1.4em;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+.fa-btn-obj:hover {
+    color: blueviolet;
+    font-weight: bold;
+}
+
+
+.row-radios {
+    background-color: #cce5ff;
+    padding: 1em;
+    border-radius: .25rem;
+    margin-top: 1em;
+}
+
+.fa-edicion {
+    background-color: darkgray;
+    padding: 0.5em;
+    font-size: 1em;
+    margin: 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 32px;
+}
+
+.fa-edicion:hover {
+    background-color: azure;
+    border: solid 2px blue;
+}
+.item-invisible {
+    display:none;
+    
+}
+
+#btnAgregarGrupo {
+    margin-top: 2em;
+}
+
+/*Si el valor que el usuario escribe es valido, obtendra un color verde*/
+form input[type="text"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="text"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+.link-pdf {
+    color: green;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 0.5em;
+    padding-right: 0.8em;
+    margin-left: 0.5em;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}
+
+.link-pdf:hover {
+    color: #fff;
+
+    text-decoration: none;
+    background-color: green;
+}
+
+
+
+.btn-edit-obj-nece {    
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+    display:inline;
+}
+
+.btn-edit-obj-nece:hover {
+    font-size: 2.5em;
+    display:inline;
+    color: #fff;
+    
+}
+
+.row-obj {
+    padding-top: 1em;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.fa-delete-x {    
+    margin-right: 1em;
+    margin-left: 5em;
+    margin-top: 0.4em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.fa-delete-x:hover{
+    color: red;
+}
+
+
+.item-edit-activo  {
+    margin-top: 1.1em;
+    font-size: 2em;
+    color: #009900;
+    cursor: pointer;
+}
+
+.item-edit-activo:hover{
+    font-size: 2.5em;
+    margin-top: 0.6em;
+}
+
+.item-edit-inactivo {
+    color: #000;
+    margin-top: 1.1em;
+    font-size: 2em;
+}
+
+
+
+.cafe-maduro {
+    background-color: firebrick;    
+    padding: 0.6em;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.verde-suave {
+    background-color: aquamarine;
+    color: brown;
+    padding: 0.6em;    
+    border-radius: 5px;
+}
+
+#mdlBodyArchivo{
+    height: 445px;
+}
+
+.fa-status {
+    padding-top: 0.4em;
+    color: burlywood;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.fa-status:hover {
+    color: chocolate;
+    font-weight: bold;    
+}
+
+.resaltado {
+    color: purple;
+    font-weight: bold;
+    
+
+}
+
+.alert-unlock:hover {
+    border-width: 4px;
+}
+
+
+
+ .item-hide {
+    visibility: hidden;
+ }
+
+
+ 
+.div-shadow {
+    z-index: 999;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center
+}
+
+.img-ajax-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.col-loading-ajax {
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+

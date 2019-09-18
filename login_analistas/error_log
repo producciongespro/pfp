@@ -1,0 +1,7 @@
+[03-Oct-2018 15:27:56 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home/sistemapfp/public_html/login/funcs/conexion.php on line 9
+[03-Oct-2018 15:27:56 UTC] PHP Fatal error:  Call to a member function prepare() on boolean in /home/sistemapfp/public_html/login/funcs/funcs.php on line 161
+[04-Oct-2018 15:27:44 UTC] PHP Fatal error:  Call to a member function bind_param() on boolean in /home/sistemapfp/public_html/login/funcs/funcs.php on line 130
+[04-Oct-2018 15:27:47 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home/sistemapfp/public_html/login/funcs/conexion.php on line 9
+[04-Oct-2018 15:27:47 UTC] PHP Fatal error:  Call to a member function prepare() on boolean in /home/sistemapfp/public_html/login/funcs/funcs.php on line 86
+[04-Oct-2018 20:58:50 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Connection refused in /home/sistemapfp/public_html/login/funcs/conexion.php on line 9
+[04-Oct-2018 20:58:50 UTC] PHP Fatal error:  Call to a member function real_escape_string() on boolean in /home/sistemapfp/public_html/login/cambia_pass.php on line 14

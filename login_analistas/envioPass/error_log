@@ -1,0 +1,30 @@
+[04-Oct-2018 19:46:26 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 19:46:26 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 19:46:26 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 36
+[04-Oct-2018 19:58:02 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 19:58:02 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 19:58:02 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 33
+[04-Oct-2018 19:58:34 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 19:58:34 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 19:58:34 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 33
+[04-Oct-2018 19:59:17 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 19:59:17 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 19:59:17 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 33
+[04-Oct-2018 20:01:30 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:01:30 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:01:30 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34
+[04-Oct-2018 20:03:04 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:03:04 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:03:04 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34
+[04-Oct-2018 20:07:27 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:07:27 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:07:27 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34
+[04-Oct-2018 20:10:03 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:10:03 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:10:03 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34
+[04-Oct-2018 20:12:39 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:12:39 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:12:39 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34
+[04-Oct-2018 20:12:58 UTC] PHP Deprecated:  Assigning the return value of new by reference is deprecated in /home/sistemapfp/public_html/login/envioPass/Mail.php on line 134
+[04-Oct-2018 20:12:58 UTC] PHP Deprecated:  preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sistemapfp/public_html/login/envioPass/Mail/mime.php on line 684
+[04-Oct-2018 20:12:58 UTC] PHP Strict Standards:  Non-static method Mail::factory() should not be called statically in /home/sistemapfp/public_html/login/envioPass/enviar_correo.php on line 34

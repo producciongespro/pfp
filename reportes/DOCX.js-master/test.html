@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>docxJS</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			padding: 30px;
+			font-family: Arial, Helvetica;
+		}
+
+		h1, h2, h3, h4 {
+			margin-bottom: 0.7em;
+		}
+
+		p {
+			margin-bottom: 1em;
+		}
+	</style>
+	<!-- Include dependencies -->
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./libs/base64.js"></script>
+	<script type="text/javascript" src="./libs/jszip/jszip.js"></script>
+<script src="recuperar_datos.js" charset="utf-8"></script>
+	<!-- Include main js lib -->
+	<script type="text/javascript" src="DOCX.js"></script>
+
+</head>
+<body>
+</div><br>
+<div>
+	<h2> Obtener compilado de actividades (PDF)</h2>
+</div><br>
+
+	<script>
+
+	function test() {
+		var perico = "Texto de prueba";
+		var doc = new DOCXjs();
+		doc.text('Plan de formación');
+		for (var j = 0; j < arrayTemp.length; j++) {
+			doc.text("Instancia: "+arrayTemp[j].instancia);
+			doc.text("Nombre de la actividad: "+arrayTemp[j].nombre);
+		  doc.text("Área: "+arrayTemp[j].area);
+		  doc.text("Tipo de actividad: "+arrayTemp[j].tipo);
+			doc.text("Sedes y grupos: ");
+			doc.text(obj.length);
+			for (var i = 0; i < obj.length; i++) {
+					doc.text("Regional: "+obj[i].regional);
+					doc.text("Fecha de inicio: "+obj[i].inicio);
+					doc.text("Fecha final: "+obj[i].fin);
+					doc.text("Cantidad de grupos: "+obj[i].grupos);
+			}
+		  doc.text("Estrategía: "+arrayTemp[j].estrategia);
+		  doc.text("Modalidad: "+arrayTemp[j].modalidad);
+		}
+
+
+		var output = doc.output('datauri');
+
+	}
+	</script>
+	<p><a href="javascript:test()">Descargar</a></p>
+
+	<div id="resultado">
+
+	</div>
+</body>
+</html>
