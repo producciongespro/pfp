@@ -26,10 +26,10 @@
 							 ->setCategory("Reporte excel");
 
 		$tituloReporte = "Planes enviados";
-		$titulosColumnas = array('Instancia', 'Modalidad', 'Nombre', 'Duración', 'Estrategia', 'Tipo de Actividad','Origen','Area','Fecha envío','Estado','Costo');
+		$titulosColumnas = array('Instancia', 'Modalidad', 'Nombre', 'Duración', 'Estrategia', 'Tipo de Actividad','Origen','Area','Estado','Costo');
 
 		$objPHPExcel->setActiveSheetIndex(0)
-        		    ->mergeCells('A1:K1');
+        		    ->mergeCells('A1:J1');
 
 		// Se agregan los titulos del reporte
 		$objPHPExcel->setActiveSheetIndex(0)
@@ -43,8 +43,7 @@
                 ->setCellValue('G3',  $titulosColumnas[6])
                 ->setCellValue('H3',  $titulosColumnas[7])
 								->setCellValue('I3',  $titulosColumnas[8])
-								->setCellValue('J3',  $titulosColumnas[9])
-								->setCellValue('K3',  $titulosColumnas[10]);
+								->setCellValue('J3',  $titulosColumnas[9]);
 
 		//Se agregan los datos de los planes
 		$i = 4;
@@ -53,14 +52,13 @@
         		    ->setCellValue('A'.$i,  utf8_encode($fila['instancia']))
 		            ->setCellValue('B'.$i,  utf8_encode($fila['modalidad']))
         		    ->setCellValue('C'.$i,  utf8_encode($fila['nombre']))
-								->setCellValue('D'.$i,  utf8_encode($fila['duracion']))
+					->setCellValue('D'.$i,  utf8_encode($fila['duracion']))
             		->setCellValue('E'.$i, utf8_encode($fila['estrategia']))
-                ->setCellValue('F'.$i, utf8_encode($fila['tipo_actividad']))
-                ->setCellValue('G'.$i, utf8_encode($fila['tipo']))
-                ->setCellValue('H'.$i, utf8_encode($fila['area']))
-								->setCellValue('I'.$i, utf8_encode($fila['fecha_envio']))
-								->setCellValue('J'.$i, utf8_encode($fila['estado']))
-								->setCellValue('K'.$i, utf8_encode($fila['costo']));
+					->setCellValue('F'.$i, utf8_encode($fila['tipo_actividad']))
+					->setCellValue('G'.$i, utf8_encode($fila['tipo']))
+					->setCellValue('H'.$i, utf8_encode($fila['area']))
+					->setCellValue('I'.$i, utf8_encode($fila['estado']))
+					->setCellValue('J'.$i, utf8_encode($fila['costo']));
 					$i++;
 		}
 
@@ -153,11 +151,11 @@
            	)
         ));
 
-		$objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($estiloTituloReporte);
-		$objPHPExcel->getActiveSheet()->getStyle('A3:K3')->applyFromArray($estiloTituloColumnas);
-		$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:K".($i-1));
+		$objPHPExcel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($estiloTituloReporte);
+		$objPHPExcel->getActiveSheet()->getStyle('A3:J3')->applyFromArray($estiloTituloColumnas);
+		$objPHPExcel->getActiveSheet()->setSharedStyle($estiloInformacion, "A4:J".($i-1));
 
-		for($i = 'A'; $i <= 'K'; $i++){
+		for($i = 'A'; $i <= 'J'; $i++){
 			$objPHPExcel->setActiveSheetIndex(0)
 				->getColumnDimension($i)->setAutoSize(TRUE);
 		}
