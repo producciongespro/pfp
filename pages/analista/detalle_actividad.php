@@ -302,7 +302,7 @@
                 
                         <div class="col">
                                 <div class="form-group"  id="formGroupTipo"  >
-                                    <label for='selTipoActividad'> <strong> 9 - </strong> Clase:</label>
+                                    <label for='selTipoActividad'> <strong> 9 - </strong> Clase de actividad:</label>
                                     <select  class='form-control form-selector' id='selTipoActividad'>                                        
                                         <option > Curso </option>
                                         <option > Taller </option>
