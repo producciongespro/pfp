@@ -79,8 +79,8 @@
             </div>
 
             <div class="form-group">
-                <label for="alrNeed"><strong>2 -</strong> Necesidad a la que responde el objetivo:</label>
-                <div id="alrNeed" class="alert alert-dark" role="alert">Necesidad...</div>
+                <label for="alrNeed"><strong>2 -</strong> Brecha educativa a la que responde el objetivo:</label>
+                <div id="alrNeed" class="alert alert-dark" role="alert">Brecha...</div>
             </div>
 
 

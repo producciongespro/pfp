@@ -84,7 +84,7 @@
                     </a>
 
                     <a   id="lnkbtnObjetivos"  href="#">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnObjetivos" > Necesidades y objetivos</button>                        
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnObjetivos" > Brechas formativas y objetivos</button>                        
                     </a>
 
                     <a   id="lnkbtnLimitaciones"  href="#">

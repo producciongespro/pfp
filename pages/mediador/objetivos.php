@@ -48,7 +48,7 @@
     <div class="row row-nav">
         <div class="col-sm-4">
             <div class="alert alert-primary alert-custom" role="alert">
-                AGREGAR NECESIDAD Y OBJETIVO ESTRATÉGICO
+                AGREGAR BRECHA FORMATIVA Y OBJETIVO ESTRATÉGICO
             </div>
         </div>
         <div class="col-sm-6">
@@ -67,8 +67,8 @@
         <div class="row">
             <div class="col-sm-12">
                     <div class="form-group">
-                            <label for="txtNeed">Escriba la necesidad:</label>
-                            <textarea  class="form-control" id="txtNeed" rows="3" placeholder="La necesidad debe ser fundamento para el objetivo." ></textarea>
+                            <label for="txtNeed">Escriba la brecha formativa:</label>
+                            <textarea  class="form-control" id="txtNeed" rows="3" placeholder="La brecha formativa debe ser fundamento para el objetivo." ></textarea>
                     </div>                                                                          
             </div>   
         </div>
@@ -79,7 +79,7 @@
             <div class="col-sm-12">
                     <div class="form-group">
                             <label for="txtObj">Escriba el objetivo estratégico:</label>
-                            <textarea class="form-control" id="txtObj" rows="3" placeholder="El objetivo debe estar relacionado con la necesidad." ></textarea>
+                            <textarea class="form-control" id="txtObj" rows="3" placeholder="El objetivo debe estar relacionado con la brecha formativa." ></textarea>
                     </div>                                                                          
             </div>   
         </div>
@@ -92,7 +92,7 @@
      
 
         <div class="row">
-            <h5>Objetivos y necesidades agregadas</h5>            
+            <h5>Objetivos y brechas formativas agregadas</h5>            
         </div>
         <div class="row">
             <div class="col-sm-12" id="contTable">
@@ -107,7 +107,7 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">  Edición de Necesidades y Objetivos  </h5>
+              <h5 class="modal-title">  Edición de brechas formativas y Objetivos  </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -117,7 +117,7 @@
                     <div class="row">
                             <div class="col-sm-12">
                                     <div class="form-group">
-                                            <label for="txtNeedEdit">Necesidad:</label>
+                                            <label for="txtNeedEdit">Brecha formativa:</label>
                                             <textarea  class="form-control" id="txtNeedEdit" rows="3" ></textarea>
                                     </div>                                                                          
                             </div>   

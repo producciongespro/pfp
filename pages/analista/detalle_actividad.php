@@ -95,8 +95,8 @@
         <div class="row row-nec bg-info">
             <div class="col-10">
                     <div class="form-group ">
-                        <label for="alrNeed"><strong>2 -</strong> Necesidad a la que responde el objetivo:</label>
-                        <div id="alrNeed" class="alert alert-dark" role="alert">Necesidad </div>
+                        <label for="alrNeed"><strong>2 -</strong> Brechas formativa a la que responde el objetivo:</label>
+                        <div id="alrNeed" class="alert alert-dark" role="alert">Brecha formativa </div>
                     </div>
             </div>
             <div class="col-2 bg-info">
