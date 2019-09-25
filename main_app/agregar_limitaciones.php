@@ -8,11 +8,10 @@
   $directorio = "../enviados/";
   */
 	 $instanciaMEP = utf8_decode($_POST['instancia']);
-   $interna = utf8_decode($_POST['interna']);
-   $externa = utf8_decode($_POST['externa']);
+   $interna = utf8_decode($_POST['interna']);   
 
   $mysqli = conectarDB();
-    mysqli_query($mysqli,"INSERT INTO limitaciones (instancia, interna, externa, estado, e_limitaciones) VALUES ('$instanciaMEP','$interna','$externa','0','Pendiente')") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
+    mysqli_query($mysqli,"INSERT INTO limitaciones (instancia, interna, estado, e_limitaciones) VALUES ('$instanciaMEP','$interna', '0','Pendiente')") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
 		$errors = array();
 		 if ($mysqli) {
        mysqli_close($mysqli);

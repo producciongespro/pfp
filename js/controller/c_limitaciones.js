@@ -28,14 +28,13 @@ function loadMod() {
         
         $("#btnEnviarLimitaciones").val("Enviar Limitaciones");
         $("#btnEnviarLimitaciones").click(function () { 
-            m.uploadLimitation($("#txtInterna").val(), $("#txtExterna").val(), userInfo.instancia, loadDataSet );                        
+            m.uploadLimitation($("#txtInterna").val(), userInfo.instancia, loadDataSet );                        
         });
     } else {
         console.log("lleno");
 
         
-        v.limitTxt(tmpRecord.interna, "#txtInterna" );
-        v.limitTxt(tmpRecord.externa, "#txtExterna" );       
+        v.limitTxt(tmpRecord.interna, "#txtInterna" );      
         
         
         //desactiva el evento clic del botón enviar para activar un evento nuevo que actualiza el registro
@@ -45,17 +44,11 @@ function loadMod() {
         $("#btnEnviarLimitaciones").val("Actualizar Limitaciones");
         $("#btnEnviarLimitaciones").click(function (e) { 
             e.preventDefault();
-            m.updateLimitations(tmpRecord.id, $("#txtInterna").val(), $("#txtExterna").val(), loadDataSet );
+            m.updateLimitations(tmpRecord.id, $("#txtInterna").val(),  loadDataSet );
         });
 
-    }
-    
-    
-    
+    }     
 }
-
-
-
 
 
 

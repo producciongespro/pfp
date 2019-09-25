@@ -222,11 +222,10 @@ Model.prototype.uploadObjective = function (email_user, instance, needed, obj, m
 }
 
   
-Model.prototype.uploadLimitation = function ( limInt, limExt, instance,  callBack_s) {
+Model.prototype.uploadLimitation = function ( limInt, instance,  callBack_s) {
 
   var formData = new FormData();
-  formData.append("interna", limInt);
-  formData.append("externa", limExt);
+  formData.append("interna", limInt);  
   formData.append("instancia", instance); 
  
   $.ajax({
@@ -503,12 +502,11 @@ Model.prototype.closeSession = function () {
 
   }
 
-  Model.prototype.updateLimitations = function (id, inL, outL, mCallBack ) { 
+  Model.prototype.updateLimitations = function (id, inL, mCallBack ) { 
     
     var formData = new FormData();
     formData.append("id", id);
-    formData.append("interna", inL );
-    formData.append("externa", outL );
+    formData.append("interna", inL );    
 
     $.ajax({
       url: '../../main_app/actualizar_limitaciones.php',
