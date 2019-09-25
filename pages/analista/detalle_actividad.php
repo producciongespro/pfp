@@ -176,7 +176,7 @@
             <div class="row">
                 <div class="col">
                         <div class="form-group">
-                                <label for="selArea"><strong>5 -</strong> Área:</label>
+                                <label for="selArea"><strong>5 -</strong> Área estratégica:</label>
                                 <select class="form-control form-selector" id="selArea">
                                     
                                         <option>Prácticas Docentes</option>
