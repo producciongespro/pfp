@@ -73,10 +73,10 @@ View.prototype.tipoActividad  = function ( visor, opt ) {
 View.prototype.instances = function (array, cont) {
 
     $(cont).empty();
-    $(cont).html("<label for='selRegional'>Dirección Regional: </label>");
+    $(cont).html("<label for='selRegional'>Sede: </label>");
     var limite = array.length,
     selector = $("<select class='custom-select' id='selRegional'></select>");
-    $(selector).html( "<option selected disabled>Seleccione la Dirección Regional: </option>");
+    $(selector).html( "<option selected disabled>Seleccione la sede: </option>");
 
     for (let index = 0; index < limite; index++) {
       $(selector).append("<option> " + array[index].nombre + " </option>")

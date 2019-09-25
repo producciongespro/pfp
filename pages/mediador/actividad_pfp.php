@@ -186,9 +186,11 @@
             <hr>
             <!--Mòdulo de agregar registros a la tabla -->
             <div class="row">
-                    <div class="alert alert-primary" role="alert">
-                            <strong>11 - </strong> Grupos por regional donde se impartirá la actividad:
+                    <div class="col-12 alert alert-primary " role="alert">
+                            <strong>11 - </strong> Grupos por sede donde se impartirá la actividad:
+                            <img  class="img-boton  btn-ayuda"  id="btnGrupos" src="../../img/bombillo.png" alt="Bombillo">
                     </div>
+
             </div>
 
             <div class="row">

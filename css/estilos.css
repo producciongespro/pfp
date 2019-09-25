@@ -12,6 +12,19 @@
 
 }
 
+
+.img-boton {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+.img-boton:hover {
+    -ms-transform: scale(1.4); /* IE 9 */
+    -webkit-transform: scale(1.4); /* Safari 3-8 */
+    transform: scale(1.4);      
+}
+
 .row {
     margin-left: 0;
     margin-right: 0;
