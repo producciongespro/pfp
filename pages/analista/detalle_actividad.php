@@ -117,7 +117,7 @@
        <div class="row">
            <div class="col-3">
                 <div class="form-group">
-                    <label for="selTipo">  <strong>3 - </strong> Actividad  </label>
+                    <label for="selTipo">  <strong>3 - </strong> Actividad:  </label>
                         <select class="form-control form-selector" id="selTipo">
                                 <option > Dentro  </option>
                                 <option > Fuera  </option>
@@ -150,7 +150,7 @@
        <div class="row">
            <div class="col-8">
                 <div class="form-group">
-                        <label for="txtNombre"><strong>4 -</strong> Nombre de la actividad de capacitación:</label> 
+                        <label for="txtNombre"><strong>4 -</strong> Nombre de la actividad:</label> 
                         <input type="text"   class="form-control form-selector " id="txtNombre"  >
                     </div>
            </div>

@@ -112,7 +112,7 @@
        <div class="row">
            <div class="col">
                 <div class="form-group">
-                        <label for="txtNombre"><strong>4 -</strong> Nombre de la actividad de capacitación:</label>
+                        <label for="txtNombre"><strong>4 -</strong> Nombre de la actividad:</label>
                         <input type="text"  disabled="true" class="form-control" id="txtNombre" placeholder="Nombre de la actividad. (Debe primero seleccionar el objetivo)"  >
                     </div>
            </div>
