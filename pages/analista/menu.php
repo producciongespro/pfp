@@ -160,11 +160,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <h6>Limitaciones Internas: </h6>
-        <textarea  class="form-control"  id="txtInterna" cols="10" rows="8"></textarea>
-        <br>
-        <h6>Limitaciones Externas: </h6>
-        <textarea  class="form-control"  id="txtExterna" cols="10" rows="8"></textarea>
+        <h6>Limitaciones: </h6>
+        <textarea  class="form-control"  id="txtInterna" cols="10" rows="16"></textarea>               
+        
       </div>
       <div class="modal-footer">
       <div class="row">         
@@ -207,6 +205,43 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal Objetivos-->
+<div class="modal fade" id="mdlObjetivos" tabindex="-1" role="dialog" aria-labelledby="lblObjtivos" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lblObjtivos">  Objetivos de la instancia:   
+            <span id="spnNombreInstancia" ></span>
+         </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  id="modalBodyObjetivos" > 
+            
+      
+      
+      
+      </div>
+   
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
     
     <div class="div-shadow invisible">
         <img class="img-ajax-loading" src="../../img/ajax-loader.gif" alt="Loading">

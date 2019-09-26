@@ -18,7 +18,7 @@ View.prototype.userInfo = function (user, visor) {
 
  
 View.prototype.table = function (array, visor) {
- //console.log(array);
+    //console.log( "array", array);
  
   
   $(visor).empty();
@@ -33,6 +33,7 @@ View.prototype.table = function (array, visor) {
         "<th class='text-center'  scope='col'>Instancia</th>" +
         "<th class='text-center' scope='col'>Cant de actividades</th>" +
         "<th class='text-center' scope='col'>Justificación </th>" +
+        "<th class='text-center' scope='col'> Objetivos </th>" +
         "<th class='text-center'  scope='col'>Archivo DNFP </th>" +
         "<th class='text-center'  scope='col'> Limitaciones </th>" +
         "<th class='text-center'  scope='col'>Fecha de envío </th>" +
@@ -66,6 +67,9 @@ View.prototype.table = function (array, visor) {
                       "<i  id='btnJus"+ index +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
+                "<i   title = '"+   array[index].nombre  +"'   class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
+                "</td>" +
+                "<td class= 'text-center'>" + 
                     "<i  id='btnfil"+ index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
@@ -96,11 +100,23 @@ View.prototype.table = function (array, visor) {
 }
 
 
-View.prototype.limitaciones = function (interna, externa ) { 
-    $("#txtInterna").empty();
-    $("#txtExterna").empty();
+View.prototype.limitaciones = function (interna ) { 
+    $("#txtInterna").empty();    
     $("#txtInterna").val(interna);
-    $("#txtExterna").val(externa);
+    
+}
+
+
+
+View.prototype.renderObjetivos = function ( array ) { 
+  console.log(array); 
+  $("#modalBodyObjetivos").empty();
+  var ul = $("<ul></ul>");  
+
+  for (let index = 0; index < array.length; index++) {                 
+      $(ul).append("<li>"+ array[index].objetivo  +"</li>");
+  }
+  $("#modalBodyObjetivos").html( ul  ); 
 }
 
 

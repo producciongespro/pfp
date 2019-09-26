@@ -4,6 +4,7 @@ var  user,
 dsArchivos,  //url de archivos enviados
 dsJustif, // Array con las justificaciones
 dataset,  // dataset con todoas las actividades  enviadas por instancia.
+dataObjetivos, //arreglo de la tabla objetivos
 instancias, // Arreglo con los campos para formar la tabla.
 tmpId =  "",  //registro actual con los campos de id para cambiar el estado del archivo, justifcacion y limitaciones
 //El id se carga cuando se abre un modal para asignarle el id que le corresponde
@@ -31,10 +32,17 @@ function loadDataset() {
     m.loadJson("../../main_app/obtener.php", function () { 
         dataset = m.getPfpSent();
        // console.log("Carga de actividades PFP de las instacnias: ");        
-        //console.log(dataset);        
+        console.log("dataset", dataset);        
         loadFileUrl();
        
      });
+
+
+     m.getObjetivos(function (data) { 
+        dataObjetivos = data;
+                console.log("Array de objetivos", dataObjetivos);                               
+          })
+
     
 }
 
@@ -86,8 +94,7 @@ function renderTable() {
             nombre : m.getDataSet()[index].nombre,            
             cantActiv : 0,
             justificacion : "",
-            interna : "",  // Limitaciones internas
-            externa : "", // Limitacion externa
+            interna : "",  // Limitaciones internas            
             fecha_envio : "0",
             urlArchivo : "",
             id_just : "0",
@@ -174,6 +181,7 @@ function renderTable() {
     eViewActividades();
     eModalUnlock();
     eLimit();
+    handlerShowModalObjetivos();
 
 
 }
@@ -201,7 +209,7 @@ function eLimit() {
         //Se carga con el id de la limitacion
         tmpId = instancias[idItem].id_lim;
                
-        v.limitaciones( instancias[idItem].interna, instancias[idItem].externa   );       
+        v.limitaciones( instancias[idItem].interna );       
         
     });
 }
@@ -300,3 +308,24 @@ function eCloseSession() {
 
 
 
+function handlerShowModalObjetivos () {
+    $(".btn-objetivos").click(function (e) { 
+        e.preventDefault();               
+        const instancia = this.title;            
+        console.log("Instancia",  instancia);
+        let tmpObjetivos = []
+        for (let index = 0; index < dataObjetivos.length; index++) {
+            if (dataObjetivos[index].instancia == instancia ) {
+                tmpObjetivos.push(dataObjetivos[index]);
+            }            
+        }
+
+
+        v.renderObjetivos(tmpObjetivos);         
+        $("#spnNombreInstancia").html(instancia);
+        $("#mdlObjetivos").modal();
+        
+    });
+    
+
+}

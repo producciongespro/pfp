@@ -36,6 +36,20 @@ Model.prototype.loadJson = function (pathJson, mCallBack) {
     );
  }
 
+
+ Model.prototype.getObjetivos = function ( mCallBack ) {
+  const  urlGetObjetivos = " ../../main_app/obtener_objetivos.php  ";
+    $.getJSON(urlGetObjetivos,
+        function (data, textStatus, jqXHR) {        
+            mCallBack( data  );            
+        }
+    );
+ }
+
+
+
+
+
  Model.prototype.getPfpSent = function () { 
    let limit = Model.prototype.dataSet.length,
    enviadas=[];
