@@ -215,12 +215,14 @@ function eventAddGroup() {
         // console.log($("#nmbGrupos").val());
        sedes++;
          if ($("#nmbGrupos").val() != "" ) {
-             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val())  );
+             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(),  $("#nmbParticipantes").val()     )  );
              //limpia los campos del sub formulario
              $("#selRegional").val("");
              $("#selMesIni").val("");
              $("#selMesFin").val("");
              $("#nmbGrupos").val("");
+             $("#nmbParticipantes").val("");
+             
              //Crea el evento para eliminar cada uno de los registros:
              eventDeleteGroup();
  

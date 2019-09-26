@@ -195,23 +195,39 @@
             </div>
 
             <div class="row">
-                    <div class="col">
-                        <div class="form-group" id="gorupSelectorInstance"></div>
 
+                    <div class="col-2">
+                        <div class="form-group" id="gorupSelectorInstance"></div>
                     </div>
-                    <div class="col"><div class="form-group"><label for="selMesIni">Mes de inicio:</label>        <select class="form-control" id="selMesIni"><option selected="" disabled=""> Seleccione el mes:  </option><option>  Enero  </option><option>  Febrero  </option><option>  Marzo  </option><option>  Abril  </option><option>  Mayo  </option><option>  Junio  </option><option>  Julio  </option><option>  Agosto  </option><option>  Setiembre  </option><option>  Octubre  </option><option>  Noviembre  </option><option>  Diciembre  </option> </select></div>
+
+                    <div class="col-2">
+                                <div class="form-group"><label for="selMesIni">Mes de inicio:</label>        
+                                        <select class="form-control" id="selMesIni">
+                                        <option selected="" disabled=""> Seleccione el mes:  </option>
+                                        <option>  Enero  </option><option>  Febrero  </option><option>  Marzo  </option><option>  Abril  </option><option>  Mayo  </option><option>  Junio  </option><option>  Julio  </option><option>  Agosto  </option><option>  Setiembre  </option><option>  Octubre  </option><option>  Noviembre  </option><option>  Diciembre  </option> </select>
+                                </div>
+                        </div>
+
+                <div class="col-2">
+                        <div class="form-group"><label for="selMesFin">Mes de finalización:</label>        <select class="form-control" id="selMesFin"><option selected="" disabled=""> Seleccione el mes:  </option><option>  Enero  </option><option>  Febrero  </option><option>  Marzo  </option><option>  Abril  </option><option>  Mayo  </option><option>  Junio  </option><option>  Julio  </option><option>  Agosto  </option><option>  Setiembre  </option><option>  Octubre  </option><option>  Noviembre  </option><option>  Diciembre  </option> </select></div>
                 </div>
 
-                <div class="col"><div class="form-group"><label for="selMesFin">Mes de finalización:</label>        <select class="form-control" id="selMesFin"><option selected="" disabled=""> Seleccione el mes:  </option><option>  Enero  </option><option>  Febrero  </option><option>  Marzo  </option><option>  Abril  </option><option>  Mayo  </option><option>  Junio  </option><option>  Julio  </option><option>  Agosto  </option><option>  Setiembre  </option><option>  Octubre  </option><option>  Noviembre  </option><option>  Diciembre  </option> </select></div></div>
-
-                <div class="col">
+                <div class="col-2">
                     <div class="form-group">
                              <label for="txtCantidad"> Cantidad de grupos:</label>
                              <input type="number" min="1" class="form-control" id="nmbGrupos" >
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col-2">
+                    <div class="form-group">
+                             <label for="txtCanidadParticipantes"> Cant. participantes:</label>
+                             <input type="number" min="1" class="form-control" id="nmbParticipantes" >
+                    </div>
+                </div>
+
+
+                <div class="col-2">
                     <button class="btn btn-secondary  btn-block" id="btnAgregarGrupo"> Agregar </button>
                 </div>
 

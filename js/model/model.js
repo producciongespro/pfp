@@ -531,12 +531,13 @@ Model.prototype.closeSession = function () {
   }
 
 
-  Model.prototype.addGroups = function ( regional, inicio, fin, grupos  ) {
+  Model.prototype.addGroups = function ( regional, inicio, fin, grupos, cantParticipantes  ) {
     let grupo = {
       regional : regional,
       inicio : inicio,
       fin : fin,
-      grupos : grupos
+      grupos : grupos,
+      cantParticipantes : cantParticipantes
     }
     Model.prototype.grupos.push(grupo);   
     return Model.prototype.grupos;
