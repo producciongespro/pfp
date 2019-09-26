@@ -248,16 +248,18 @@
             <hr>
 
                     <div class="row  item-invisible " id="rowCosto"  >
-                        <div class="col-sm-3 " >
-                            <label for="nmbCosto"><strong>12 -</strong> Costo de la actividad (colones):  </label>
+                        <div class="col-sm-6 " >
+                            <label for="nmbCosto"><strong>12 -</strong> Costo total aproximado de la actividad (colones):  </label>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group">
 
                                 <input type="number" class="form-control" id="nmbCosto" rows="3" >
                             </div>
                         </div>
-                        <div class="col-sm-6"></div>
+                        <div class="col-sm-2">
+                                <img  class="img-boton  btn-ayuda animated"  id="btnCosto" src="../../img/bombillo.png" alt="Bombillo">
+                        </div>
                     </div>
                     <br>
 

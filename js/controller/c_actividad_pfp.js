@@ -307,6 +307,9 @@ function mostarAyudaContextual () {
             case "btnGrupos":
                 mensaje = "Cuando el curso sea impartido en la modalidad presencial o virtual, cada grupo requiere estar  integrado al menos por 30 personas para formarlo.  Cuando el curso sea teórico/práctico, idiomas o prácticas de laboratorio ,  requiere de al menos 15 personas para formarlo. Si el grupo es menor a 25 personas no contará con respaldo, por parte del IDP, para la alimentación de los participantes en un curso."    
             break;
+            case "btnCosto":
+                mensaje = " Si el costo aproximado está en dólares, realizar el cambio a colones según el tipo de cambio del BCR y agregarle un 10%"    
+            break;
         
             default:
                 console.log("opcion fuera de rango");                
