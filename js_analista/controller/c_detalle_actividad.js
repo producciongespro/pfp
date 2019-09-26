@@ -238,12 +238,15 @@ function eventAddGroup() {
     $("#btnAgregarGrupo").click(function () {
         // console.log($("#nmbGrupos").val());       
          if ($("#nmbGrupos").val() != "" ) {
-             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val())  );
+             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(), $("#nmbCantParticipantes").val()  )  );
              //limpia los campos del sub formulario
              $("#selRegional").val("");
              $("#selMesIni").val("");
              $("#selMesFin").val("");
              $("#nmbGrupos").val("");
+             $("#nmbCantParticipantes").val("");
+             
+
              //Crea el evento para eliminar cada uno de los registros:
              eventDeleteGroup();
 

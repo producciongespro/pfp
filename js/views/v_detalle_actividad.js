@@ -65,6 +65,7 @@ View.prototype.table = function (visor, array ) {
         "<th scope='col'>Mes de inicio</th>" +
         "<th scope='col'>Mes de finalización</th>" +
         "<th scope='col'>Cantidad de grupos</th>" +        
+        "<th scope='col'>Cantidad de participantes</th>" +        
         "<th scope='col'>Eliminar</th>" +
       "</tr>" +
     "</thead>" +
@@ -85,9 +86,12 @@ View.prototype.table = function (visor, array ) {
                 "<td>" + 
                   array[index].fin +
                 "</td>" +
-                "<td>" + 
+                "<td class='text-center' >" + 
                   array[index].grupos +
                 "</td>" +
+                "<td class='text-center'>" + 
+                   array[index].cantParticipantes +
+              "</td>" +
                 
               "<td>" +                       
                     "<i id='faiDel"+ index +"'  target='"+ index +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>" +   

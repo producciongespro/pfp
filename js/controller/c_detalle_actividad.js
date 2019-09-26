@@ -95,14 +95,7 @@ function enabledDiskFloppy() {
 
    console.log("Estado del PFP: " + userInfo.pfpStatus);
    
-  /* 
-   console.log("Nombre " +  record.e_nombre);
-   console.log("duracion " + record.e_duracion);
-   console.log( "Sede " + record.e_sede);
-   console.log("tipo " + record.e_tipo);
-   console.log("Area " + record.e_area);
-   */
-
+ 
    //Si el estado es edicicón puede editar todos los campos
     if (userInfo.pfpStatus =="Edicion") {
         $(".btn-edit-activity").removeClass("item-hide");
@@ -307,12 +300,13 @@ function eventAddGroup() {
     $("#btnAgregarGrupo").click(function () {
         // console.log($("#nmbGrupos").val());       
          if ($("#nmbGrupos").val() != "" ) {
-             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val())  );
+             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(), $("#nmbCantidadParticipantes").val()   )  );
              //limpia los campos del sub formulario
              $("#selRegional").val("");
              $("#selMesIni").val("");
              $("#selMesFin").val("");
              $("#nmbGrupos").val("");
+             $("#nmbCantidadParticipantes").val();
              //Crea el evento para eliminar cada uno de los registros:
              eventDeleteGroup();
 

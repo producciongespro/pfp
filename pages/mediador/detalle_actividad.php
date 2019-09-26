@@ -260,8 +260,15 @@
 
                 <div class="col">
                     <div class="form-group">
-                             <label for="txtCantidad"> Cantidad de grupos:</label>
+                             <label for="nmbGrupos"> Cantidad de grupos:</label>
                              <input type="number" min="1" class="form-control" id="nmbGrupos" >
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                             <label for="nmbCantidadParticipantes"> Cantidad de participantes:</label>
+                             <input type="number" min="1" class="form-control" id="nmbCantidadParticipantes" >
                     </div>
                 </div>
 
