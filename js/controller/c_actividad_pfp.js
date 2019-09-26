@@ -64,6 +64,7 @@ function loadModule () {
                 // envio de actividades
                 // selModalidad para cambiar las opciones de tipo
                 handlerEvents();
+                $(".btn-ayuda").addClass("elemento-resaltado");
             }
      });
      //ACtiva el manejador de eventos de alert objetivos por si el usuario desea

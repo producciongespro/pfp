@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../../vendor/bootstrap-4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../vendor/alertify/css/alertify.min.css">
     <link rel="stylesheet" href="../../vendor/alertify/css/themes/default.min.css">
+    <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/estilos.css">
 
     <script src="../../vendor/jquery-3.3.1/jquery-3.3.1.min.js"></script>
@@ -188,7 +189,7 @@
             <div class="row">
                     <div class="col-12 alert alert-primary " role="alert">
                             <strong>11 - </strong> Grupos por sede donde se impartirá la actividad:
-                            <img  class="img-boton  btn-ayuda"  id="btnGrupos" src="../../img/bombillo.png" alt="Bombillo">
+                            <img  class="img-boton  btn-ayuda animated"  id="btnGrupos" src="../../img/bombillo.png" alt="Bombillo">
                     </div>
 
             </div>
