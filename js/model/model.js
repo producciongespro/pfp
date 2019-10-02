@@ -28,8 +28,8 @@ Model.prototype.loadJson = function (pathJson, mCallBack) {
     $.getJSON(pathJson,
         function (data, textStatus, jqXHR) {
             Model.prototype.dataSet=data;
-            //console.log( Model.prototype.dataSet);
-            mCallBack( data );
+            console.log( Model.prototype.dataSet);
+            mCallBack(  );
             
         }
     );
@@ -175,6 +175,7 @@ console.log("-------------");
 
 Model.prototype.getSession = function () {
     var usr = {
+        "id_instancia" : sessionStorage.getItem("id_instancia"),
         "nombre" : sessionStorage.getItem("nombre"),
         "apellido1" : sessionStorage.getItem("apellido1"),
         "apellido2" : sessionStorage.getItem("apellido2"),

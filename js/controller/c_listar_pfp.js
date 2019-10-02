@@ -6,27 +6,26 @@ var userInfo, tmpDataset;
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
-    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function (data) { 
-        console.log("calback");
-        
-        loadMod(data)
+    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function () { 
+        console.log("calback");        
+        loadMod()
      });
 });
 
 
 function loadUserInfo() {
     userInfo =  m.getSession();
-    //console.log(userInfo);
-    
+    //console.log(userInfo);    
     v.userInfo(userInfo, $("#infoUser"));
     
 }
 
-function loadMod() {
-    console.log("CArgando modulo");    
-    console.log(data);    
+function loadMod() {    
+    tmpDataset =  m.dataSet;
+    //console.log("Cargando móduilo", tmpDataset);    
+    
     $(".div-shadow").addClass("invisible");
-    tmpDataset =  m.filterByInstance(userInfo.instancia);
+    //tmpDataset =  m.filterByInstance(userInfo.instancia);
     v.tablePfp($("#tablaPfp"), tmpDataset );
     eventViewDetails();
     eventDeleteActivity(tmpDataset);
