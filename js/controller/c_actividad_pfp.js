@@ -45,7 +45,7 @@ function loadModule () {
             need = $(this).attr("need");
             idObj = $(this).attr("target");
 
-            //console.log(idObj);
+            console.log(idObj);
 
         //Escribe la necesidad relacionada con el objetivo selecionado:
         $("#alrNeed").text(need);
@@ -74,7 +74,7 @@ function loadModule () {
 
 function loadIdFile() {    
     fileDNFP = m.filterByInstance(userInfo.instancia)[0]; 
-    console.log(fileDNFP.id);
+   // console.log(fileDNFP.id);
         
 }
 
@@ -348,7 +348,7 @@ function eventSendButton() {
                alertify.error('Debe completar todos los campos.');
            }
           else {
-              m.uploadActivity( userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, justif.justificacion, limitations.id, limitations.interna, limitations.externa, idObj, tmpObj, need,  $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
+              m.uploadActivity( userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, justif.justificacion, limitations.id, limitations.interna, limitations.externa, idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
           }
    
 

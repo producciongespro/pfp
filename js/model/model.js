@@ -305,7 +305,7 @@ Model.prototype.uploadJustify = function (urlPath, justif, instancia, callBack_s
 }
 
 
-Model.prototype.uploadActivity = function (instance, email, name, codJus, justif, idLimit, limitInt, limitExt, idObj, obj, need, duration, place, type, typeAct,  stratus,  area, mode, strategy, amount, idFile, mCallBack ) {
+Model.prototype.uploadActivity = function (instance, email, name, codJus, justif, idLimit, limitInt, limitExt, idObj, duration, place, type, typeAct,  stratus,  area, mode, strategy, amount, idFile, mCallBack ) {
 
   console.log(codJus);
   
@@ -322,10 +322,7 @@ Model.prototype.uploadActivity = function (instance, email, name, codJus, justif
   formData.append("externa", limitExt);
 
 
-  formData.append("idObj", idObj);
-  formData.append("objetivo", obj);
-
-  formData.append("necesidad", need);
+  formData.append("idObj", idObj);    
   formData.append("duracion", duration);
   
   formData.append("sede", place);
