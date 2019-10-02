@@ -16,7 +16,7 @@
 
     $usuario = $mysqli->real_escape_string( $_POST['key']);
     $pas = $mysqli->real_escape_string( $_POST['pass']);
-    if ($nueva_consulta = $mysqli->prepare("Select nombre, apellido1, apellido2, correo, instancia, id_tipo, password From usuarios Where correo = ?")) {
+    if ($nueva_consulta = $mysqli->prepare("Select nombre, apellido1, apellido2, correo,  id_instancia, instancia, id_tipo, password From usuarios Where correo = ?")) {
         $nueva_consulta->bind_param('s', $usuario);
         $nueva_consulta->execute();
         $resultado = $nueva_consulta->get_result();
@@ -27,7 +27,7 @@
             {
 
               $_SESSION['usuario'] = $datos;
-                echo json_encode(array('error'=>false,'nombre'=>$datos['nombre'], 'apellido1'=>$datos['apellido1'], 'apellido2'=>$datos['apellido2'], 'correo'=>$datos['correo'], 'tipo'=>$datos['id_tipo'], 'instancia'=>$datos['instancia']));}
+                echo json_encode(array('error'=>false,'nombre'=>$datos['nombre'], 'apellido1'=>$datos['apellido1'], 'apellido2'=>$datos['apellido2'], 'correo'=>$datos['correo'], 'tipo'=>$datos['id_tipo'],   'id_instancia'=>$datos['id_instancia'], 'instancia'=>$datos['instancia']));}
 				
                else {
                     echo json_encode(array('error'=>true));

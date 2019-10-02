@@ -1,6 +1,10 @@
 <?php
-// $sql = "SELECT * FROM planes";
-$sql = "SELECT * from planes ORDER BY instancia";
+$id_instancia = utf8_decode( $_GET['id_instancia']);
+//$id_instancia  = "16";
+$sql = "SELECT * FROM planes  WHERE  id_instancia = $id_instancia  ORDER BY id";
+
+//echo $sql;
+
 include "conectar.php";
 function desconectar($conexion){
 

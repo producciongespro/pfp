@@ -10,18 +10,19 @@ $(document).ready(function () {
     $("#formLg").submit(function(event){
         event.preventDefault();
         //console.log("verificando");
-        m.setLogin("./main_app/login.php", $("#formLg"), sending, loadApp,   showError  );
+        m.setLogin("./main_app/login.php", $("#formLg"), sending, function (respuesta) {
+            loadApp(respuesta)
+          },   showError  );
     });
 
 });
 
-function loadApp(resp) {
-   // console.log("Login");
+function loadApp(resp) {   
     
-            //console.log(resp);
+            console.log( "Login", resp);
 
             //Guarda en la variable de sesión los datos del usuario:
-             m.setSession(resp.instancia, resp.nombre, resp.apellido1, resp.apellido2, resp.correo, resp.tipo);
+             m.setSession(resp.id_instancia,  resp.instancia, resp.nombre, resp.apellido1, resp.apellido2, resp.correo, resp.tipo);
 
 
 

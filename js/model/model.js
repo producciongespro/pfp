@@ -24,13 +24,12 @@ Model.prototype.cloneListGroups = function (array ) {
 
 
 Model.prototype.loadJson = function (pathJson, mCallBack) {
-  //console.log("get json");
+  console.log("get json");
     $.getJSON(pathJson,
         function (data, textStatus, jqXHR) {
-
             Model.prototype.dataSet=data;
             //console.log( Model.prototype.dataSet);
-            mCallBack( );
+            mCallBack( data );
             
         }
     );
@@ -109,8 +108,9 @@ Model.prototype.sendPfp = function ( instance, mCallBack ) {
 }
 
 
-Model.prototype.setSession = function ( instancia, nombre, apellido1, apellido2, correo, tipo ) {
+Model.prototype.setSession = function ( id_instancia, instancia, nombre, apellido1, apellido2, correo, tipo ) {
     
+  sessionStorage.setItem("id_instancia", id_instancia);
   sessionStorage.setItem("instancia", instancia);
   sessionStorage.setItem("nombre", nombre);
   sessionStorage.setItem("apellido1", apellido1);

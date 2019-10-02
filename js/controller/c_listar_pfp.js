@@ -6,7 +6,11 @@ var userInfo, tmpDataset;
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
-    m.loadJson("../../main_app/obtener.php", loadMod);
+    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function (data) { 
+        console.log("calback");
+        
+        loadMod(data)
+     });
 });
 
 
@@ -19,6 +23,8 @@ function loadUserInfo() {
 }
 
 function loadMod() {
+    console.log("CArgando modulo");    
+    console.log(data);    
     $(".div-shadow").addClass("invisible");
     tmpDataset =  m.filterByInstance(userInfo.instancia);
     v.tablePfp($("#tablaPfp"), tmpDataset );
