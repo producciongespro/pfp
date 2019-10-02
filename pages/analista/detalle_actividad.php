@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-2 ">
                                 <div class="row">                       
-                                   <i class="fas fa-edit btn-edit-obj-nece"  id="btnModalObj" title="Editar objetivos y necesidades." ></i>                                   
+                                   <i class="fas fa-edit btn-edit-obj-nece"  id="btnModalObj" title="Editar objetivos y brechas formativas." ></i>                                   
                                 </div>
                         
                         </div>
@@ -462,7 +462,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Edición de objetivos y necesidades:</h5>
+          <h5 class="modal-title" >Edición de objetivos y brechas formativas:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -470,7 +470,7 @@
         <div class="modal-body" id="mdlBody"> 
             <small>Objetivo Estratégico:</small>
             <textarea  class="form-control" id="txtObj" cols="20" rows="5"></textarea>
-            <small>Necesidad:</small>
+            <small>brecha formativa:</small>
             <textarea  class="form-control" id="txtNec" cols="20" rows="5"></textarea>
                 
         </div>

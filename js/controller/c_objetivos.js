@@ -82,10 +82,15 @@ function table ( array) {
             e.preventDefault();
             m.updateObjNeed(numId, $("#txtNeedEdit").val(), $("#txtObjEdit").val(), loadDataset );
             $("#modalObj").modal( 'hide' );
-        });
-        
-        
-        
+        });                    
+    });
+
+    $(".btn-forbidden").click(function (e) { 
+        e.preventDefault();
+        alertify
+            .alert("Aviso del Sistema PFP", "Esta información no se puede eliminar debido a que ya está asociada a una actividad del PFP. En este caso lo que debe hacer es editarla.", function(){
+            console.log("ok");            
+  });
     });
 }
 

@@ -23,7 +23,7 @@ View.prototype.table = function (array, visor) {
       "<thead>" +
         "<tr>" +
           "<th scope='col'>#</th>" +
-          "<th scope='col'>Necesidad</th>" +
+          "<th scope='col'>Brecha formativa</th>" +
           "<th scope='col'>Objetivo</th>" +
           "<th scope='col'> Editar - Eliminar </th>" +
         "</tr>" +
@@ -33,6 +33,12 @@ View.prototype.table = function (array, visor) {
 
             for (let index = 0; index < limite; index++) {
               let fowNumb = index + 1;
+              let icoEliminar;
+              if (array[index].estado == "0"  ) {
+                icoEliminar = "<i id='faiDel"+ index +"'  target='"+ array[index].id +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>"
+              } else {
+                icoEliminar = "<i class='fas fa-ban fa-btn-obj btn-forbidden' ></i>"
+              }
               row = $(
                 "<tr>" +
                 "<th scope='row'>" + fowNumb + "</th>" +                
@@ -44,7 +50,7 @@ View.prototype.table = function (array, visor) {
                   "</td>" +
                 "<td>" + 
                       "<i id='faiEdt"+ index +"'  target='"+ array[index].id +"'  class='fas fa-pencil-alt fa-btn-obj btn-edit'></i>  " +
-                      "<i id='faiDel"+ index +"'  target='"+ array[index].id +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>" +   
+                      icoEliminar +   
                 "</td>" +
                 "</tr>"
             );
