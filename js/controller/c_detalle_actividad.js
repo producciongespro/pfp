@@ -38,7 +38,7 @@ function loadUserInfo() {
 
 
 function loadMod() {
-    console.log("ready");
+    //console.log("ready");
     record = m.getRecordInSession();
     //console.log(record);
     

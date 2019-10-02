@@ -35,6 +35,7 @@ function loadDataset() {
 function loadModule () {
      tmpObj = "0";
     //Crea la tabla con los objetivos
+    //TODO: 1 - Esta instrucción hay que cambiarla por id_instancia
     v.objectiveList(m.filterByInstance(userInfo.instancia), $("#mdlBody") );
     //Manejadores de eventos para el modal de objetivos
     $("#modalObj").modal();
@@ -72,7 +73,9 @@ function loadModule () {
      handlerEventObj();
 }
 
-function loadIdFile() {    
+function loadIdFile() { 
+    //TODO: 2 - Esta instrucción hay que cambiarla por id_instancia
+    
     fileDNFP = m.filterByInstance(userInfo.instancia)[0]; 
    // console.log(fileDNFP.id);
         
@@ -83,6 +86,7 @@ function loadIdFile() {
 function loadJustif () {
 
     //carga la info de la justificacion asociada al pfp
+    //TODO: 3 - Esta instrucción hay que cambiarla por id_instancia
     justif = m.filterByInstance(userInfo.instancia)[0];
     //console.log(justif);
     //console.log(justif.id );
@@ -92,6 +96,7 @@ function loadJustif () {
 
 
 function loadLimit() {
+    //TODO: 4 - Esta instrucción hay que cambiarla por id_instancia
     limitations =  m.filterByInstance(userInfo.instancia)[0];
     //console.log(limitations);
     $(".div-shadow").addClass("invisible");
@@ -348,7 +353,7 @@ function eventSendButton() {
                alertify.error('Debe completar todos los campos.');
            }
           else {
-              m.uploadActivity( userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, justif.justificacion, limitations.id, limitations.interna, limitations.externa, idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
+              m.uploadActivity( userInfo.id_instancia, userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, justif.justificacion, limitations.id, limitations.interna, limitations.externa, idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
           }
    
 
