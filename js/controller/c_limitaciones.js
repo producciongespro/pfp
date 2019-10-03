@@ -14,37 +14,36 @@ function loadUserInfo() {
 }
 
 function loadDataSet() {
-    m.loadJson("../../main_app/obtener_limitaciones.php", loadMod);
+    m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+userInfo.id_instancia, function (array) {  
+        loadMod(array);
+    });
 }
 
 
-function loadMod() {
-    var tmpRecord = m.filterByInstance(userInfo.instancia)[0];
-    console.log(tmpRecord);
+function loadMod(array) {    
+    const tmpRecord = array;    
+    //console.log("***LIMITACIONES****", tmpRecord );    
     //si el registro está vacío habilite el botón para publicar 
     //Realiza un insert en la BD
-    if (tmpRecord == undefined) {
-        console.log("vacio");
-        
+    if (tmpRecord.length == 0) {
+        console.log("vacio");        
         $("#btnEnviarLimitaciones").val("Enviar Limitaciones");
         $("#btnEnviarLimitaciones").click(function () { 
-            m.uploadLimitation($("#txtInterna").val(), userInfo.instancia, loadDataSet );                        
+            m.uploadLimitation($("#txtInterna").val(), userInfo.id_instancia, loadDataSet );                        
         });
     } else {
         console.log("lleno");
 
         
-        v.limitTxt(tmpRecord.interna, "#txtInterna" );      
+        v.limitTxt(tmpRecord[0].interna, "#txtInterna" );      
         
         
         //desactiva el evento clic del botón enviar para activar un evento nuevo que actualiza el registro
-
-        $("#btnEnviarLimitaciones").off("click");
-        
+        $("#btnEnviarLimitaciones").off("click");        
         $("#btnEnviarLimitaciones").val("Actualizar Limitaciones");
         $("#btnEnviarLimitaciones").click(function (e) { 
             e.preventDefault();
-            m.updateLimitations(tmpRecord.id, $("#txtInterna").val(),  loadDataSet );
+            m.updateLimitations(tmpRecord[0].id, $("#txtInterna").val(),  loadDataSet );
         });
 
     }     

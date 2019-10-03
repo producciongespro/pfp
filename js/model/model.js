@@ -237,11 +237,11 @@ Model.prototype.uploadObjective = function (email_user, id_instancia, needed, ob
 }
 
   
-Model.prototype.uploadLimitation = function ( limInt, instance,  callBack_s) {
+Model.prototype.uploadLimitation = function ( limInt, id_instancia,  callBack_s) {
 
   var formData = new FormData();
   formData.append("interna", limInt);  
-  formData.append("instancia", instance); 
+  formData.append("id_instancia", id_instancia); 
  
   $.ajax({
     url: '../../main_app/agregar_limitaciones.php',

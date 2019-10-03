@@ -32,25 +32,30 @@ function activateButtonsMenu() {
     //Método que verifican la longitud de arrays para activar o desactivar los botones: 
     
     
-    //verifica el arreglo justificacion para el botón necesidades y objtivos 
+    //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
+        console.log("Array justificacion", array.length);        
         activateButton( array,  "btnObjetivos", './objetivos.php'  ) 
     });    
 
     
     //verifica el arreglo objetivos para el botón "Limitaciones"    
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
+        console.log("Array objetivos", array.length);
         activateButton(array, "btnLimitaciones", './limitaciones.php') 
     });    
 
 
     //verifica el arreglo limitaciones para habilitar agregar el PFP    
-    m.loadJson("../../main_app/obtener_limitaciones.php?id_instancia="+user.id_instancia,  function (array) {   
+    m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
+        console.log("Array limitaciones", array.length);   
         activateButton( array, "btnArchivoPfp", './archivo_dnfp.php') 
     });    
 
-    //verifica el arreglo archivo pfp  para habilitar agregar acitivdes    
-    m.loadJson("../../main_app/obtener_archivos.php?id_instancia="+user.id_instancia, function (array) {  
+    //verifica el arreglo archivo pfp  para habilitar agregar acitivdes 
+    //TODO Falta filtrar obtener archiovs por instancia   
+    m.loadJson("../../main_app/obtener_archivos.php?id_instancia="+user.id_instancia, function (array) {
+        console.log("Array archivos", array.length);  
         activateButton( array, "btnActividad", './actividad_pfp.php') 
     });    
 
