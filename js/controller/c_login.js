@@ -17,30 +17,54 @@ $(document).ready(function () {
 
 });
 
-function loadApp(resp) {   
+function loadApp(resp) {
+    let nombreInstanciaDelUsuario;   
     
-            console.log( "Login", resp);
+            //console.log( "Login", resp);
+            // Carga la lista de instancias para prevista en caso de que se necesiten
+            m.loadJson("./main_app/obtener_instancias.php", function (array) {
+                //console.log("Instancias", array ); 
+                //Determina el nombre de instancia a la que pertence el usuario:
+                console.log("id instancia", resp.id_instancia);
+                
+                
+                for (let index = 0; index < array.length; index++) {
+                    if (array[index].id == resp.id_instancia ) {
+                        nombreInstanciaDelUsuario = array[index].nombre
+                    }
+                    
+                }                
 
-            //Guarda en la variable de sesión los datos del usuario:
-             m.setSession(resp.id_instancia,  resp.instancia, resp.nombre, resp.apellido1, resp.apellido2, resp.correo, resp.tipo);
+            //Guarda en la variable de sesión los datos del usuario:                       
+            m.setSession(resp.id_instancia,  nombreInstanciaDelUsuario, resp.nombre, resp.apellido1, resp.apellido2, resp.correo, resp.tipo);
 
+/*
 
-
-
-            switch (resp.tipo) {
-                case 1:
-                    location='pages/mediador/menu.php';
-					//console.log("mediador");
-                break;
-                case 2:
-                    location='pages/analista/menu.php';
-					//console.log("analista");
-                break;
-
-                default:
-				console.log("Tipo de usuario no reicido");
+                
+                switch (resp.tipo) {
+                    case 1:
+                        location='pages/mediador/menu.php';
+                        //console.log("mediador");
                     break;
-            }
+                    case 2:
+                        location='pages/analista/menu.php';
+                        //console.log("analista");
+                    break;
+    
+                    default:
+                    console.log("Tipo de usuario no reicido");
+                        break;
+                }
+*/
+                
+              }   )
+            
+           
+
+
+
+
+        
             
 
 }

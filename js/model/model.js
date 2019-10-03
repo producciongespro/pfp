@@ -28,8 +28,8 @@ Model.prototype.loadJson = function (pathJson, mCallBack) {
     $.getJSON(pathJson,
         function (data, textStatus, jqXHR) {
             Model.prototype.dataSet=data;
-            console.log( Model.prototype.dataSet);
-            mCallBack(  );
+            //console.log( Model.prototype.dataSet);            
+            mCallBack(data);
             
         }
     );
