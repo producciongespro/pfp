@@ -24,7 +24,7 @@ Model.prototype.cloneListGroups = function (array ) {
 
 
 Model.prototype.loadJson = function (pathJson, mCallBack) {
-  console.log("get json");
+  //console.log("get json");
     $.getJSON(pathJson,
         function (data, textStatus, jqXHR) {
             Model.prototype.dataSet=data;
@@ -200,11 +200,11 @@ Model.prototype.filterByInstance = function (instance) {
     return tmpArray;
  }
 
-Model.prototype.uploadObjective = function (email_user, instance, needed, obj, mCallBack) {
+Model.prototype.uploadObjective = function (email_user, id_instancia, needed, obj, mCallBack) {
 
   var formData = new FormData();
   formData.append("correo_usuario", email_user);
-  formData.append("instancia", instance);
+  formData.append("id_instancia", id_instancia);
   formData.append("necesidad", needed);
   formData.append("objetivo", obj);
 
@@ -273,15 +273,15 @@ Model.prototype.uploadLimitation = function ( limInt, instance,  callBack_s) {
 
 
 
-Model.prototype.uploadJustify = function (urlPath, justif, instancia, callBack_s) {
+Model.prototype.uploadJustify = function (urlPath, justif, id_instancia, callBack_s) {
 
   console.log(urlPath);
   console.log(justif);
-  console.log(instancia);
+  console.log(id_instancia);
 
   var formData = new FormData();
  formData.append("justificacion", justif);
-  formData.append("instancia", instancia);
+  formData.append("id_instancia", id_instancia);
  
   $.ajax({
     url: urlPath,
@@ -488,12 +488,12 @@ Model.prototype.closeSession = function () {
     });
    }
 
-  Model.prototype.updateField = function (pathPhP, id, field, instance, mCallBack ) {
+  Model.prototype.updateField = function (pathPhP, id, field, id_instancia, mCallBack ) {
 
     var formData = new FormData();
     formData.append("id", id);
     formData.append("campo", field );
-    formData.append("instancia", instance );
+    formData.append("id_instancia", id_instancia );
 
     $.ajax({
       url: pathPhP,

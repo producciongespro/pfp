@@ -33,18 +33,26 @@ function activateButtonsMenu() {
     
     
     //verifica el arreglo justificacion para el botón necesidades y objtivos 
-    m.loadJson("../../main_app/obtener_justificacion.php", function () {   activateButton("btnObjetivos", './objetivos.php'  ) });    
+    m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
+        activateButton( array,  "btnObjetivos", './objetivos.php'  ) 
+    });    
 
     
     //verifica el arreglo objetivos para el botón "Limitaciones"    
-    m.loadJson("../../main_app/obtener_objetivos.php", function () {   activateButton("btnLimitaciones", './limitaciones.php') });    
+    m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
+        activateButton(array, "btnLimitaciones", './limitaciones.php') 
+    });    
 
 
     //verifica el arreglo limitaciones para habilitar agregar el PFP    
-    m.loadJson("../../main_app/obtener_limitaciones.php", function () {   activateButton("btnArchivoPfp", './archivo_dnfp.php') });    
+    m.loadJson("../../main_app/obtener_limitaciones.php?id_instancia="+user.id_instancia,  function (array) {   
+        activateButton( array, "btnArchivoPfp", './archivo_dnfp.php') 
+    });    
 
     //verifica el arreglo archivo pfp  para habilitar agregar acitivdes    
-    m.loadJson("../../main_app/obtener_archivos.php", function () {   activateButton("btnActividad", './actividad_pfp.php') });    
+    m.loadJson("../../main_app/obtener_archivos.php?id_instancia="+user.id_instancia, function (array) {  
+        activateButton( array, "btnActividad", './actividad_pfp.php') 
+    });    
 
     
 
@@ -119,20 +127,14 @@ function showAlertMsg() {
     $(".div-shadow").addClass("invisible");
 }
 
-function activateButton(nameBttn, pathUrl ) {
+function activateButton(array,  nameBttn, pathUrl ) {
     
-  
-    if (m.filterByInstance(user.instancia).length > 0) {
+    if (array.length > 0 ) {
         $("#lnk"+nameBttn).attr("href", pathUrl );
-       // console.log("habilitado " + pathUrl );
-       
-                 
     }else {
         $("#"+nameBttn).addClass("disabled");
-        //console.log("deshabilitado");
-        
-    }
-    
+        //console.log("deshabilitado");        
+    }   
         
 }
 

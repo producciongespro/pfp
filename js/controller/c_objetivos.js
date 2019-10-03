@@ -14,7 +14,9 @@ function loadDataset() {
     //Limpia campos en caso de que estén con texto:
     $("#txtNeed").val("");
     $("#txtObj").val("");
-    m.loadJson("../../main_app/obtener_objetivos.php", loadMod ); 
+    m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (array) { 
+        loadMod (array);
+     } ); 
 }
 
 
@@ -24,7 +26,7 @@ function handlerEvent() {
         if ($("#txtNeed").val() == "" || $("#txtObj").val() ==""  ) {
             alertify.alert("Datos incompletos", "Debe llenar todos los campos." );
         } else {
-            m.uploadObjective(userInfo.correo, userInfo.instancia, $("#txtNeed").val(), $("#txtObj").val(), loadDataset  )
+            m.uploadObjective(userInfo.correo, userInfo.id_instancia, $("#txtNeed").val(), $("#txtObj").val(), loadDataset  )
         }   
     });
 
@@ -33,22 +35,11 @@ function handlerEvent() {
 }
 
 
-function loadMod () {
-
-   // Valida si el json es mayor que cero renderiza la tabla 
-    if (m.filterByInstance(userInfo.instancia).length >= 0 ) {
-            table(m.filterByInstance(userInfo.instancia));
-    }
-    
+function loadMod (array) {
+    if (array.length >= 0) {
+        table(array);
+    }       
 }
-
-
-
-
-
-
-
-
 
 
 function table ( array) {

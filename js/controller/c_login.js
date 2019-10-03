@@ -38,7 +38,7 @@ function loadApp(resp) {
             //Guarda en la variable de sesión los datos del usuario:                       
             m.setSession(resp.id_instancia,  nombreInstanciaDelUsuario, resp.nombre, resp.apellido1, resp.apellido2, resp.correo, resp.tipo);
 
-/*
+
 
                 
                 switch (resp.tipo) {
@@ -55,7 +55,7 @@ function loadApp(resp) {
                     console.log("Tipo de usuario no reicido");
                         break;
                 }
-*/
+
                 
               }   )
             

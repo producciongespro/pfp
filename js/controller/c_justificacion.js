@@ -25,12 +25,13 @@ function loadUserInfo() {
 
 function loadDataSet() {
     //Carga la justificación 
-    m.loadJson("../../main_app/obtener_justificacion.php", loadApp ); 
+    m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+userInfo.id_instancia, loadApp ); 
 }
 
 
-function loadApp() {
-    var dataSet = m.filterByInstance(userInfo.instancia);
+function loadApp(array) {
+    //var dataSet = m.filterByInstance(userInfo.instancia);
+    const dataSet = array;
     if (dataSet.length > 0 ) {
         console.log("lleno");
         //Muestra el botón de edición 
@@ -39,7 +40,7 @@ function loadApp() {
         prepareUpdate(dataSet);
 
     } else {
-        console.log("vacio");        
+        console.log("vacio");       
 
         //Se habilita la funcionalidad para enviar la justificación:
         $("#btnEnviar").slideDown(1000);
@@ -52,7 +53,7 @@ function loadApp() {
                         
                     });
                 }else {
-                    m.uploadJustify( "../../main_app/agregar_justificacion.php", $("#txtJustificacion").val(), userInfo.instancia, loadDataSet );
+                    m.uploadJustify( "../../main_app/agregar_justificacion.php", $("#txtJustificacion").val(), userInfo.id_instancia, loadDataSet );
                 }
                 
         });   
@@ -92,7 +93,7 @@ function prepareUpdate(dataSet) {
                         
                     });
                 }else {
-                    m.updateField("../../main_app/actualizar_justificacion.php", idJust, $("#txtJustificacion").val(), userInfo.instancia,  successMsg  );
+                    m.updateField("../../main_app/actualizar_justificacion.php", idJust, $("#txtJustificacion").val(), userInfo.id_instancia,  successMsg  );
                 }
 
 
