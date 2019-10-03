@@ -53,8 +53,8 @@ function activateButtonsMenu() {
     });    
 
     //verifica el arreglo archivo pfp  para habilitar agregar acitivdes 
-    //TODO Falta filtrar obtener archiovs por instancia   
-    m.loadJson("../../main_app/obtener_archivos.php?id_instancia="+user.id_instancia, function (array) {
+    //TODO Falta filtrar obtener archiovs por instancia    en Controlador archivos
+    m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
         console.log("Array archivos", array.length);  
         activateButton( array, "btnActividad", './actividad_pfp.php') 
     });    
