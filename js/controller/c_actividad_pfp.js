@@ -24,13 +24,19 @@ function loadUserInfo() {
 
 
 function loadDataset() {
-    m.loadJson("../../data/direcciones.json", loadInstances );
-    m.loadJson("../../main_app/obtener_justificacion.php", loadJustif );
+    m.loadJson("../../data/direcciones.json", function (data) { 
+        loadInstances(data);
+     } );
+    m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
+        loadJustif(data);
+     } );
     m.loadJson("../../main_app/obtener_archivos.php", loadIdFile );
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
         loadModule(data);
      } );
-    m.loadJson("../../main_app/obtener_limitaciones.php", loadLimit );
+    m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
+        loadLimit(data);
+     } );
 }
 
 
@@ -85,11 +91,9 @@ function loadIdFile() {
 
 
 
-function loadJustif () {
-
-    //carga la info de la justificacion asociada al pfp
-    //TODO: 3 - Esta instrucción hay que cambiarla por id_instancia
-    justif = m.filterByInstance(userInfo.instancia)[0];
+function loadJustif (array) {
+    //carga en variable la info de la justificacion asociada al pfp    
+    justif = array[0];
     //console.log(justif);
     //console.log(justif.id );
 
@@ -97,9 +101,9 @@ function loadJustif () {
 }
 
 
-function loadLimit() {
-    //TODO: 4 - Esta instrucción hay que cambiarla por id_instancia
-    limitations =  m.filterByInstance(userInfo.instancia)[0];
+function loadLimit(array) {
+    
+    limitations = array[0];
     //console.log(limitations);
     $(".div-shadow").addClass("invisible");
 
@@ -115,10 +119,10 @@ function handlerEventObj () {
 }
 
 
-function loadInstances() {
+function loadInstances(array) {
     //CArga de Instancias regionales
     //console.log(m.getDataSet());
-    v.instances(m.getDataSet(), $("#gorupSelectorInstance") );
+    v.instances(array, $("#gorupSelectorInstance") );
     //Manjeador de evento change en caso de que el usuario
     //seleccione una instancia para ir agregandola
     //al area de texto
