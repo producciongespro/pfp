@@ -16,14 +16,20 @@ $(document).ready(function () {
 
 
 function loadDataset() {
-    m.loadJson("../../main_app/obtener.php", showAlertMsg );
+    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (data) { 
+        console.log(data);
+        
+        showAlertMsg(data);
+     } );
     
 }
 
 
 function loadUserInfo() {    
     user = m.getSession();    
-    v.userInfo(user,  $("#infoUser"));    
+    v.userInfo(user,  $("#infoUser"));  
+   // console.log(user);
+      
 }
 
 
@@ -64,14 +70,14 @@ function activateButtonsMenu() {
 }
 
 
-function showAlertMsg() {
-    var tmpActividadesPfp = m.filterByInstance(user.instancia), estado ;
+function showAlertMsg(array) {
+    var estado ;
     //console.log(tmpActividadesPfp);
 
-    if (tmpActividadesPfp.length == 0 ) {
+    if (array.length == 0 ) {
         estado = "Vacio";
     } else {
-        estado = tmpActividadesPfp[0].estado;
+        estado = array[0].estado;
     }
 
 
