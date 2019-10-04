@@ -34,28 +34,28 @@ function activateButtonsMenu() {
     
     //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
-        console.log("Array justificacion", array.length);        
+        console.log("1- Array justificacion", array, "peso",  array.length  );        
         activateButton( array,  "btnObjetivos", './objetivos.php'  ) 
     });    
 
     
     //verifica el arreglo objetivos para el botón "Limitaciones"    
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("Array objetivos", array.length);
+        console.log("2 - Array objetivos",  array, "peso",  array.length );
         activateButton(array, "btnLimitaciones", './limitaciones.php') 
     });    
 
 
     //verifica el arreglo limitaciones para habilitar agregar el PFP    
     m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
-        console.log("Array limitaciones", array.length);   
+        console.log("3 - Array limitaciones",  array, "peso",  array.length );   
         activateButton( array, "btnArchivoPfp", './archivo_dnfp.php') 
     });    
 
     //verifica el arreglo archivo pfp  para habilitar agregar acitivdes 
     //TODO Falta filtrar obtener archiovs por instancia    en Controlador archivos
     m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("Array archivos", array.length);  
+        console.log("4 - Array archivos", array, "peso",  array.length );  
         activateButton( array, "btnActividad", './actividad_pfp.php') 
     });    
 
