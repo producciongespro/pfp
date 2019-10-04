@@ -560,10 +560,10 @@ Model.prototype.closeSession = function () {
 
 
 
-Model.prototype.uploadFile = function (  instance, objFile, callBack_s) {
+Model.prototype.uploadFile = function (  id_instancia, objFile, callBack_s) {
    
       var formData = new FormData();   
-      formData.append("instancia", instance);
+      formData.append("id_instancia", id_instancia);
       formData.append("archivo",  objFile[0].files[0]);
      
       

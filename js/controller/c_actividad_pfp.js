@@ -6,10 +6,10 @@ classEstratos, //Alamcena la Clase de controles checkbox con todos los estratos.
 estratos=[]; //array almacena los estratos seleccionados por elusuario.
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
+    loadUserInfo();
     eventSendButton();
     eventAddGroup();
-    loadDataset();
-    loadUserInfo();
+    loadDataset();    
     mostarAyudaContextual();
 });
 
@@ -27,16 +27,18 @@ function loadDataset() {
     m.loadJson("../../data/direcciones.json", loadInstances );
     m.loadJson("../../main_app/obtener_justificacion.php", loadJustif );
     m.loadJson("../../main_app/obtener_archivos.php", loadIdFile );
-    m.loadJson("../../main_app/obtener_objetivos.php", loadModule );
+    m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
+        loadModule(data);
+     } );
     m.loadJson("../../main_app/obtener_limitaciones.php", loadLimit );
 }
 
 
-function loadModule () {
+function loadModule (array) {
      tmpObj = "0";
-    //Crea la tabla con los objetivos
-    //TODO: 1 - Esta instrucción hay que cambiarla por id_instancia
-    v.objectiveList(m.filterByInstance(userInfo.instancia), $("#mdlBody") );
+    //Crea la tabla con los objetivos    
+    //v.objectiveList(m.filterByInstance(userInfo.instancia), $("#mdlBody") );
+    v.objectiveList(array, $("#mdlBody") );
     //Manejadores de eventos para el modal de objetivos
     $("#modalObj").modal();
     $(".alert-objetivos").click(function () {
