@@ -1,6 +1,7 @@
 <?php
+$quien = $_GET['id_instancia'];
 // $sql = "SELECT * FROM planes";
-$sql = "SELECT * from planes INNER JOIN objetivos ON objetivos.id=planes.id_obj ORDER BY instancia";
+$sql = "SELECT * from planes INNER JOIN objetivos ON objetivos.id=planes.id_obj INNER JOIN justificaciones ON justificaciones.id=planes.id_just INNER JOIN limitaciones ON limitaciones.id=planes.id_lim WHERE planes.id_instancia='$quien' ORDER BY instancia";
 include "conectar.php";
 function desconectar($conexion){
 
