@@ -359,7 +359,11 @@ function eventSendButton() {
                alertify.error('Debe completar todos los campos.');
            }
           else {
-              m.uploadActivity( userInfo.id_instancia, userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, justif.justificacion, limitations.id, limitations.interna, limitations.externa, idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
+              console.log(userInfo.id_instancia);
+              console.log(justif.id);
+              console.log(limitations.id);
+              console.log(idObj);                        
+              m.uploadActivity( userInfo.id_instancia, userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, limitations.id,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
           }
    
 
