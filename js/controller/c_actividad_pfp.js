@@ -30,7 +30,9 @@ function loadDataset() {
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
         loadJustif(data);
      } );
-    m.loadJson("../../main_app/obtener_archivos.php", loadIdFile );
+    m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) {
+        loadIdFile(data);
+      } );
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
         loadModule(data);
      } );
@@ -81,10 +83,8 @@ function loadModule (array) {
      handlerEventObj();
 }
 
-function loadIdFile() { 
-    //TODO: 2 - Esta instrucción hay que cambiarla por id_instancia
-    
-    fileDNFP = m.filterByInstance(userInfo.instancia)[0]; 
+function loadIdFile(array) {   
+    fileDNFP = array[0]; 
    // console.log(fileDNFP.id);
         
 }
@@ -363,8 +363,8 @@ function eventSendButton() {
               console.log(justif.id);
               console.log(limitations.id);
               console.log(idObj);                        
-              m.uploadActivity( userInfo.id_instancia, userInfo.instancia, userInfo.correo, $("#txtNombre").val(), justif.id, limitations.id,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
-          }
+              m.uploadActivity( userInfo.id_instancia, userInfo.correo, $("#txtNombre").val(), justif.id, limitations.id,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
+            }
    
 
 

@@ -308,9 +308,6 @@ Model.prototype.uploadJustify = function (urlPath, justif, id_instancia, callBac
 
 Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustificacion, idLimit,  idObj, duration, place, type, typeAct,  stratus,  area, mode, strategy, amount, idFile, mCallBack ) {
 
-  console.log(codJus);
-  
-
   var formData = new FormData();
   formData.append("id_instancia", id_instancia);  
   formData.append("correo", email);
