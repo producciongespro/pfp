@@ -526,7 +526,7 @@ Model.prototype.closeSession = function () {
         
         alertify.success('Limitaciones actualizadas satisfactoriamente.');
         mCallBack();
-        console.log(response);
+        console.log( "Respuesta de actualizar limitaciones.php", response);
       },
       error: function (response) {
         

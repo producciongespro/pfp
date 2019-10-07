@@ -34,7 +34,7 @@ View.prototype.table = function (array, visor) {
             for (let index = 0; index < limite; index++) {
               let fowNumb = index + 1;
               let icoEliminar;
-              if (array[index].estado == "0"  ) {
+              if (array[index].activo == "0"  ) {
                 icoEliminar = "<i id='faiDel"+ index +"'  target='"+ array[index].id +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>"
               } else {
                 icoEliminar = "<i class='fas fa-ban fa-btn-obj btn-forbidden' ></i>"

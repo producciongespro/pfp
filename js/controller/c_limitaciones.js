@@ -32,7 +32,7 @@ function loadMod(array) {
             m.uploadLimitation($("#txtInterna").val(), userInfo.id_instancia, loadDataSet );                        
         });
     } else {
-        console.log("lleno");
+        console.log("Registro de limitaciones lleno");
 
         
         v.limitTxt(tmpRecord[0].interna, "#txtInterna" );      

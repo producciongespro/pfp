@@ -19,9 +19,7 @@
   $modalidad = utf8_decode($_POST['modalidad']);
   $estrategia = utf8_decode($_POST['estrategia']);
   $costo = utf8_decode($_POST['costo']);
-  cambiarEstado('objetivos', $id_objetivo, 1);
-  cambiarEstado('justificaciones', $id_justificacion, 1);
-  cambiarEstado('limitaciones', $id_limitaciones, 1);
+  cambiarEstado('objetivos', $id_objetivo, 1);  
     $mysqli = conectarDB();
       mysqli_query($mysqli,"INSERT INTO planes (id_instancia, correo, nombre, e_nombre, id_just, id_archivo, id_lim,  id_obj, duracion, e_duracion, sede, e_sede, estado, fecha_envio, tipo, e_tipo, estrato, e_estrato, tipo_actividad, e_tipo_actividad, area, e_area, modalidad, e_modalidad, estrategia, e_estrategia, costo, e_costo ) VALUES
                                     ( '$id_instancia', '$correo', '$nombre','Pendiente','$id_justificacion', '$id_archivo','$id_limitaciones', '$id_objetivo', '$duracion','Pendiente','$sede','Pendiente','$estado',  NOW(),  '$tipo','Pendiente', '$estrato','Pendiente', '$tipo_actividad','Pendiente',  '$area','Pendiente', '$modalidad','Pendiente', '$estrategia','Pendiente', '$costo','Pendiente')") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
