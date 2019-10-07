@@ -360,10 +360,12 @@ function eventSendButton() {
            }
           else {
               console.log(userInfo.id_instancia);
-              console.log(justif.id);
-              console.log(limitations.id);
+              console.log( "id_justificacion", justif.id_justificacion);
+              console.log("id_limitacion",  limitations.id_limitacion );
+              console.log("fileDNFP.id_archivo", fileDNFP.id_archivo);
+              
               console.log(idObj);                        
-              m.uploadActivity( userInfo.id_instancia, userInfo.correo, $("#txtNombre").val(), justif.id, limitations.id,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id, reloadForm );
+              m.uploadActivity( userInfo.id_instancia, userInfo.correo, $("#txtNombre").val(), justif.id_justificacion, limitations.id_limitacion,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id_archivo, reloadForm );
             }
    
 

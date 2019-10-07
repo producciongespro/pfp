@@ -312,12 +312,12 @@ Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustif
   formData.append("id_instancia", id_instancia);  
   formData.append("correo", email);
   formData.append("nombre", name);
-  formData.append("codJustificacion", idJustificacion);  
+  formData.append("id_justificacion", idJustificacion);  
 
-  formData.append("idlimitaciones", idLimit); 
+  formData.append("id_limitacion", idLimit); 
 
 
-  formData.append("idObj", idObj);    
+  formData.append("id_objetivo", idObj);    
   formData.append("duracion", duration);
   
   formData.append("sede", place);
@@ -335,7 +335,7 @@ Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustif
   formData.append("estrategia", strategy);
 
   formData.append("costo", amount);
-  formData.append("idArchivo", idFile);
+  formData.append("id_archivo", idFile);
 
   
 
