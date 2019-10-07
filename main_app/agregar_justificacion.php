@@ -5,7 +5,7 @@
   $mysqli = conectarDB();
   if ($mysqli)
   {
-     mysqli_query($mysqli,"INSERT INTO justificaciones (id_instancia, justificacion, estado, e_justificaciones) VALUES ( '$id_instancia',  '$justificacion', '0','Pendiente')") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
+     mysqli_query($mysqli,"INSERT INTO justificaciones (id_instancia, justificacion, e_justificaciones) VALUES ( '$id_instancia',  '$justificacion', 'Pendiente')") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
      $json=array(1=>$mysqli->affected_rows);
     }
     else{

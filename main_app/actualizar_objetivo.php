@@ -1,10 +1,9 @@
 <?php
-  require 'conectar.php';
-  require 'verificar_estado.php';
+  require 'conectar.php';  
    $id =  utf8_decode($_POST['id']);
    $objetivo = utf8_decode($_POST['campo1']);
    $necesidad = utf8_decode($_POST['campo2']);
-  $estado = '0';
+  
   /*
   $id = '34';
   $objetivo= utf8_decode("Nuevo objetivo para el plan 3 ");
@@ -15,7 +14,5 @@
     $mensajes = array();
 
          if ($mysqli) {
-       mysqli_close($mysqli);
-}
-  echo $estado;
+       mysqli_close($mysqli);  
   ?>

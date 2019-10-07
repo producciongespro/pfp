@@ -71,7 +71,9 @@ function activateButtonsMenu() {
 
 
 function showAlertMsg(array) {
-    var estado ;
+    var estado;
+    console.log("***********REgistro",  array[0]);
+    
     //console.log(tmpActividadesPfp);
 
     if (array.length == 0 ) {
