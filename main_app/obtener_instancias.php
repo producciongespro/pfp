@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM instancias ORDER BY id ASC";
+$sql = "SELECT * FROM instancias ORDER BY id_instancia ASC";
 include "conectar.php";
 function desconectar($conexion){
 

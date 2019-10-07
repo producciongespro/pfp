@@ -32,18 +32,14 @@ function loadMod(array) {
             m.uploadLimitation($("#txtInterna").val(), userInfo.id_instancia, loadDataSet );                        
         });
     } else {
-        console.log("Registro de limitaciones lleno");
-
-        
-        v.limitTxt(tmpRecord[0].interna, "#txtInterna" );      
-        
-        
+        console.log("Registro de limitaciones lleno");        
+        v.limitTxt(tmpRecord[0].interna, "#txtInterna" );           
         //desactiva el evento clic del botón enviar para activar un evento nuevo que actualiza el registro
         $("#btnEnviarLimitaciones").off("click");        
         $("#btnEnviarLimitaciones").val("Actualizar Limitaciones");
         $("#btnEnviarLimitaciones").click(function (e) { 
             e.preventDefault();
-            m.updateLimitations(tmpRecord[0].id, $("#txtInterna").val(),  loadDataSet );
+            m.updateLimitations(tmpRecord[0].id_limitacion, $("#txtInterna").val(),  loadDataSet );
         });
 
     }     

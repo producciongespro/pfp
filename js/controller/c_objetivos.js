@@ -50,7 +50,7 @@ function table ( array) {
         alertify.confirm("Confirmación de borrado.", "¿Desea eliminar el registro?",
             function(){
                 console.log("OK");
-                m.delRecord(tmpId, "objetivos", loadDataset);
+                m.eliminarRegistro("id_objetivo", tmpId, "objetivos", loadDataset);
             },
             function(){
                 console.log("Cancel");

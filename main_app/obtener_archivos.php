@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM archivos_enviados ORDER BY id ASC";
+$sql = "SELECT * FROM archivos_enviados ORDER BY id_archivo ASC";
 include "conectar.php";
 function desconectar($conexion){
 

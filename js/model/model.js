@@ -358,12 +358,12 @@ Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustif
       }  });
  }
 
-
-Model.prototype.delRecord = function (id, table, mCallBack  ) {
+//delRecord
+Model.prototype.eliminarRegistro = function (idNombre, idValor  , tabla, mCallBack  ) {
 
     var formData = new FormData();
-    formData.append("id", id);
-    formData.append("tabla", table );
+    formData.append(idNombre, idValor);
+    formData.append("tabla", tabla );
 
     $.ajax({
       url: "../../main_app/eliminar_registro.php",
@@ -457,7 +457,7 @@ Model.prototype.closeSession = function () {
 
   Model.prototype.updateObjNeed = function (id, need, obj, mCallBack  ) { 
     var formData = new FormData();
-    formData.append("id", id);
+    formData.append("id_objetivo", id);
     formData.append("campo1", obj );
     formData.append("campo2", need );
 
@@ -481,15 +481,15 @@ Model.prototype.closeSession = function () {
     });
    }
 
-  Model.prototype.updateField = function (pathPhP, id, field, id_instancia, mCallBack ) {
+  Model.prototype.actualizarCampo = function (url, idNombre, idValor, datos, id_instancia, mCallBack ) {
 
     var formData = new FormData();
-    formData.append("id", id);
-    formData.append("campo", field );
+    formData.append(idNombre, idValor);
+    formData.append("campo", datos );
     formData.append("id_instancia", id_instancia );
 
     $.ajax({
-      url: pathPhP,
+      url: url,
       type: 'POST',
       data: formData,
       cache: false,
@@ -511,7 +511,7 @@ Model.prototype.closeSession = function () {
   Model.prototype.updateLimitations = function (id, inL, mCallBack ) { 
     
     var formData = new FormData();
-    formData.append("id", id);
+    formData.append("id_limitacion", id);
     formData.append("interna", inL );    
 
     $.ajax({

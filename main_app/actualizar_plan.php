@@ -1,7 +1,7 @@
 <?php
   require 'conectar.php';
-  $codigo =  utf8_decode($_POST['id']);
-	$instanciaMEP = utf8_decode($_POST['instancia']);
+  $id_plan =  utf8_decode($_POST['id_plan']);
+  $id_instancia = utf8_decode($_POST['instancia']);
   $usuario = utf8_decode($_POST['usuario']);
   $objetivo = utf8_decode($_POST['objetivo']);
   $necesidad = utf8_decode($_POST['necesidad']);
@@ -27,8 +27,8 @@
   $estado='Enviado';
   $mysqli = conectarDB();
 
-  mysqli_query($mysqli,"UPDATE planes SET instancia='$instanciaMEP', usuario='$usuario', objetivo='$objetivo', necesidad = $necesidad, interna = $interna, externa = $externa, nombre='$nombre', area='$area', modalidad='$modalidad', tipo='$tipo', estrato='$estrato', costo='$costo', tipo_actividad=$tipo_actividad, duracion='$duracion', veces='$repeticiones', sede='$sede',
-    f_inicio= '$fechaInicio', f_final='$fechaFinal', trimestre1 = '$trimestre1', trimestre2 = '$trimestre2', trimestre3 = '$trimestre3', trimestre4 = '$trimestre4', costo = '$costo' WHERE id = '$codigo'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+  mysqli_query($mysqli,"UPDATE planes SET id_instancia='$id_instancia', usuario='$usuario', objetivo='$objetivo', necesidad = $necesidad, interna = $interna, externa = $externa, nombre='$nombre', area='$area', modalidad='$modalidad', tipo='$tipo', estrato='$estrato', costo='$costo', tipo_actividad=$tipo_actividad, duracion='$duracion', veces='$repeticiones', sede='$sede',
+    f_inicio= '$fechaInicio', f_final='$fechaFinal', trimestre1 = '$trimestre1', trimestre2 = '$trimestre2', trimestre3 = '$trimestre3', trimestre4 = '$trimestre4', costo = '$costo' WHERE id_plan = '$id_plan'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
 
 		$errors = array();
  if ($mysqli) {

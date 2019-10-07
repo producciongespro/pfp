@@ -1,6 +1,6 @@
 <?php
 $id_instancia = $_GET['id_instancia'];
-$sql = "SELECT * FROM archivos_enviados WHERE id_instancia = '$id_instancia' ORDER BY id ASC";
+$sql = "SELECT * FROM archivos_enviados WHERE id_instancia = '$id_instancia' ORDER BY id_archivo ASC";
 include "conectar.php";
 function desconectar($conexion){
 

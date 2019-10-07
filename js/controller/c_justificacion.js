@@ -93,11 +93,8 @@ function prepareUpdate(dataSet) {
                         
                     });
                 }else {
-                    m.updateField("../../main_app/actualizar_justificacion.php", idJust, $("#txtJustificacion").val(), userInfo.id_instancia,  successMsg  );
-                }
-
-
-                
+                    m.actualizarCampo("../../main_app/actualizar_justificacion.php", "id_justificacion", idJust, $("#txtJustificacion").val(), userInfo.id_instancia, successMsg );                    
+                }                
             });    
         
     });

@@ -17,8 +17,7 @@ $(document).ready(function () {
 
 function loadDataset() {
     m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (data) { 
-        console.log(data);
-        
+        console.log(data);        
         showAlertMsg(data);
      } );
     

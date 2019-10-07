@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM objetivos ORDER BY id ASC";
+$sql = "SELECT * FROM objetivos ORDER BY id_objetivo ASC";
 include "conectar.php";
 function desconectar($conexion){
 

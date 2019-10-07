@@ -1,12 +1,12 @@
 <?php
   require 'conectar.php';  
-   $id =  utf8_decode($_POST['id']);
-   $objetivo = utf8_decode($_POST['campo1']);
-   $necesidad = utf8_decode($_POST['campo2']);
+   $id_objetivo =  utf8_decode($_POST['id_objetivo']);
+   $objetivo = utf8_decode($_POST['objetivo']);
+   $necesidad = utf8_decode($_POST['necesidad']);
   
   
   $mysqli = conectarDB();
-  mysqli_query($mysqli,"UPDATE objetivos SET objetivo='$objetivo', necesidad='$necesidad' WHERE id = '$id'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+  mysqli_query($mysqli,"UPDATE objetivos SET objetivo='$objetivo', necesidad='$necesidad' WHERE id_objetivo = '$id_objetivo'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
     $mensajes = array();
 
          if ($mysqli) {

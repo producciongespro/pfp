@@ -1,6 +1,6 @@
 <?php
 $id_instancia = $_GET['id_instancia'];
-$sql = "SELECT * FROM limitaciones WHERE id_instancia = '$id_instancia' ORDER BY id ASC";
+$sql = "SELECT * FROM limitaciones WHERE id_instancia = '$id_instancia' ORDER BY id_limitacion ASC";
 include "conectar.php";
 function desconectar($conexion){
 

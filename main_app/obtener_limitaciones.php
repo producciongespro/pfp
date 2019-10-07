@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM limitaciones  ORDER BY id ASC";
+$sql = "SELECT * FROM limitaciones  ORDER BY id_limitacion ASC";
 include "conectar.php";
 function desconectar($conexion){
 

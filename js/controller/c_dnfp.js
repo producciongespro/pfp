@@ -24,8 +24,9 @@ function loadDataset() {
 
 
 
-function loadMod(tmpRecord) {    
-    console.log(tmpRecord);  
+function loadMod(array) {      
+    tmpRecord = array;
+    console.log("Archivo pdf", tmpRecord);
     //si el registro está vacío habilite la funcionalidad para publicar 
     //Realiza un insert en la BD
     if (tmpRecord == undefined) {
@@ -44,7 +45,7 @@ function eventDeleteFile() {
         alertify.confirm("Sistema PFP", "¿Realmente desea eliminar el archivo?"  ,
   function(){
     console.log("ok");
-    m.deleteFile(tmpRecord.id, renderFieldUpload );            
+    m.deleteFile(tmpRecord.id_archivo, renderFieldUpload );            
   },
   function(){
     console.log("cancel");    

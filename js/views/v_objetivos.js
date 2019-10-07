@@ -35,7 +35,7 @@ View.prototype.table = function (array, visor) {
               let fowNumb = index + 1;
               let icoEliminar;
               if (array[index].activo == "0"  ) {
-                icoEliminar = "<i id='faiDel"+ index +"'  target='"+ array[index].id +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>"
+                icoEliminar = "<i id='faiDel"+ index +"'  target='"+ array[index].id_objetivo +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>"
               } else {
                 icoEliminar = "<i class='fas fa-ban fa-btn-obj btn-forbidden' ></i>"
               }
@@ -49,7 +49,7 @@ View.prototype.table = function (array, visor) {
                     array[index].objetivo +
                   "</td>" +
                 "<td>" + 
-                      "<i id='faiEdt"+ index +"'  target='"+ array[index].id +"'  class='fas fa-pencil-alt fa-btn-obj btn-edit'></i>  " +
+                      "<i id='faiEdt"+ index +"'  target='"+ array[index].id_objetivo +"'  class='fas fa-pencil-alt fa-btn-obj btn-edit'></i>  " +
                       icoEliminar +   
                 "</td>" +
                 "</tr>"
