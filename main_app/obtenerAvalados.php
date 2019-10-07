@@ -1,6 +1,6 @@
 <?php
 // $sql = "SELECT * FROM planes";
-$sql = "SELECT * from planes WHERE estado = 'Avalado' ORDER BY instancia";
+$sql = "SELECT * from planes WHERE estado = 'Avalado' ORDER BY id_instancia";
 include "conectar.php";
 function desconectar($conexion){
 

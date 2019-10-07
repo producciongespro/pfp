@@ -23,7 +23,7 @@ View.prototype.objectiveList = function (array, visor ) {
 
       for (let index = 0; index < limite; index++) {
             var htmlObj = $(
-                  " <div class='alert alert-primary alert-objetivos'   target = '"+ array[index].id  +"'    need='" + array[index].necesidad + "' >"+ array[index].objetivo +"</div>"
+                  " <div class='alert alert-primary alert-objetivos'   target = '"+ array[index].id_objetivo  +"'    need='" + array[index].necesidad + "' >"+ array[index].objetivo +"</div>"
                   );
             $(htmlGroup).append(htmlObj);
       }

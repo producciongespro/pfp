@@ -23,7 +23,7 @@ View.prototype.fileField = function (visor, fileName) {
         "<div class='alert alert-success text-right' role='alert'>" +        
           "<strong> Nombre del archivo: </strong>"+ fileName.url.slice(12) +
           "<a class='link-pdf'  href= ../" + fileName.url + "  target='_blank' >  ver pdf </a>   " +        
-          "<i  target='"+  fileName.id +"'  title='Eliminar archivo' class='fas fa-times  fa-delete-x '></i>"  +
+          "<i  target='"+  fileName.id_archivo +"'  title='Eliminar archivo' class='fas fa-times  fa-delete-x '></i>"  +
         "</div>"       
       )
       $(visor).append(htmlTitulo);
