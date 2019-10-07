@@ -16,7 +16,7 @@
     mysqli_query($mysqli,"INSERT INTO archivos_enviados (id_instancia, url, e_archivo ) VALUES ('$id_instancia','$urlArchivo', 'Pendiente' )") or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
     
 	//En caso de que el usuario suba otro archivo:
-	$rs = mysqli_query($mysqli,"SELECT id from archivos_enviados ORDER BY id DESC LIMIT 1");
+	$rs = mysqli_query($mysqli,"SELECT id_archivo from archivos_enviados ORDER BY id_archivo DESC LIMIT 1");
         if ($row = mysqli_fetch_row($rs)) {
         $idArchivo = trim($row[0]);
       }

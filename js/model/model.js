@@ -671,10 +671,10 @@ console.log("Valor de campo " + valor);
 }
 
 
-Model.prototype.deleteFile = function (  id,  callBack_s   ) {  
+Model.prototype.deleteFile = function (  idnombre, idValor,  callBack_s   ) {  
   
     var formData = new FormData();
-    formData.append("id", id);
+    formData.append(idnombre, idValor);
     formData.append("tabla", "archivos_enviados");
     
       

@@ -44,7 +44,8 @@ function eventDeleteFile() {
         e.preventDefault();
         alertify.confirm("Sistema PFP", "¿Realmente desea eliminar el archivo?"  ,
   function(){
-    console.log("ok");
+    console.log("eliminando archivo", tmpRecord.id_archivo);
+
     m.deleteFile(tmpRecord.id_archivo, renderFieldUpload );            
   },
   function(){

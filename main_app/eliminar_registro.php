@@ -1,13 +1,14 @@
 <?php
   require 'conectar.php';
-  $idRegistro =  utf8_decode($_POST['id']);  
+  $idNombre =  utf8_decode($_POST['idNombre']);  
+  $idValor =  utf8_decode($_POST['idValor']);  
   $tabla =  utf8_decode($_POST['tabla']);
   // $instanciaMEP = utf8_decode($_POST['instancia']);
   // $usuario = utf8_decode($_POST['usuario']);
   // $objetivo = utf8_decode($_POST['objetivo']);
   $mysqli = conectarDB();
 
-  mysqli_query($mysqli,"DELETE FROM $tabla WHERE id = '$idRegistro' ") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+  mysqli_query($mysqli,"DELETE FROM $tabla WHERE $idNombre = '$idValor' ") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
                 /* if ($query) {
                         echo ("Cuento agregado exitosamente");
                         session_destroy();
