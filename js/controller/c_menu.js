@@ -42,14 +42,26 @@ function loadDataset() {
             estado = "Vacio";
         } else {
             arrayActividades=array;
-            estado = array[0].estado;
-        }      
-        console.log(" 0 - array de actividades:",  arrayActividades);    
-         //validación para el primer botón:
-            if (estado =="Vacio" || estado == "Edicion" ) {
-                $("#btnJustificacion").prop("disabled", false);
-                secciones.justificacion = true;
+            estado = array[0].estado;          
+        }
+        console.log("------------ Valor del estado: ", estado, "-----------------");
+
+        //Instrucciones para activar el botón de "justificacion"
+        if (estado != "Vacio" || estado == "Edicion" ) {
+            $("#btnJustificacion").prop("disabled", false);
+            secciones.justificacion=true;
+        }
+              
+        console.log(" 0 - array de actividades:",  arrayActividades, "peso: ", array.length  );    
+            //Activación del botón "ver actividades"        
+            if (array.length > 0 )   {
+                arrayActividades = array;
+                if (estado == "Edicion") {
+                    $("#btnVerPfP").prop("disabled", false);
+                    secciones.verActividades = true;        
+                }            
             }
+         
 
     //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
@@ -100,7 +112,9 @@ function loadDataset() {
             }
         };
                 //Carga los mensajes de acerdo a los estados y habilita algunos botones          
-                cargarEstado();        
+                cargarEstado();
+                //Manejador de eventos para los botnes del menú
+                handlerBotonesMenu();
                 }); 
          
           }); 
@@ -112,10 +126,8 @@ function loadDataset() {
 });
     
 }
-
-
 function cargarEstado () {    
-        console.log("--- Estado del PFP: ", estado, "----------");
+        //console.log("--- Estado del PFP: ", estado, "----------");
 
     switch (estado) {
         case "Vacio":            
@@ -149,88 +161,7 @@ function cargarEstado () {
     $(".div-shadow").addClass("invisible");
 }
 
-function activateRejected() {
-    //Se deshabilitan todos los botones:
-    //$(".btn-menu").prop("disabled", true);
 
-    //En caso de correcciones a determninados campos habilita botnes. Por ejemplo: limitciones o informe DNFP
-  
-   //justificacion
-    m.loadJson("../../main_app/obtener_justificacion.php", function () { 
-        if (m.filterByInstance(user.instancia )[0].e_justificaciones == "Rechazado") {
-            $("#btnJustificacion").prop("disabled", false);
-        }   
-     });
-     
-     //Objetivos:
-     m.loadJson("../../main_app/obtener_objetivos.php", function () { 
-         //Recorre la ista de objetivos ralizados para comoprobar si hay alguno que tiene el estado de Rechazado
-        var listaObj = m.filterByInstance(user.instancia ), eObjetivos;
-      
-                for (let index = 0; index < listaObj.length; index++) {
-                        if (listaObj[index].e_objetivos == "Rechazado" ) {
-
-                             //Habilita el botón de objetivos            
-                            $("#btnObjetivos").prop("disabled", false);
-                            //Le asgina el link
-                            //$("#lnkbtnObjetivos").attr("href", "objetivos.php" );
-
-                            //guarda en sesión la variable objetivo rechazado para habilitar el botón en detallaes:
-                            sessionStorage.setItem("objetivoRechazado", "true");
-                           
-                            //sale del ciclo para no tener que buscar más
-                            break;
-                    
-                    }
-                }        
-               
-
-                
-     });
-
- 
-
-
-        //Limitaciones:
-        m.loadJson("../../main_app/obtener_limitaciones.php", function () { 
-            if (m.filterByInstance(user.instancia )[0].e_limitaciones == "Rechazado") {
-              //Habilita el botón de limitaciones 
-              $("#btnLimitaciones").prop("disabled", false);
-              //Le asgina el link
-             // $("#lnkbtnLimitaciones").attr("href", "limitaciones.php" );
-            }
-                 
-         });
-
-
-           //Archivos:
-           m.loadJson("../../main_app/obtener_archivos.php", function () { 
-           
-            
-            if (m.filterByInstance(user.instancia )[0].e_archivo == "Rechazado") {
-              //Habilita el botón de Archivos 
-              $("#btnArchivoPfp").prop("disabled", false);
-              //Le asgina el link
-             // $("#lnkbtnArchivoPfp").attr("href", "archivo_dnfp.php" );
-           }
-          
-         }); 
-         
-        
-      /*   
-      Activa los botones por defecto:
-      actividades del pfp (para ver)   
-      la ayuda y acerca de
-      */
-
-     $("#btnVerPfP").prop("disabled", false);
-     //$("#lnkbtnVerPfP").attr("href", "lista_pfp.php" );
-     $("#btnAyuda").prop("disabled", false);    
-     $("#btnAcercaDe").prop("disabled", false);
-             
-       
-     
-}
 
 function handlerBotonesMenu() {
 
@@ -245,27 +176,27 @@ function handlerBotonesMenu() {
                 }    
             break;
             case "btnObjetivos":
-                if (secciones.justificacion) {
+                if (secciones.objetivos) {
                     window.location.href = "./objetivos.php";
                 }    
             break;
             case "btnLimitaciones":
-                if (secciones.justificacion) {
+                if (secciones.limiaciones) {
                     window.location.href = "./limitaiones.php";
                 }    
             break;
             case "btnArchivoPfp":
-                if (secciones.justificacion) {
+                if (secciones.archivoPdf) {
                     window.location.href = "./archivo_dnfp.php";
                 }    
             break;
             case "btnActividad":
-                if (secciones.justificacion) {
+                if (secciones.agregarActividad) {
                     window.location.href = "./actividad_pfp.php";
                 }    
             break;
             case "btnVerPfP":
-                if (secciones.justificacion) {
+                if (secciones.verActividades) {
                     window.location.href = "./lista_pfp.php";
                 }    
             break;          
