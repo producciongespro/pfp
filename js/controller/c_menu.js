@@ -13,7 +13,7 @@ var arrayActividades=0;
 var secciones = {
     justificacion : false,
     objetivos : false,
-    limiaciones : false,
+    limitaciones : false,
     archivoPdf : false,
     agregarActividad : false,
     verActividades : false
@@ -47,7 +47,7 @@ function loadDataset() {
         console.log("------------ Valor del estado: ", estado, "-----------------");
 
         //Instrucciones para activar el botón de "justificacion"
-        if (estado != "Vacio" || estado == "Edicion" ) {
+        if (estado == "Vacio" || estado == "Edicion" ) {
             $("#btnJustificacion").prop("disabled", false);
             secciones.justificacion=true;
         }
@@ -69,7 +69,7 @@ function loadDataset() {
         //Activación de objetivos:
         if (array.length > 0 )   {
             arrayJustificacion = array;
-            if (estado == "Edicion") {
+            if ( estado == "Vacio" || estado == "Edicion") {
                 $("#btnObjetivos").prop("disabled", false);
                 secciones.objetivos = true;        
             }            
@@ -81,9 +81,9 @@ function loadDataset() {
         //Activar limitaciones:
         if (array.length > 0 ) {
             arrayObjetivos = array;
-            if (estado=="Edicion") {
+            if ( estado == "Vacio" || estado=="Edicion") {
                 $("#btnLimitaciones").prop("disabled", false);
-                secciones.e_limitaciones = true;     
+                secciones.limitaciones = true;     
             }
         }
 
@@ -94,7 +94,7 @@ function loadDataset() {
         //Activar archivo pdf
         if (array.length > 0) {
             arrayLimitaciones = array;
-            if (estado=="Edicion") {
+            if (estado == "Vacio" || estado=="Edicion") {
                 $("#btnArchivoPfp").prop("disabled", false);    
                 secciones.archivoPdf = true;
             }
@@ -106,7 +106,7 @@ function loadDataset() {
         //Activar Agregar Actividade
         if (array.length > 0) {
             arrayArchivoPDF = array;
-            if (estado == "Edicion") {
+            if (estado == "Vacio" || estado == "Edicion") {
                 $("#btnActividad").prop("disabled", false);     
                 secciones.agregarActividad = true;
             }
@@ -181,8 +181,8 @@ function handlerBotonesMenu() {
                 }    
             break;
             case "btnLimitaciones":
-                if (secciones.limiaciones) {
-                    window.location.href = "./limitaiones.php";
+                if (secciones.limitaciones) {
+                    window.location.href = "./limitaciones.php";
                 }    
             break;
             case "btnArchivoPfp":
