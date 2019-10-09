@@ -18,18 +18,17 @@ $(document).ready(function () {
 });
 
 function loadApp(resp) {
-    let nombreInstanciaDelUsuario;   
-    
-            //console.log( "Login", resp);
+    let nombreInstanciaDelUsuario;       
+            console.log( "Login", resp);
             // Carga la lista de instancias para prevista en caso de que se necesiten
             m.loadJson("./main_app/obtener_instancias.php", function (array) {
-                //console.log("Instancias", array ); 
+                console.log("Instancias", array ); 
                 //Determina el nombre de instancia a la que pertence el usuario:
                 console.log("id instancia", resp.id_instancia);
                 
                 
                 for (let index = 0; index < array.length; index++) {
-                    if (array[index].id == resp.id_instancia ) {
+                    if (array[index].id_instancia == resp.id_instancia ) {
                         nombreInstanciaDelUsuario = array[index].nombre
                     }
                     

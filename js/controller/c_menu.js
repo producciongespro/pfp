@@ -57,8 +57,7 @@ function activateButtonsMenu() {
         activateButton( array, "btnArchivoPfp", './archivo_dnfp.php') 
     });    
 
-    //verifica el arreglo archivo pfp  para habilitar agregar acitivdes 
-    //TODO Falta filtrar obtener archiovs por instancia    en Controlador archivos
+    //verifica el arreglo archivo pfp  para habilitar agregar acitivdes     
     m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
         console.log("4 - Array archivos", array, "peso",  array.length );  
         activateButton( array, "btnActividad", './actividad_pfp.php') 
@@ -71,7 +70,7 @@ function activateButtonsMenu() {
 
 function showAlertMsg(array) {
     var estado;
-    console.log("***********REgistro",  array[0]);
+    console.log("*********** Contendio del dataset:",  array[0]);
     
     //console.log(tmpActividadesPfp);
 
