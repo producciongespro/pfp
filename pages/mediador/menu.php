@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Menú</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="../../vendor/bootstrap-4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../vendor/alertify/css/alertify.min.css">
     <link rel="stylesheet" href="../../vendor/alertify/css/themes/default.min.css">
@@ -50,9 +51,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                        <div class="alert alert-primary alert-custom" id="infoUser" role="alert">
-                           
-                        </div>
+                        <div class="alert alert-primary alert-custom" id="infoUser" role="alert">                           
+                    </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="alert alert-secondary alert-custom" role="alert">
@@ -67,61 +67,27 @@
     <div class="container">
 
         <div class="row">
-            <div class="col" id="avisoMenu" >
-
-            </div>
+            <div class="col-9"></div>            
+            <div class="col-3 notificacion-info" id="avisoMenu" ></div>
         </div>
 
     
 
-        <div class="row"> 
-                <div class="col-sm-1"></div>
+        <div class="row">                 
 
-                <div class="col-sm-5 col-menu-botonera">  
-
-                    <a  href="./justificacion.php">
-                        <button id="btnJustificacion" type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" > Justificación general</button>                        
-                    </a>
-
-                    <a   id="lnkbtnObjetivos"  href="#">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnObjetivos" > Brechas formativas y objetivos</button>                        
-                    </a>
-
-                    <a   id="lnkbtnLimitaciones"  href="#">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnLimitaciones" > Limitaciones </button>                        
-                    </a>
-
-                    <a id="lnkbtnArchivoPfp">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnArchivoPfp" >Informe DNFP</button>
-                    </a>
-                  
-                    
+                <div class="col-6 col-menu-botonera">  
+                        <button  type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnJustificacion" disabled> Justificación general</button>                        
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnObjetivos"  disabled > Brechas formativas y objetivos</button>                        
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnLimitaciones" disabled> Limitaciones </button>                        
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnArchivoPfp"  disabled>Informe DNFP</button>                    
                 </div>
 
-                <div class="col-sm-5 col-menu-botonera">                   
-
-                        <a id="lnkbtnActividad" href="#">
-                                <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnActividad"  >Agregar actividad</button>
-                            </a>
-
-
-
-                    <a id="lnkbtnVerPfP"  href="#">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnVerPfP" >Actividades del PFP</button>
-                    </a>
-                    <a href="./ayuda.php">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnAyuda">Ayuda</button>
-                    </a>
-
-                    <a href="#">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-menu" id="btnAcercaDe"  data-toggle="modal" data-target="#modalAcercaDe"   >Acerca de...</button>
-                    </a>
-                    
-                </div>
-
-                <div class="col-sm-1"></div>
-        
-                
+                <div class="col-6 col-menu-botonera">                   
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnActividad"  disabled >Agregar actividad</button>
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnVerPfP" disabled >Actividades del PFP</button>
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnAyuda"  >Ayuda</button>
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnAcercaDe" >Acerca de...</button>                         
+                </div>                                    
         </div>
     </div>
 

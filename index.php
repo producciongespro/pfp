@@ -78,7 +78,7 @@
       </div>
       <div class="col-sm-4 col-img-pfp"></div>      
     </div>
-
+<br>
     <div class="row">
     <div class="col-2"></div>
           <div class="col-8 col-info">

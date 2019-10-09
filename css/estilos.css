@@ -51,10 +51,12 @@
 
 .col-menu-botonera, .col-login {
     margin-top: 2%;
-    padding: 1% 4% 2% 4%;
+    padding-top: 2%;
+    padding-bottom:4%;
+    /*padding: 1% 4% 2% 4%; */
     background-color: #e9ecef;
-    border-radius: 15px;
-    margin: 1%;
+    /*border-radius: 15px;*/
+    /*margin: 1%;*/
 }
 a:hover {
     text-decoration: none;
@@ -218,11 +220,14 @@ form input[type="text"]:focus:required:invalid{
 
 
 
-.cafe-maduro {
-    background-color: firebrick;    
-    padding: 0.6em;
+
+.notificacion-info {
+    background-color: #17a2b8;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
     color: #fff;
     border-radius: 5px;
+    text-align: right;
 }
 
 

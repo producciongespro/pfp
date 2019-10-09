@@ -1,24 +1,22 @@
 "use strict";
 const m = new Model(), v = new View();
+var estado;
 var  user;
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
     //evento para cerar secion:
     handlerEvents();
-
     // carga el json de actividades para mostrar el aviso del estado
     loadDataset();
-
-  
-    
 });
 
 
 function loadDataset() {
     m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (data) { 
-        console.log(data);        
-        showAlertMsg(data);
+        //console.log(data);        
+        //Deermina el estado pfp muestra la notificación y activa los botones
+        cargarEstado(data);
      } );
     
 }
@@ -33,34 +31,63 @@ function loadUserInfo() {
 
 
 
-function activateButtonsMenu() {
-    //Método que verifican la longitud de arrays para activar o desactivar los botones: 
-    
+function activarBotones() {
+    //validación para el primer botón:
+    if (estado =="Vacio" || estado == "Edicion" ) {
+        $("#btnJustificacion").prop("disabled", false);
+    }
+
+
+    //Método que verifican la longitud de arrays para activar o desactivar los botones:         
     
     //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
         console.log("1- Array justificacion", array, "peso",  array.length  );        
-        activateButton( array,  "btnObjetivos", './objetivos.php'  ) 
+        //Activación de objetivos:
+        if (array.length > 0 )   {
+            if (estado == "Edicion") {
+                $("#btnObjetivos").prop("disabled", false);        
+            }            
+        }
+        
     });    
 
     
     //verifica el arreglo objetivos para el botón "Limitaciones"    
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("2 - Array objetivos",  array, "peso",  array.length );
-        activateButton(array, "btnLimitaciones", './limitaciones.php') 
+        console.log("2 - Array objetivos",  array, "peso",  array.length );        
+        //Activar limitaciones:
+        if (array.length > 0 ) {
+            if (estado=="Edicion") {
+                $("#btnLimitaciones").prop("disabled", false);     
+            }
+        }
+        
     });    
 
 
     //verifica el arreglo limitaciones para habilitar agregar el PFP    
     m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
-        console.log("3 - Array limitaciones",  array, "peso",  array.length );   
-        activateButton( array, "btnArchivoPfp", './archivo_dnfp.php') 
+        console.log("3 - Array limitaciones",  array, "peso",  array.length );           
+        //Activar archivo pdf
+        if (array.length > 0) {
+            if (estado=="Edicion") {
+                $("#btnArchivoPfp").prop("disabled", false);    
+            }
+        }
+         
     });    
 
     //verifica el arreglo archivo pfp  para habilitar agregar acitivdes     
     m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("4 - Array archivos", array, "peso",  array.length );  
-        activateButton( array, "btnActividad", './actividad_pfp.php') 
+        console.log("4 - Array archivos", array, "peso",  array.length );          
+        //Activar Agregar Actividade
+        if (array.length > 0) {
+            if (estado == "Edicion") {
+                $("#btnActividad").prop("disabled", false);     
+            }
+        }
+        
     });    
 
     
@@ -68,62 +95,52 @@ function activateButtonsMenu() {
 }
 
 
-function showAlertMsg(array) {
-    var estado;
-    console.log("*********** Contendio del dataset:",  array[0]);
-    
+function cargarEstado (array) {    
+    console.log("*********** Contendio del array de actividades:",  array[0]);    
     //console.log(tmpActividadesPfp);
-
     if (array.length == 0 ) {
         estado = "Vacio";
     } else {
         estado = array[0].estado;
     }
-
+        console.log("--- Estado del PFP: ", estado, "----------");
 
     switch (estado) {
         case "Vacio":
             console.log("vacio");
-            v.alertMasg("No se ha creado ninguna actividad.");
-            $("#avisoMenu").addClass("cafe-maduro");
+            v.alertMasg("No se ha creado ninguna actividad.");            
             //Veirifca e botòn que se debe activar
-            activateButtonsMenu();
-            $("#btnVerPfP").prop("disabled", true);
+            activarBotones();            
+             
         break;
         case "Edicion":
-            console.log("Edicion");
-            $("#avisoMenu").addClass("cafe-maduro");
-            v.alertMasg("Aún no se ha enviado el PFP");
+            console.log("Edicion");            
+            v.alertMasg("PFP no enviado");
              //Veirifca e botòn que se debe activar
-            activateButtonsMenu();
+             activarBotones();
             //  habilitar el btn ver mis pfp
-            activateButton( "btnVerPfP", './lista_pfp.php' );
+            //activateButton( "btnVerPfP", './lista_pfp.php' );
         break;
         case "Enviado":
         console.log("PFP enviado");
-        v.alertMasg("PFP enviado");
-        $("#avisoMenu").removeClass("cafe-maduro");
-        $("#avisoMenu").addClass("verde-suave");
-        //TODO  el ver detalles de actividades queda bloquedado (solo lectura)
-        disableButtons();
+        v.alertMasg("PFP enviado");                
+        activarBotones();
         break;
 
         case "Avalado":
         console.log("PFP Aprobado");
-        v.alertMasg("Su PFP ha sido avaldo por la asesorìa del IDP.");
-        $("#avisoMenu").removeClass("cafe-maduro");
-        $("#avisoMenu").addClass("verde-suave");        
-        disableButtons();
-
+        v.alertMasg("PFP avaldo por la asesorìa del IDP.");             
+        activarBotones();
         break;
 
         case "Corregir":
         //console.log("PFP por corregir");
-        v.alertMasg("Su PFP debe ser corregido.");
+        v.alertMasg("El PFP debe ser corregido.");
         $("#avisoMenu").addClass("cafe-maduro");       
                
         //activa los botones que de los campos a corregir
-        activateRejected();
+        activarBotones();
+        //activateRejected();
 
 
         break;
@@ -138,16 +155,6 @@ function showAlertMsg(array) {
     $(".div-shadow").addClass("invisible");
 }
 
-function activateButton(array,  nameBttn, pathUrl ) {
-    
-    if (array.length > 0 ) {
-        $("#lnk"+nameBttn).attr("href", pathUrl );
-    }else {
-        $("#"+nameBttn).addClass("disabled");
-        //console.log("deshabilitado");        
-    }   
-        
-}
 
 
 function activateRejected() {
@@ -174,7 +181,7 @@ function activateRejected() {
                              //Habilita el botón de objetivos            
                             $("#btnObjetivos").prop("disabled", false);
                             //Le asgina el link
-                            $("#lnkbtnObjetivos").attr("href", "objetivos.php" );
+                            //$("#lnkbtnObjetivos").attr("href", "objetivos.php" );
 
                             //guarda en sesión la variable objetivo rechazado para habilitar el botón en detallaes:
                             sessionStorage.setItem("objetivoRechazado", "true");
@@ -198,7 +205,7 @@ function activateRejected() {
               //Habilita el botón de limitaciones 
               $("#btnLimitaciones").prop("disabled", false);
               //Le asgina el link
-              $("#lnkbtnLimitaciones").attr("href", "limitaciones.php" );
+             // $("#lnkbtnLimitaciones").attr("href", "limitaciones.php" );
             }
                  
          });
@@ -212,7 +219,7 @@ function activateRejected() {
               //Habilita el botón de Archivos 
               $("#btnArchivoPfp").prop("disabled", false);
               //Le asgina el link
-              $("#lnkbtnArchivoPfp").attr("href", "archivo_dnfp.php" );
+             // $("#lnkbtnArchivoPfp").attr("href", "archivo_dnfp.php" );
            }
           
          }); 
@@ -225,9 +232,8 @@ function activateRejected() {
       */
 
      $("#btnVerPfP").prop("disabled", false);
-     $("#lnkbtnVerPfP").attr("href", "lista_pfp.php" );
-     $("#btnAyuda").prop("disabled", false);
-    
+     //$("#lnkbtnVerPfP").attr("href", "lista_pfp.php" );
+     $("#btnAyuda").prop("disabled", false);    
      $("#btnAcercaDe").prop("disabled", false);
              
        
@@ -235,15 +241,7 @@ function activateRejected() {
 }
 
 
-function disableButtons() {
-    $(".btn-menu").prop("disabled", true);
-    $("#btnVerPfP").prop("disabled", false);
-    
-    $("#lnkbtnVerPfP").attr("href", "./lista_pfp.php" );
-    $("#btnAyuda").prop("disabled", false);
-    $("#btnAcercaDe").prop("disabled", false);
-    
-}
+
 
 function handlerEvents() {
 

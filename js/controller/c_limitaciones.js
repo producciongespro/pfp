@@ -40,9 +40,7 @@ function loadMod(array) {
         //Muestra el botón de edición:
         $("#btnActivarEdicion").slideDown();        
         //Oculta el botón de enviar:
-        $("#btnEnviarLimitaciones").hide();
-
-     
+        $("#btnEnviarLimitaciones").hide();     
         // Manejado de eventos para el botón del lapiz (activar edición):
         $("#btnActivarEdicion").off("click");
         $("#btnActivarEdicion").click(function (e) { 

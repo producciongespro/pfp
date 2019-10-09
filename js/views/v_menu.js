@@ -17,5 +17,5 @@ View.prototype.userInfo = function (user, visor) {
 
   View.prototype.alertMasg = function (text) {
     $("#avisoMenu").empty();
-    $("#avisoMenu").text(text);
+    $("#avisoMenu").html(   '<i class="far fa-bell"></i> ' + text);
    }
