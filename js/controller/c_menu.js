@@ -1,7 +1,15 @@
 "use strict";
 const m = new Model(), v = new View();
 var estado;
-var  user;
+var user;
+//arreglos:
+var arrayJustificacion=0;
+var arrayObjetivos=0;
+var arrayLimitaciones=0;
+var arrayArchivoPDF=0;
+var arrayActividades=0;
+
+//estados de cada sección:
 var secciones = {
     justificacion : false,
     objetivos : false,
@@ -24,155 +32,122 @@ $(document).ready(function () {
 
 
 function loadDataset() {
-    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (data) { 
+
+    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (array) { 
         //console.log(data);        
         //Deermina el estado pfp muestra la notificación y activa los botones
-        cargarEstado(data);
-     } );
-    
-}
+        //console.log("*********** Contenido del array de actividades:",  array[0]);    
+        //console.log(tmpActividadesPfp);
+        if (array.length == 0 ) {
+            estado = "Vacio";
+        } else {
+            arrayActividades=array;
+            estado = array[0].estado;
+        }      
+        console.log(" 0 - array de actividades:",  arrayActividades);    
+         //validación para el primer botón:
+            if (estado =="Vacio" || estado == "Edicion" ) {
+                $("#btnJustificacion").prop("disabled", false);
+                secciones.justificacion = true;
+            }
 
-
-function loadUserInfo() {    
-    user = m.getSession();    
-    v.userInfo(user,  $("#infoUser"));  
-   // console.log(user);
-      
-}
-
-
-
-function activarBotones() {
-    //validación para el primer botón:
-    if (estado =="Vacio" || estado == "Edicion" ) {
-        $("#btnJustificacion").prop("disabled", false);
-        secciones.justificacion = true;
-    }
-
-
-    //Método que verifican la longitud de arrays para activar o desactivar los botones:         
-    
     //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
     m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
         console.log("1- Array justificacion", array, "peso",  array.length  );        
         //Activación de objetivos:
         if (array.length > 0 )   {
+            arrayJustificacion = array;
             if (estado == "Edicion") {
                 $("#btnObjetivos").prop("disabled", false);
                 secciones.objetivos = true;        
             }            
         }
-        
-    });    
 
-    
-    //verifica el arreglo objetivos para el botón "Limitaciones"    
-    m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
+           //verifica el arreglo objetivos para el botón "Limitaciones"    
+        m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
         console.log("2 - Array objetivos",  array, "peso",  array.length );        
         //Activar limitaciones:
         if (array.length > 0 ) {
+            arrayObjetivos = array;
             if (estado=="Edicion") {
                 $("#btnLimitaciones").prop("disabled", false);
                 secciones.e_limitaciones = true;     
             }
         }
-        
-    });    
 
 
-    //verifica el arreglo limitaciones para habilitar agregar el PFP    
-    m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
+            //verifica el arreglo limitaciones para habilitar agregar el PFP    
+        m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
         console.log("3 - Array limitaciones",  array, "peso",  array.length );           
         //Activar archivo pdf
         if (array.length > 0) {
+            arrayLimitaciones = array;
             if (estado=="Edicion") {
                 $("#btnArchivoPfp").prop("disabled", false);    
                 secciones.archivoPdf = true;
             }
         }
-         
-    });    
 
-    //verifica el arreglo archivo pfp  para habilitar agregar acitivdes     
-    m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
+            //verifica el arreglo archivo pfp  para habilitar agregar acitivdes     
+        m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
         console.log("4 - Array archivos", array, "peso",  array.length );          
         //Activar Agregar Actividade
         if (array.length > 0) {
+            arrayArchivoPDF = array;
             if (estado == "Edicion") {
                 $("#btnActividad").prop("disabled", false);     
                 secciones.agregarActividad = true;
             }
-        }
+        };
+                //Carga los mensajes de acerdo a los estados y habilita algunos botones          
+                cargarEstado();        
+                }); 
+         
+          }); 
         
-    });    
+      });  
+      
+    }); 
 
+});
     
-
 }
 
 
-function cargarEstado (array) {    
-    console.log("*********** Contendio del array de actividades:",  array[0]);    
-    //console.log(tmpActividadesPfp);
-    if (array.length == 0 ) {
-        estado = "Vacio";
-    } else {
-        estado = array[0].estado;
-    }
+function cargarEstado () {    
         console.log("--- Estado del PFP: ", estado, "----------");
 
     switch (estado) {
-        case "Vacio":
-            console.log("vacio");
-            v.alertMasg("No se ha creado ninguna actividad.");            
-            //Veirifca e botòn que se debe activar
-            activarBotones();            
-             
+        case "Vacio":            
+            v.alertMasg("No se ha creado ninguna actividad.");                       
         break;
-        case "Edicion":
-            console.log("Edicion");            
-            v.alertMasg("PFP no enviado");
-             //Veirifca e botòn que se debe activar             
-             activarBotones();
-            // habilitar sección btn ver mis pfp
-            seccion.verActividades = true;
+        case "Edicion":            
+            v.alertMasg("PFP no enviado");         
+            secciones.verActividades = true;
         break;
-        case "Enviado":
-        console.log("PFP enviado");
-        v.alertMasg("PFP enviado");                
-        seccion.verActividades = true;
-        activarBotones();
+        case "Enviado":        
+            v.alertMasg("PFP enviado");                
+            secciones.verActividades = true;        
         break;
 
         case "Avalado":
-        console.log("PFP Aprobado");
-        v.alertMasg("PFP avaldo por la asesorìa del IDP."); 
-        seccion.verActividades = true;            
-        activarBotones();
+            v.alertMasg("PFP avaldo por la asesorìa del IDP."); 
+            secciones.verActividades = true;                    
         break;
 
-        case "Corregir":
-        //console.log("PFP por corregir");
-        v.alertMasg("El PFP debe ser corregido.");        
-        seccion.verActividades = true;
-        //activa los botones que de los campos a corregir
-        activarBotones();
-        //activateRejected();
-
-
-        break;
-    
+        case "Corregir":        
+            v.alertMasg("El PFP debe ser corregido.");        
+            secciones.verActividades = true;        
+            //activateRejected();
+        break;    
         default:
-            console.log("Opciòn fuera de rango");
-            
-            break;
+            console.log("Opciòn fuera de rango");            
+        break;
     }
 
     m.setStatus(estado);
     $(".div-shadow").addClass("invisible");
 }
-
-
 
 function activateRejected() {
     //Se deshabilitan todos los botones:
@@ -257,7 +232,6 @@ function activateRejected() {
      
 }
 
-
 function handlerBotonesMenu() {
 
     $(".btn-menu").click(function (e) { 
@@ -304,9 +278,6 @@ function handlerBotonesMenu() {
         
 }
 
-
-
-
 function handlerEvents() {
 
     $("#lnkCloseSession").click(function (e) { 
@@ -321,6 +292,13 @@ function handlerEvents() {
         });
         
     });    
+}
+
+function loadUserInfo() {    
+    user = m.getSession();    
+    v.userInfo(user,  $("#infoUser"));  
+   // console.log(user);
+      
 }
 
 
