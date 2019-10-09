@@ -68,20 +68,18 @@
             <div class="col-10">
                 <div class="form-group">
                     <label for="txtInerna"><strong>Limitaciones:</strong></label>
-                    <textarea class="form-control"  id="txtInterna" cols="15" rows="8" placeholder="No debe utiliar viñetas"  ></textarea>
+                    <textarea class="form-control"  id="txtInterna" cols="15" rows="12" placeholder="No debe utiliar viñetas"></textarea>
                 </div>
+            </div>
+            <div class="col-2">
+                    <br>
+                    <i class="item-invisible fas fa-pencil-alt fa-edicion" id="btnActivarEdicion" ></i>
+                    <br>
+                    <hr>
+                    <input type="button"  class="btn btn-primary"  id="btnEnviarLimitaciones">
             </div>            
         </div>
-
-
-        <div class="row"> 
-                <div class="col-6">
-                                <input type="button"  class="btn btn-primary"  id="btnEnviarLimitaciones" value="">
-                    </div>               
-                <div class="col-6">
-                    <i class="item-invisible fas fa-pencil-alt fa-edicion" id="btnActivarEdicion" ></i>
-                </div>
-       </div>  
+       
          
         
     </div>
