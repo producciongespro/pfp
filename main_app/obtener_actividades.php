@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * from planes INNER JOIN objetivos ON objetivos.id_objetivos =planes.id_objetivos INNER JOIN justificaciones ON justificaciones.id_justificacion=planes.id_justificacion INNER JOIN limitaciones ON limitaciones.id_limitacion =planes.id_limitacion ORDER BY id_instancia";
+$sql = "SELECT * from planes INNER JOIN objetivos ON objetivos.id_objetivo =planes.id_objetivo INNER JOIN justificaciones ON justificaciones.id_justificacion =planes.id_justificacion INNER JOIN limitaciones ON limitaciones.id_limitacion =planes.id_limitacion ORDER BY planes.id_plan";
 include "conectar.php";
 function desconectar($conexion){
 
