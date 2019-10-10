@@ -7,14 +7,10 @@
   // $usuario = utf8_decode($_POST['usuario']);
   // $objetivo = utf8_decode($_POST['objetivo']);
   $mysqli = conectarDB();
+  $consulta = "DELETE FROM $tabla WHERE $idNombre = '$idValor' ";
 
-  mysqli_query($mysqli,"DELETE FROM $tabla WHERE $idNombre = '$idValor' ") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
-                /* if ($query) {
-                        echo ("Cuento agregado exitosamente");
-                        session_destroy();
-                      } else {
-                       echo ("Error al agregar el cuento");
-          	}*/
+  mysqli_query($mysqli, $consulta ) or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+           echo $consulta;
 		$errors = array();
  if ($mysqli) {
        mysqli_close($mysqli);
