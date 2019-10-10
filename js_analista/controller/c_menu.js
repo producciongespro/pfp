@@ -29,10 +29,9 @@ function loadUserInfo() {
 
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
-    m.loadJson("../../main_app/obtener.php", function () { 
+    m.loadJson("../../main_app/obtener_actividades.php", function () { 
         dataset = m.getPfpSent();
-       // console.log("Carga de actividades PFP de las instacnias: ");        
-        console.log("dataset", dataset);        
+       console.log("Carga de actividades PFP de las instacnias:", dataset );      
         loadFileUrl();
        
      });
