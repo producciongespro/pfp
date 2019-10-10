@@ -30,56 +30,24 @@ function loadUserInfo() {
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
     m.loadJson("../../main_app/obtener_actividades.php", function () { 
-        dataset = m.getPfpSent();
-       console.log("Carga de actividades PFP de las instacnias:", dataset );      
-        loadFileUrl();
-       
+        dataset = m.getPfpSent();                      
      });
+  
+}
 
 
-     m.getObjetivos(function (data) { 
-        dataObjetivos = data;
-                console.log("Array de objetivos", dataObjetivos);                               
-          })
-
+function rebnderizarTabla(array) {
+    let limite = array.length;
+    for (let index = 0; index < limite; index++) {
+        const element = array[index];        
+    }
     
 }
 
 
-function loadFileUrl() {
-    //  Segunda carga de datos: la url de archivos
-    m.loadJson("../../main_app/obtener_archivos.php", function () { 
-        dsArchivos = m.getDataSet();
-        //console.log("Carga de la url de los archivos subidos:");        
-        //console.log(dsArchivos);
-        loadJustif();
-        
-     });
-      
-}
-
-function loadJustif() {    
-    //Tercera carga de datos: justificcion
-    m.loadJson("../../main_app/obtener_justificacion.php", function () {
-        dsJustif  = m.getDataSet();
-        //console.log("Carga de las  justificacines");
-        //console.log(dsJustif);       
-        loadInstancias();
-      } );
-
-}
 
 
-function loadInstancias() {
-    //Cuarta carga de datos: lista de instancias del json
-    //Para poder crear el array que lleva las cantidades de actividades por instancia
-    m.loadJson("../../data/instancias.json", function () {
-        //console.log("carga de lista de instancias para formar el array");        
-        renderTable();
-        $(".div-shadow").addClass("invisible");
-      });
 
-}
 
 function renderTable() {
     
