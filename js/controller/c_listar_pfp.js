@@ -54,12 +54,11 @@ function eventDeleteActivity(array) {
                 function(){
                     //Eliminar actividad:                   
                     console.log(array[target] );
-                   
-                    m.delRecord(array[target].id, "planes", function () { 
-                            //Recarga el json y el módulo una vez eliminado el registro de la actividad
-                            m.loadJson( "../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, loadMod);
-                     } )  
-                   
+
+                    m.eliminarRegistro( "id_plan", array[target].id, "planes", function () {
+                         //Recarga el json y el módulo una vez eliminado el registro de la actividad
+                         m.loadJson( "../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, loadMod);
+                    } )                   
                 },
                 function(){
                     console.log("cancel");

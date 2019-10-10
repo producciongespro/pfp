@@ -362,7 +362,8 @@ Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustif
 Model.prototype.eliminarRegistro = function (idNombre, idValor  , tabla, mCallBack  ) {
 
     var formData = new FormData();
-    formData.append(idNombre, idValor);
+    formData.append("idNombre", idNombre);
+    formData.append("idValor", idValor);
     formData.append("tabla", tabla );
 
     $.ajax({
