@@ -6,8 +6,8 @@ var userInfo, tmpDataset;
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
-    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function () { 
-        console.log("calback");        
+    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+ userInfo.id_instancia, function (array) { 
+        console.log("Array lista", array);        
         loadMod()
      });
 });
