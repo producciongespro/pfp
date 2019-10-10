@@ -67,8 +67,8 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-9"></div>            
-            <div class="col-3 notificacion-info" id="avisoMenu" ></div>
+            <div class="col-8"></div>            
+            <div class="col-4 notificacion-info" id="avisoMenu" ></div>
         </div>
 
     
