@@ -231,17 +231,6 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
     
     <div class="div-shadow invisible">
         <img class="img-ajax-loading" src="../../img/ajax-loader.gif" alt="Loading">

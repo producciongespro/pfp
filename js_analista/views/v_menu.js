@@ -18,7 +18,7 @@ View.prototype.userInfo = function (user, visor) {
 
  
 View.prototype.table = function (array, visor) {
-    //console.log( "array", array);
+    //console.log( "array en Vista tabla", array);
  
   
   $(visor).empty();
@@ -48,11 +48,7 @@ View.prototype.table = function (array, visor) {
           for (let index = 0; index < limite; index++) {
            // console.log(index);            
           // console.log(array[index].nombre); 
-
-          if ( array[index].cantActiv > 0 ) {
-             // console.log(array[index].nombre);              
-              //console.log(index);
-              
+                       
               rowNumber++
               row = $(
                 "<tr>" +
@@ -76,22 +72,22 @@ View.prototype.table = function (array, visor) {
                     "<i  id='btnLim"+ array[index].id_limitacion +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
                 "</td>" +
                 "<td class='text-center'>" + 
-                      array[index].fecha_envio +
+                      array[index].fecha_envio_pfp +
                 "</td>" +
                 "<td class='text-center'>" + 
-                      array[index].estado +
+                      array[index].id_estado +
                 "</td>" +
                 "<td class='text-center' >" + 
-                  "<i class='fas fa-unlock cursor-pointer' instancia='"+  array[index].nombre + "'  ></i>" +
+                  "<i class='fas fa-unlock cursor-pointer' instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "<td class='text-center' >" + 
-                    "<i class='far fa-eye fa-view-details cursor-pointer ' instancia='"+  array[index].nombre + "'  ></i>" +
+                    "<i class='far fa-eye fa-view-details cursor-pointer ' instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "</tr>"
             );
               $(tBody).append(row); 
               
-            }    
+              
         }
   $(htmlTable).append(tBody);    
   $(visor).html(htmlTable);
@@ -132,3 +128,7 @@ View.prototype.pdf = function (path, visor ) {
 
 
  }
+
+ View.prototype.ocultarSpiner = function () { 
+   $(".div-shadow").addClass("invisible");
+  }
