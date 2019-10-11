@@ -1,6 +1,6 @@
 "use strict";
 const m = new Model(), v = new View();
-var estado;
+var plan;
 var user;
 //arreglos:
 var arrayJustificacion=0;
@@ -33,100 +33,70 @@ $(document).ready(function () {
 
 function loadDataset() {
 
-    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+user.id_instancia, function (array) { 
+    m.loadJson("../../main_app/obtener_plan.php?id_instancia="+user.id_instancia, function (array) { 
         //console.log(data);        
         //Deermina el estado pfp muestra la notificación y activa los botones
-        //console.log("*********** Contenido del array de actividades:",  array[0]);    
-        //console.log(tmpActividadesPfp);
-        if (array.length == 0 ) {
-            estado = "Vacio";
-        } else {
-            arrayActividades=array;
-            estado = array[0].estado;          
-        }
-        console.log("------------ Valor del estado: ", estado, "-----------------");
-
-        //Instrucciones para activar el botón de "justificacion"
-        if (estado == "Vacio" || estado == "Edicion" ) {
+        console.log("*********** Contenido del array de planes:",  array[0]);
+        plan =  array[0];   
+        console.log("Plan PFP", plan);      
+        //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");  
+        
+        //Habilitar botones del menú:               
+        // -- 1 - Ver planes
+        if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion" ||  plan.etiqueta_estado == "Iniciado"  ) {
             $("#btnJustificacion").prop("disabled", false);
             secciones.justificacion=true;
-        }
-              
-        console.log(" 0 - array de actividades:",  arrayActividades, "peso: ", array.length  );    
-            //Activación del botón "ver actividades"        
-            if (array.length > 0 )   {
-                arrayActividades = array;
-                if (estado == "Edicion") {
-                    $("#btnVerPfP").prop("disabled", false);
-                    secciones.verActividades = true;        
-                }            
-            }
-         
-
-    //verifica el arreglo justificacion para el botón brechas formativas y objtivos 
-    m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+user.id_instancia, function (array) {   
-        console.log("1- Array justificacion", array, "peso",  array.length  );        
-        //Activación de objetivos:
-        if (array.length > 0 )   {
-            arrayJustificacion = array;
-            if ( estado == "Vacio" || estado == "Edicion") {
+        }       
+        
+        // -- 2 - Ver Objetivos
+        if (plan.id_justificacion !=  null ) {        
+            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
                 $("#btnObjetivos").prop("disabled", false);
                 secciones.objetivos = true;        
-            }            
+            } 
         }
 
-           //verifica el arreglo objetivos para el botón "Limitaciones"    
-        m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("2 - Array objetivos",  array, "peso",  array.length );        
-        //Activar limitaciones:
-        if (array.length > 0 ) {
-            arrayObjetivos = array;
-            if ( estado == "Vacio" || estado=="Edicion") {
+        // -- 3 - Ver Limitaciones
+        if (plan.cantidad_objetivos > 0 ) {        
+            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
                 $("#btnLimitaciones").prop("disabled", false);
                 secciones.limitaciones = true;     
-            }
+            } 
         }
 
-
-            //verifica el arreglo limitaciones para habilitar agregar el PFP    
-        m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+user.id_instancia,  function (array) {
-        console.log("3 - Array limitaciones",  array, "peso",  array.length );           
-        //Activar archivo pdf
-        if (array.length > 0) {
-            arrayLimitaciones = array;
-            if (estado == "Vacio" || estado=="Edicion") {
+      
+        // -- 4 - Ver archivos    
+        if (plan.id_limitacion != null ) {
+            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
                 $("#btnArchivoPfp").prop("disabled", false);    
                 secciones.archivoPdf = true;
             }
         }
 
-            //verifica el arreglo archivo pfp  para habilitar agregar acitivdes     
-        m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+user.id_instancia, function (array) {
-        console.log("4 - Array archivos", array, "peso",  array.length );          
-        //Activar Agregar Actividade
-        if (array.length > 0) {
-            arrayArchivoPDF = array;
-            if (estado == "Vacio" || estado == "Edicion") {
+        // -- 5 - crear actividades pfp    
+        if (plan.id_archivo != null) { 
+            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
                 $("#btnActividad").prop("disabled", false);     
                 secciones.agregarActividad = true;
-            }
-        };
-                //Carga los mensajes de acerdo a los estados y habilita algunos botones          
-                cargarEstado();
-                //Manejador de eventos para los botnes del menú
-                handlerBotonesMenu();
-                }); 
-         
-          }); 
+            } 
+        }
+
         
-      });  
-      
-    }); 
+        // -- 6 - Ver planes
+            if (plan.etiqueta_estado == "Iniciado") {
+                $("#btnVerPfP").prop("disabled", false);
+                secciones.verActividades = true;        
+            }            
+        
+
+              
+
+   cargarEstado(plan.etiqueta_estado);
 
 });
     
 }
-function cargarEstado () {    
+function cargarEstado (estado) {    
         //console.log("--- Estado del PFP: ", estado, "----------");
 
     switch (estado) {

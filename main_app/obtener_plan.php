@@ -1,7 +1,18 @@
 <?php
-$quien = $_GET['id_instancia'];
-// $sql = "SELECT * FROM planes";
-$sql = "SELECT * from planes INNER JOIN objetivos ON objetivos.id_objetivo =planes.id_objetivo INNER JOIN justificaciones ON justificaciones.id_justificacion =planes.id_justificacion INNER JOIN limitaciones ON limitaciones.id_limitacion =planes.id_limitacion WHERE planes.id_instancia='$quien' ORDER BY planes.id_plan";
+$id_instancia = $_GET['id_instancia'];
+
+/*  TODO pregutna para oscar?????
+$sql = "SELECT * from planes 
+INNER JOIN archivos_enviados ON archivos_enviados.id_archivo =planes.id_archivo 
+INNER JOIN justificaciones ON justificaciones.id_justificacion = planes.id_justificacion
+INNER JOIN limitaciones ON limitaciones.id_limitacion =planes.id_limitacion
+WHERE planes.id_instancia='$id_instancia'";
+*/
+
+$sql = "SELECT * from planes  
+INNER JOIN estados ON estados.id_estado = planes.id_estado 
+WHERE planes.id_instancia='$id_instancia'";
+
 include "conectar.php";
 function desconectar($conexion){
 
