@@ -1,5 +1,10 @@
 <?php
-$sql = "SELECT * FROM estado_pfp  INNER JOIN justificaciones ON justificaciones.id_instancia = estado_pfp.id_instancia     ORDER BY estado_pfp.id_instancia ASC";
+$sql = "SELECT * FROM estado_pfp   
+INNER JOIN justificaciones ON justificaciones.id_instancia = estado_pfp.id_instancia
+INNER JOIN limitaciones ON limitaciones.id_instancia = estado_pfp.id_instancia
+INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = estado_pfp.id_instancia
+INNER JOIN instancias ON instancias.id_instancia = estado_pfp.id_instancia
+WHERE  estado_pfp.id_estado != 1  ORDER BY estado_pfp.id_instancia ASC";
 include "conectar.php";
 function desconectar($conexion){
 

@@ -61,19 +61,19 @@ View.prototype.table = function (array, visor) {
                    array[index].nombre +                   
                 "</td>" +                
                   "<td class='text-center' >" + 
-                    array[index].cantActiv +
+                    + 1 +
                   "</td>" +
                 "<td class= 'text-center'>" + 
-                      "<i  id='btnJus"+ index +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
+                      "<i  id='btnJus"+ array[index].id_justificacion +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                "<i   title = '"+   array[index].nombre  +"'   class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
+                "<i   title = '"+   index  +"'   class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnfil"+ index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
+                    "<i  id='btnfil"+  array[index].id_archivo +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnLim"+ index +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
+                    "<i  id='btnLim"+ array[index].id_limitacion +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
                 "</td>" +
                 "<td class='text-center'>" + 
                       array[index].fecha_envio +

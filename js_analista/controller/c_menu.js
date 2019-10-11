@@ -29,18 +29,22 @@ function loadUserInfo() {
 
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
-    m.loadJson("../../main_app/obtener_actividades.php", function () { 
-        dataset = m.getPfpSent();                      
+    m.loadJson("../../main_app/obtener_encabezados_activos.php", function (array) { 
+        rebnderizarTabla(array);
      });
   
 }
 
 
 function rebnderizarTabla(array) {
+    console.log("Array encabezado", array);
+    
+    /*
     let limite = array.length;
     for (let index = 0; index < limite; index++) {
         const element = array[index];        
     }
+    */
     
 }
 
