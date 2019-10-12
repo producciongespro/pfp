@@ -77,7 +77,7 @@ function eventViewDetails() {
         let tmpId = $(this).attr("id").slice(6);        
         //console.log(tmpDataset[ tmpId ]);
         m.setRecordinSession(dataset[ tmpId ]);
-        //window.location.assign("detalle_actividad.php");
+        window.location.assign("detalle_actividad.php");
     });
     
 }
