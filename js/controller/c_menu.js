@@ -120,7 +120,7 @@ function handlerBotonesMenu() {
                     }
             break;
             case "btnVerPfP": 
-                if (plan.etiqueta_estado == "Iniciado") {
+                if (plan.etiqueta_estado == "Edicion") {
                     window.location.href = "./lista_pfp.php";
                 }                                  
             break;          
