@@ -2,23 +2,6 @@
 const m = new Model(), v = new View();
 var plan;
 var user;
-//arreglos:
-var arrayJustificacion=0;
-var arrayObjetivos=0;
-var arrayLimitaciones=0;
-var arrayArchivoPDF=0;
-var arrayActividades=0;
-
-//estados de cada sección:
-var secciones = {
-    justificacion : false,
-    objetivos : false,
-    limitaciones : false,
-    archivoPdf : false,
-    agregarActividad : false,
-    verActividades : false
-}
-
 
 
 $(document).ready(function () {
@@ -33,94 +16,70 @@ $(document).ready(function () {
 
 function loadDataset() {
 
-    m.loadJson("../../main_app/obtener_plan.php?id_instancia="+user.id_instancia, function (array) { 
-        //console.log(data);        
-        //Deermina el estado pfp muestra la notificación y activa los botones
-        console.log("*********** Contenido del array de planes:",  array[0]);
+    m.loadJson("../../main_app/obtener_plan.php?id_instancia="+user.id_instancia, function (array) {         
         plan =  array[0];   
+        //Deermina el estado pfp muestra la notificación y activa los botones                
         console.log("Plan PFP", plan);      
-        //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");  
-        
+        //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");          
         //Habilitar botones del menú:               
         // -- 1 - Ver planes
         if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion" ||  plan.etiqueta_estado == "Iniciado"  ) {
-            $("#btnJustificacion").prop("disabled", false);
-            secciones.justificacion=true;
-        }       
-        
+            $("#btnJustificacion").prop("disabled", false);        
+        }     
         // -- 2 - Ver Objetivos
-        if (plan.id_justificacion !=  null ) {        
+        if (plan.justificacion_agregado ) {        
             if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnObjetivos").prop("disabled", false);
-                secciones.objetivos = true;        
+                $("#btnObjetivos").prop("disabled", false);                      
             } 
         }
-
         // -- 3 - Ver Limitaciones
         if (plan.cantidad_objetivos > 0 ) {        
             if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
                 $("#btnLimitaciones").prop("disabled", false);
-                secciones.limitaciones = true;     
+               
             } 
         }
-
-      
         // -- 4 - Ver archivos    
-        if (plan.id_limitacion != null ) {
+        if (plan.limitacion_agregado ) {
             if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
-                $("#btnArchivoPfp").prop("disabled", false);    
-                secciones.archivoPdf = true;
+                $("#btnArchivoPfp").prop("disabled", false);                    
             }
         }
-
         // -- 5 - crear actividades pfp    
-        if (plan.id_archivo != null) { 
+        if (plan.archivo_agregado ) { 
             if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnActividad").prop("disabled", false);     
-                secciones.agregarActividad = true;
+                $("#btnActividad").prop("disabled", false);                     
             } 
         }
-
-        
         // -- 6 - Ver planes
             if (plan.etiqueta_estado == "Iniciado") {
-                $("#btnVerPfP").prop("disabled", false);
-                secciones.verActividades = true;        
+                $("#btnVerPfP").prop("disabled", false);                
             }            
-        
-
-              
-
    cargarEstado(plan.etiqueta_estado);
-
+   handlerBotonesMenu();
 });
     
 }
 function cargarEstado (estado) {    
         //console.log("--- Estado del PFP: ", estado, "----------");
-
     switch (estado) {
         case "Vacio":            
             v.alertMasg("No se ha creado ninguna actividad.");                       
         break;
         case "Edicion":            
-            v.alertMasg("PFP no enviado");         
-            secciones.verActividades = true;
+            v.alertMasg("PFP no enviado");                     
         break;
         case "Enviado":        
             v.alertMasg("PFP enviado");                
-            secciones.verActividades = true;        
+            
         break;
 
         case "Avalado":
-            v.alertMasg("PFP avaldo por la asesorìa del IDP."); 
-            secciones.verActividades = true;                    
+            v.alertMasg("PFP avaldo por la asesorìa del IDP.");             
         break;
 
         case "Corregir":        
-            v.alertMasg("El PFP debe ser corregido.");        
-            secciones.verActividades = true;        
-            //activateRejected();
+            v.alertMasg("El PFP debe ser corregido.");                
         break;    
         default:
             console.log("Opciòn fuera de rango");            
@@ -134,44 +93,42 @@ function cargarEstado (estado) {
 
 
 function handlerBotonesMenu() {
-
+    
     $(".btn-menu").click(function (e) { 
         e.preventDefault();
         let opcion = e.target.id;
-
+        //Por seguridad se valida los estados de cada componente del pfp para bloquear o desbloquear los botones:
         switch (opcion) {
-            case "btnJustificacion":
-                if (secciones.justificacion) {
-                    window.location.href = "./justificacion.php";
-                }    
+            case "btnJustificacion":                    
+                        window.location.href = "./justificacion.php";                                    
             break;
-            case "btnObjetivos":
-                if (secciones.objetivos) {
+            case "btnObjetivos":                
+                if (plan.justificacion_agregado) {
                     window.location.href = "./objetivos.php";
-                }    
+                }
             break;
             case "btnLimitaciones":
-                if (secciones.limitaciones) {
-                    window.location.href = "./limitaciones.php";
-                }    
+                if (plan.cantidad_objetivos > 0) {                
+                    window.location.href = "./limitaciones.php";                
+                }
             break;
-            case "btnArchivoPfp":
-                if (secciones.archivoPdf) {
-                    window.location.href = "./archivo_dnfp.php";
-                }    
+            case "btnArchivoPfp":            
+                    if (plan.limitacion_agregado) {
+                        window.location.href = "./archivo_dnfp.php";                
+                    }
             break;
-            case "btnActividad":
-                if (secciones.agregarActividad) {
-                    window.location.href = "./actividad_pfp.php";
-                }    
+            case "btnActividad":                
+                    if (plan.archivo_agregado) {
+                        window.location.href = "./actividad_pfp.php";
+                    }
             break;
-            case "btnVerPfP":
-                if (secciones.verActividades) {
+            case "btnVerPfP": 
+                if (plan.etiqueta_estado == "Iniciado") {
                     window.location.href = "./lista_pfp.php";
-                }    
+                }                                  
             break;          
-
             default:
+                console.log("Opcion fuera de rango");                
                 break;
         }
 

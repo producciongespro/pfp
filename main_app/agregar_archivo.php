@@ -22,7 +22,21 @@
       }
 	 
       echo "<script>console.log('$idArchivo')</script>";
-      mysqli_query($mysqli,"UPDATE planes SET id_archivo='$idArchivo' WHERE id_instancia = '$id_instancia'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+      //mysqli_query($mysqli,"UPDATE planes SET id_archivo='$idArchivo' WHERE id_instancia = '$id_instancia'") or die ("Problemas al actualizar elementos a la BD".mysqli_error($mysqli));
+
+
+	  /*update 2 en la tabla planes*/
+  if ($mysqli)
+  {
+  $actualizacionPlan = "UPDATE planes SET archivo_agregado = true WHERE id_instancia = $id_instancia";
+     mysqli_query($mysqli,  $actualizacionPlan  ) or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
+     
+    }
+    else{
+                //Error
+    }
+
+
 
 		$errors = array();
 ?>
