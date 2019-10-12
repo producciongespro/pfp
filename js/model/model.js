@@ -306,43 +306,25 @@ Model.prototype.uploadJustify = function (urlPath, justif, id_instancia, callBac
 }
 
 
-Model.prototype.uploadActivity = function ( id_instancia,  email, name, idJustificacion, idLimit,  idObj, duration, place, type, typeAct,  stratus,  area, mode, strategy, amount, idFile, mCallBack ) {
+Model.prototype.uploadActivity = function ( id_instancia,  email, nombre,  idObj, duration, place, type, typeAct,  stratus,  area, mode, strategy, amount, mCallBack ) {
 
   var formData = new FormData();
   formData.append("id_instancia", id_instancia);  
   formData.append("correo", email);
-  formData.append("nombre", name);
-  formData.append("id_justificacion", idJustificacion);  
-
-  formData.append("id_limitacion", idLimit); 
-
-
+  formData.append("nombre", nombre);
   formData.append("id_objetivo", idObj);    
-  formData.append("duracion", duration);
-  
+  formData.append("duracion", duration);  
   formData.append("sede", place);
   formData.append("estado", "Edicion");
-
   formData.append("tipo", type);
   formData.append("tActividad", typeAct);
-
-  formData.append("estrato", stratus);
-  
-  
- 
+  formData.append("estrato", stratus);   
   formData.append("area", area);
   formData.append("modalidad", mode);
   formData.append("estrategia", strategy);
-
   formData.append("costo", amount);
-  formData.append("id_archivo", idFile);
-
-  
-
-
-
   $.ajax({
-    url: "../../main_app/agregar_plan.php",
+    url: "../../main_app/agregar_actividad.php",
     type: 'POST',
     data: formData,
     cache: false,

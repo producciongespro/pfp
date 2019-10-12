@@ -23,7 +23,7 @@ function loadDataset() {
         //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");          
         //Habilitar botones del menú:               
         // -- 1 - Ver planes
-        if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion" ||  plan.etiqueta_estado == "Iniciado"  ) {
+        if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion"  ) {
             $("#btnJustificacion").prop("disabled", false);        
         }     
         // -- 2 - Ver Objetivos
@@ -52,7 +52,7 @@ function loadDataset() {
             } 
         }
         // -- 6 - Ver planes
-            if (plan.etiqueta_estado == "Iniciado") {
+            if (plan.etiqueta_estado == "Edicion") {
                 $("#btnVerPfP").prop("disabled", false);                
             }            
    cargarEstado(plan.etiqueta_estado);
@@ -70,14 +70,11 @@ function cargarEstado (estado) {
             v.alertMasg("PFP no enviado");                     
         break;
         case "Enviado":        
-            v.alertMasg("PFP enviado");                
-            
+            v.alertMasg("PFP enviado");              
         break;
-
         case "Avalado":
             v.alertMasg("PFP avaldo por la asesorìa del IDP.");             
         break;
-
         case "Corregir":        
             v.alertMasg("El PFP debe ser corregido.");                
         break;    

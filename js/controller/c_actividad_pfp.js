@@ -1,9 +1,10 @@
 "use strict";
 const m = new Model(), v = new View ();
-var need, userInfo, actividad="0", sedes=0, justif, idObj,  tmpObj,  limitations, tipo, 
-fileDNFP, // objeto del archivo dnfp que subió en formato pdf .
+var need, userInfo, actividad="0", sedes=0, idObj,  tmpObj,  tipo, 
 classEstratos, //Alamcena la Clase de controles checkbox con todos los estratos.
 estratos=[]; //array almacena los estratos seleccionados por elusuario.
+
+
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
@@ -26,19 +27,12 @@ function loadUserInfo() {
 function loadDataset() {
     m.loadJson("../../data/direcciones.json", function (data) { 
         loadInstances(data);
-     } );
-    m.loadJson("../../main_app/obtener_justificacion_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
-        loadJustif(data);
-     } );
-    m.loadJson("../../main_app/obtener_archivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) {
-        loadIdFile(data);
-      } );
+     });
     m.loadJson("../../main_app/obtener_objetivos_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
         loadModule(data);
-     } );
-    m.loadJson("../../main_app/obtener_limitaciones_por_instancia.php?id_instancia="+userInfo.id_instancia, function (data) { 
-        loadLimit(data);
-     } );
+        //Oculta el spinner
+        $(".div-shadow").addClass("invisible");
+     } );    
 }
 
 
@@ -83,33 +77,9 @@ function loadModule (array) {
      handlerEventObj();
 }
 
-function loadIdFile(array) {   
-    fileDNFP = array[0]; 
-   // console.log(fileDNFP.id);
-        
-}
-
-
-
-function loadJustif (array) {
-    //carga en variable la info de la justificacion asociada al pfp    
-    justif = array[0];
-    //console.log(justif);
-    //console.log(justif.id );
-
-
-}
-
-
-function loadLimit(array) {
-    
-    limitations = array[0];
-    //console.log(limitations);
-    $(".div-shadow").addClass("invisible");
-
-}
 
 function handlerEventObj () {
+    $("#alrObj").off("click");
     $("#alrObj").click(function (e) {
         e.preventDefault();
         //console.log("modal obj");
@@ -359,13 +329,9 @@ function eventSendButton() {
                alertify.error('Debe completar todos los campos.');
            }
           else {
-              console.log(userInfo.id_instancia);
-              console.log( "id_justificacion", justif.id_justificacion);
-              console.log("id_limitacion",  limitations.id_limitacion );
-              console.log("fileDNFP.id_archivo", fileDNFP.id_archivo);
-              
-              console.log(idObj);                        
-              m.uploadActivity( userInfo.id_instancia, userInfo.correo, $("#txtNombre").val(), justif.id_justificacion, limitations.id_limitacion,  idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, fileDNFP.id_archivo, reloadForm );
+              console.log("id instancia", userInfo.id_instancia);         
+              console.log("idObj", idObj);                        
+              m.uploadActivity( userInfo.id_instancia, userInfo.correo, $("#txtNombre").val(), idObj, $("#txtDuracion").val(),   JSON.stringify(m.grupos),  tipo, $("#selTipoActividad").val(),  JSON.stringify(estratos), $("#selArea").val(), $("#selModalidad").val(), $("#selEstrategia").val(), monto, reloadForm );
             }
    
 
