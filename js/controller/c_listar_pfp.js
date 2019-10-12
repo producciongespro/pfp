@@ -1,14 +1,17 @@
 "use strict";
 const m = new Model(),  v = new View();
-var userInfo, tmpDataset;
+var userInfo;
+var dataset;
+
 
 
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
-    m.loadJson("../../main_app/obtener_actividad.php?id_instancia="+ userInfo.id_instancia, function (array) { 
-        console.log("Array lista", array);        
-        loadMod()
+    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function (array) { 
+        //console.log("Array lista", array);        
+        loadMod(array);
+        $(".div-shadow").addClass("invisible");
      });
 });
 
@@ -20,16 +23,14 @@ function loadUserInfo() {
     
 }
 
-function loadMod() {    
-    tmpDataset =  m.dataSet;
-    //console.log("Cargando móduilo", tmpDataset);    
+function loadMod(array) {       
+    dataset=array;     
+    v.tablePfp($("#tablaPfp"), dataset );
     
-    $(".div-shadow").addClass("invisible");
-    //tmpDataset =  m.filterByInstance(userInfo.instancia);
-    v.tablePfp($("#tablaPfp"), tmpDataset );
+   
     eventViewDetails();
-    eventDeleteActivity(tmpDataset);
-
+    //eventDeleteActivity(tmpDataset);
+/* 
     //Habilita o deshabilita el campo enviar pfp según el estado del pfp
     //console.log(userInfo.pfpStatus);    
     v.messageStatusPfp(userInfo.pfpStatus);
@@ -42,7 +43,7 @@ function loadMod() {
         eventSendPfp();               
     };
     
-
+*/
 }
 
 
@@ -75,8 +76,8 @@ function eventViewDetails() {
         e.preventDefault();        
         let tmpId = $(this).attr("id").slice(6);        
         //console.log(tmpDataset[ tmpId ]);
-        m.setRecordinSession(tmpDataset[ tmpId ]);
-        window.location.assign("detalle_actividad.php");
+        m.setRecordinSession(dataset[ tmpId ]);
+        //window.location.assign("detalle_actividad.php");
     });
     
 }
