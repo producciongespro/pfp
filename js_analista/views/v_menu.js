@@ -57,7 +57,7 @@ View.prototype.table = function (array, visor) {
                    array[index].nombre +                   
                 "</td>" +                
                   "<td class='text-center' >" + 
-                    + 1 +
+                    + array[index].cantidad_actividades  +
                   "</td>" +
                 "<td class= 'text-center'>" + 
                       "<i  id='btnJus"+ array[index].id_justificacion +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
@@ -72,7 +72,7 @@ View.prototype.table = function (array, visor) {
                     "<i  id='btnLim"+ array[index].id_limitacion +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
                 "</td>" +
                 "<td class='text-center'>" + 
-                      array[index].fecha_envio_pfp +
+                      array[index].fecha_plan +
                 "</td>" +
                 "<td class='text-center'>" + 
                       array[index].id_estado +

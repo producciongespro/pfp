@@ -29,7 +29,7 @@ function loadUserInfo() {
 
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
-    m.loadJson("../../main_app/obtener_encabezados_activos.php", function (array) { 
+    m.loadJson("../../main_app/obtener_planes_activos.php", function (array) { 
         rebnderizarTabla(array);
      });
   
