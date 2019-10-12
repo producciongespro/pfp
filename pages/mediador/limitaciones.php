@@ -76,7 +76,10 @@
                     <i class="item-invisible fas fa-pencil-alt fa-edicion" id="btnActivarEdicion" ></i>
                     <br>
                     <hr>
-                    <input type="button"  class="btn btn-primary"  id="btnEnviarLimitaciones">
+                        <i class="fas fa-save fa-edicion" id="btnEnviarLimitaciones" ></i>
+                    <!--
+                    <input type="button"  class="btn btn-outline-info"  id="btnEnviarLimitaciones">
+                    -->
             </div>            
         </div>
        
