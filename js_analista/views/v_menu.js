@@ -19,6 +19,7 @@ View.prototype.userInfo = function (user, visor) {
  
 View.prototype.table = function (array, visor) {
     //console.log( "array en Vista tabla", array);
+    moment.locale('es'); 
  
   
   $(visor).empty();
@@ -48,6 +49,9 @@ View.prototype.table = function (array, visor) {
           for (let index = 0; index < limite; index++) {
            // console.log(index);            
           // console.log(array[index].nombre); 
+          //let fechaPlan = moment(array[index].fecha_plan).fromNow();
+          let fechaPlan = moment(array[index].fecha_plan).startOf('hour').fromNow();
+          
                        
               rowNumber++
               row = $(
@@ -60,19 +64,19 @@ View.prototype.table = function (array, visor) {
                     + array[index].cantidad_actividades  +
                   "</td>" +
                 "<td class= 'text-center'>" + 
-                      "<i  id='btnJus"+ array[index].id_justificacion +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
+                      "<i  id='btnJus"+ index +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
                 "<i   title = '"+   index  +"'   class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnfil"+  array[index].id_archivo +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
+                    "<i  id='btnfil"+  index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnLim"+ array[index].id_limitacion +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
+                    "<i  id='btnLim"+ index +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
                 "</td>" +
                 "<td class='text-center'>" + 
-                      array[index].fecha_plan +
+                     fechaPlan +
                 "</td>" +
                 "<td class='text-center'>" + 
                       array[index].id_estado +

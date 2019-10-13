@@ -4,7 +4,7 @@ INNER JOIN justificaciones ON justificaciones.id_instancia = estado_pfp.id_insta
 INNER JOIN limitaciones ON limitaciones.id_instancia = estado_pfp.id_instancia
 INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = estado_pfp.id_instancia
 INNER JOIN instancias ON instancias.id_instancia = estado_pfp.id_instancia
-WHERE  estado_pfp.id_estado != 1  ORDER BY estado_pfp.id_instancia ASC";
+WHERE  NOT estado_pfp.id_estado = 1 OR NOT estado_pfp.id_estado = 2  ORDER BY estado_pfp.id_instancia ASC";
 include "conectar.php";
 function desconectar($conexion){
 

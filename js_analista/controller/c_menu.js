@@ -1,9 +1,6 @@
 "use strict";
 const m = new Model(), v = new View();
 var  user,
-dsArchivos,  //url de archivos enviados
-dsJustif, // Array con las justificaciones
-dataset,  // dataset con todoas las actividades  enviadas por instancia.
 dataObjetivos, //arreglo de la tabla objetivos
 instancias, // Arreglo con los campos para formar la tabla.
 tmpId =  "",  //registro actual con los campos de id para cambiar el estado del archivo, justifcacion y limitaciones
@@ -29,8 +26,11 @@ function loadUserInfo() {
 
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
-    m.loadJson("../../main_app/obtener_planes_activos.php", function (array) { 
+    m.loadJson("../../main_app/obtener_planes_activos.php", function (array ) {                
         rebnderizarTabla(array);
+        //Manejadores de eventos:
+        eJust(array);
+        eLimit(array);
      });
   
 }
@@ -43,30 +43,28 @@ function rebnderizarTabla(array) {
 }
 
 
-function eJust() {
+function eJust(array) {
     //Ver jsutificaciones
     $(".fa-justif").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         //ide de la justificacion:
-        tmpId = instancias[idItem].id_just;
-
+        tmpId = array[idItem].justificacion;
         //títiulo del modal 
-        $("#spnInstancia").text(instancias[idItem].nombre );
+        $("#spnInstancia").text(array[idItem].nombre );
         //carga de la justificacion
-        $("#txtJustificacion").val(instancias[idItem].justificacion);   
+        $("#txtJustificacion").val(array[idItem].justificacion);   
         $("#mdljustificaciones").modal();
         
     });
 }
 
-function eLimit() {
+function eLimit(array) {
     $(".fa-limit").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         $("#mdllimitaciones").modal();
         //Se carga con el id de la limitacion
-        tmpId = instancias[idItem].id_lim;
-               
-        v.limitaciones( instancias[idItem].interna );       
+        //tmpId = eLimit[idItem].interna;               
+        v.limitaciones( array[idItem].interna );       
         
     });
 }

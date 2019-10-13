@@ -6,8 +6,7 @@ INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = planes.id_insta
 INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
 INNER JOIN limitaciones ON limitaciones.id_instancia =planes.id_instancia
 INNER JOIN instancias ON instancias.id_instancia =planes.id_instancia
-WHERE  planes.id_estado != 1  ORDER BY planes.id_instancia ASC";
-
+WHERE  NOT planes.id_estado = 1 OR NOT planes.id_estado = 2  ORDER BY planes.id_instancia ASC";
 
 include "conectar.php";
 function desconectar($conexion){
@@ -23,6 +22,8 @@ function desconectar($conexion){
 
     return $close;
 }
+
+//TODO hacer validacion cuando no hayan registros encontrados
 
 function obtenerArreglo($sql){
     //Creamos la conexion con la funcion anterior
@@ -43,13 +44,16 @@ function obtenerArreglo($sql){
     {
         $arreglo[$i] = $row;
         $i++;
-    }
+    }		
 
     desconectar($conexion); //desconectamos la base de datos
 
     return $arreglo; //devolvemos el array
+	
 }
 
-        $r = obtenerArreglo($sql);
-        echo json_encode($r);
+       $r = obtenerArreglo($sql);	
+       echo json_encode($r);
+	   
+		
 ?>
