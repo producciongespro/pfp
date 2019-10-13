@@ -2,7 +2,6 @@
 const m = new Model(), v = new View();
 var  user,
 dataObjetivos, //arreglo de la tabla objetivos
-instancias, // Arreglo con los campos para formar la tabla.
 tmpId =  "",  //registro actual con los campos de id para cambiar el estado del archivo, justifcacion y limitaciones
 //El id se carga cuando se abre un modal para asignarle el id que le corresponde
 tmpInstancia;
@@ -17,8 +16,7 @@ $(document).ready(function () {
     loadDataset();
 });
 
-function loadUserInfo() {     
-       
+function loadUserInfo() {  
     user = m.getSession();    
     v.userInfo(user,  $("#infoUser"));    
 }
@@ -26,13 +24,24 @@ function loadUserInfo() {
 
 function loadDataset() {
     // Primera carga de datos: el dataset de todas las actividades PFP
-    m.loadJson("../../main_app/obtener_planes_activos.php", function (array ) {                
+    m.loadJson("../../main_app/obtener_planes_activos.php", function (array ) { 
+        console.log("planes activos", array);                               
         rebnderizarTabla(array);
+        cargarObjetivos();
         //Manejadores de eventos:
         eJust(array);
         eLimit(array);
+        eFile(array);
+        handlerShowModalObjetivos();
      });
-  
+      
+}
+
+function cargarObjetivos(  ) {
+    m.loadJson("../../main_app/obtener_objetivos", function (array) { 
+        console.log("Objetivos", array);
+        dataObjetivos = array;        
+     })
 }
 
 
@@ -69,14 +78,13 @@ function eLimit(array) {
     });
 }
 
-
-function eFile() {  
+function eFile(array) {  
     
     $(".fa-file-pdf").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         //Carga el id del archivo en la tabla
-        tmpId = instancias[idItem].id_archivo;
-        v.pdf( "../"+ instancias[idItem].urlArchivo, "#mdlBodyArchivo" );
+        //tmpId = instancias[idItem].id_archivo;
+        v.pdf( "../"+ array[idItem].url, "#mdlBodyArchivo" );
         //console.log(idItem);
         
         $("#mdlarchivos_enviados").modal();
@@ -84,7 +92,6 @@ function eFile() {
     });
     
 }
-
 
 function eSendStatus() {
     //Estado de justificacion y pdf
@@ -119,7 +126,6 @@ function eViewActividades() {
     });
     
 }
-
 
 function eModalUnlock() {
    
@@ -166,18 +172,19 @@ function eCloseSession() {
 function handlerShowModalObjetivos () {
     $(".btn-objetivos").click(function (e) { 
         e.preventDefault();               
-        const instancia = this.title;            
-        console.log("Instancia",  instancia);
+        const idInstancia = this.title;
+        const nombreInstancia = this.dataset.nombre;            
+        console.log("Instancia",  nombreInstancia);
         let tmpObjetivos = []
         for (let index = 0; index < dataObjetivos.length; index++) {
-            if (dataObjetivos[index].instancia == instancia ) {
+            if (dataObjetivos[index].id_instancia == idInstancia ) {
                 tmpObjetivos.push(dataObjetivos[index]);
             }            
         }
 
 
         v.renderObjetivos(tmpObjetivos);         
-        $("#spnNombreInstancia").html(instancia);
+        $("#spnNombreInstancia").html(nombreInstancia);
         $("#mdlObjetivos").modal();
         
     });

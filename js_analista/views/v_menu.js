@@ -67,7 +67,7 @@ View.prototype.table = function (array, visor) {
                       "<i  id='btnJus"+ index +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                "<i   title = '"+   index  +"'   class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
+                "<i   title = '"+   array[index].id_instancia +"'  data-nombre='"+  array[index].nombre +"' class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
                     "<i  id='btnfil"+  index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
@@ -79,7 +79,7 @@ View.prototype.table = function (array, visor) {
                      fechaPlan +
                 "</td>" +
                 "<td class='text-center'>" + 
-                      array[index].id_estado +
+                      array[index].etiqueta_estado +
                 "</td>" +
                 "<td class='text-center' >" + 
                   "<i class='fas fa-unlock cursor-pointer' instancia='"+  array[index].id_instancia + "'  ></i>" +
