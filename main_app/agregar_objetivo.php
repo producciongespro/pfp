@@ -13,7 +13,10 @@
 	 /*update 2 en la tabla planes*/
   if ($mysqli)
   {
-  $actualizacionPlan = "UPDATE planes SET cantidad_objetivos = 1 WHERE id_instancia = $id_instancia";
+  $consulta = "SELECT * FROM `objetivos` WHERE id_instancia = $id_instancia";
+  $resultado = mysqli_query($mysqli, $consulta);
+  $cantidad_objetivos = mysqli_num_rows($resultado);
+  $actualizacionPlan = "UPDATE planes SET cantidad_objetivos = $cantidad_objetivos WHERE id_instancia = $id_instancia";
      mysqli_query($mysqli,  $actualizacionPlan  ) or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
      $json=array(1=>$mysqli->affected_rows);
     }
