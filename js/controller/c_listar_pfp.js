@@ -30,7 +30,7 @@ function loadMod(array) {
    
     eventViewDetails();
     //eventDeleteActivity(tmpDataset);
-/* 
+ 
     //Habilita o deshabilita el campo enviar pfp según el estado del pfp
     //console.log(userInfo.pfpStatus);    
     v.messageStatusPfp(userInfo.pfpStatus);
@@ -43,7 +43,7 @@ function loadMod(array) {
         eventSendPfp();               
     };
     
-*/
+
 }
 
 
@@ -89,7 +89,7 @@ function eventSendPfp() {
                 function(){
                     //envio de documento pfp
                     console.log("envio");
-                    m.sendPfp(userInfo.instancia, statusEnviado  )
+                    m.sendPfp(userInfo.id_instancia, statusEnviado );
                     
                 },
                 function(){

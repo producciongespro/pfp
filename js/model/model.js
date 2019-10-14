@@ -74,14 +74,10 @@ Model.prototype.getRecord = function (i) {
 }
 
 
-Model.prototype.sendPfp = function ( instance, mCallBack ) {
+Model.prototype.sendPfp = function ( idInstancia, mCallBack ) {
 
   var formData = new FormData();
-  formData.append("instancia", instance);
- 
-
-
-
+  formData.append("id_instancia", idInstancia);
   $.ajax({
     url: '../../main_app/actualizar_enviados.php',
     type: 'POST',
@@ -266,11 +262,7 @@ Model.prototype.uploadLimitation = function ( limInt, id_instancia,  callBack_s)
         
     }
   });
-
-
-
 }
-
 
 
 Model.prototype.uploadJustify = function (urlPath, justif, id_instancia, callBack_s) {

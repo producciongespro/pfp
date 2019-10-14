@@ -1,18 +1,19 @@
 <?php
 require 'conectar.php';
 $mysqli=conectarDB();
-$instancia =  "Curricular";
-$instancia =  utf8_decode($_POST['instancia']);
-$nuevoEstado = "Enviado";
-cambiarEstado($nuevoEstado,$instancia);
+$id_instancia =  $_POST['id_instancia'];
+$id_estado = 3;
 
-function cambiarEstado($nuevoEstado,$instancia)
+
+cambiarEstado($id_estado, $id_instancia);
+
+function cambiarEstado($id_estado, $id_instancia)
 {
-    echo "<script> console.log('$instancia')</script>";
-    echo "<script> console.log('$nuevoEstado')</script>";
+    echo "<script> console.log('$id_instancia')</script>";
+    echo "<script> console.log('$id_estado')</script>";
   	global $mysqli;
-    $stmt = $mysqli->prepare("UPDATE planes SET estado= ?, fecha_envio= NOW() WHERE instancia = ?");
-    $stmt->bind_param("ss",$nuevoEstado,$instancia);
+    $stmt = $mysqli->prepare("UPDATE planes SET id_estado = ?, fecha_plan= NOW()  WHERE id_instancia = ?");
+    $stmt->bind_param("ii", $id_estado, $id_instancia);
   	$result = $stmt->execute();
 		$stmt->close();
 		return $result;
@@ -21,5 +22,5 @@ function cambiarEstado($nuevoEstado,$instancia)
 }
     
 }
- 
+ //fecha_plan= NOW()
 ?>
