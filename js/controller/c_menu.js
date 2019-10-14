@@ -27,7 +27,7 @@ function loadDataset() {
             $("#btnJustificacion").prop("disabled", false);        
         }     
         // -- 2 - Ver Objetivos
-        if (plan.justificacion_agregado ) {        
+        if (plan.justificacion_agregado == true ) {                             
             if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
                 $("#btnObjetivos").prop("disabled", false);                      
             } 
@@ -40,13 +40,13 @@ function loadDataset() {
             } 
         }
         // -- 4 - Ver archivos    
-        if (plan.limitacion_agregado ) {
+        if (plan.limitacion_agregado == true ) {
             if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
                 $("#btnArchivoPfp").prop("disabled", false);                    
             }
         }
         // -- 5 - crear actividades pfp    
-        if (plan.archivo_agregado ) { 
+        if (plan.archivo_agregado == true ) { 
             if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
                 $("#btnActividad").prop("disabled", false);                     
             } 
@@ -100,7 +100,7 @@ function handlerBotonesMenu() {
                         window.location.href = "./justificacion.php";                                    
             break;
             case "btnObjetivos":                
-                if (plan.justificacion_agregado) {
+                if (plan.justificacion_agregado == true ) {
                     window.location.href = "./objetivos.php";
                 }
             break;
@@ -110,12 +110,12 @@ function handlerBotonesMenu() {
                 }
             break;
             case "btnArchivoPfp":            
-                    if (plan.limitacion_agregado) {
+                    if (plan.limitacion_agregado == true ) {
                         window.location.href = "./archivo_dnfp.php";                
                     }
             break;
             case "btnActividad":                
-                    if (plan.archivo_agregado) {
+                    if (plan.archivo_agregado == true ) {
                         window.location.href = "./actividad_pfp.php";
                     }
             break;
