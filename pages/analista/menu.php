@@ -32,6 +32,8 @@
     <script src="../../vendor/jquery-3.3.1/jquery-3.3.1.min.js"></script>
     <script src="../../vendor/bootstrap-4.1/js/bootstrap.min.js "></script>
     <script src="../../vendor/alertify/alertify.min.js"></script>
+    <script src="../../vendor/moment/moment.min.js"></script>
+    <script src="../../vendor/moment/moment-with-locales.min.js"></script>
     <script src="../../js/model/model.js"></script>
     <script src="../../js_analista/views/v_menu.js"></script>
     <script src="../../js_analista/controller/c_menu.js"></script>

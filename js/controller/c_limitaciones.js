@@ -28,7 +28,7 @@ function loadMod(array) {
     if (tmpRecord.length == 0) {
         console.log("vacio");
         $("#btnEnviarLimitaciones").off("click");                
-        $("#btnEnviarLimitaciones").val("Enviar Limitaciones");
+        //$("#btnEnviarLimitaciones").val("Enviar Limitaciones");
         $("#btnEnviarLimitaciones").click(function () { 
             m.uploadLimitation($("#txtInterna").val(), userInfo.id_instancia, loadDataSet );                        
         });
@@ -51,7 +51,7 @@ function loadMod(array) {
 
    //desactiva el evento clic del botón enviar para activar un evento nuevo que actualiza el registro
    $("#btnEnviarLimitaciones").off("click");        
-   $("#btnEnviarLimitaciones").val("Actualizar Limitaciones");
+   //$("#btnEnviarLimitaciones").val("Actualizar Limitaciones");
         $("#btnEnviarLimitaciones").click(function (e) { 
             e.preventDefault();
             m.updateLimitations(tmpRecord[0].id_limitacion, $("#txtInterna").val(),  loadDataSet );
