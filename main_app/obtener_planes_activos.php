@@ -6,7 +6,7 @@ INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = planes.id_insta
 INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
 INNER JOIN limitaciones ON limitaciones.id_instancia =planes.id_instancia
 INNER JOIN instancias ON instancias.id_instancia =planes.id_instancia
-WHERE  NOT planes.id_estado = 1 OR NOT planes.id_estado = 2  ORDER BY planes.id_instancia ASC";
+WHERE  NOT (planes.id_estado = 1 OR planes.id_estado = 2)  ORDER BY planes.id_instancia ASC";
 
 include "conectar.php";
 function desconectar($conexion){
@@ -16,8 +16,7 @@ function desconectar($conexion){
         if($close){
             echo '';
         }else{
-            echo 'Ha sucedido un error inexperado en la desconexion de la base de datos
-';
+            echo 'Ha sucedido un error inexperado en la desconexion de la base de datos';
         }
 
     return $close;
