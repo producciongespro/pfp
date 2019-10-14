@@ -52,7 +52,7 @@ function loadDataset() {
             } 
         }
         // -- 6 - Ver planes
-            if (plan.etiqueta_estado == "Edicion") {
+            if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado" ) {
                 $("#btnVerPfP").prop("disabled", false);                
             }            
    cargarEstado(plan.etiqueta_estado);
@@ -120,7 +120,7 @@ function handlerBotonesMenu() {
                     }
             break;
             case "btnVerPfP": 
-                if (plan.etiqueta_estado == "Edicion") {
+                if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado"  ) {
                     window.location.href = "./lista_pfp.php";
                 }                                  
             break;          
