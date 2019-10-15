@@ -120,27 +120,17 @@ Model.prototype.setSession = function ( id_instancia, instancia, nombre, apellid
     sessionStorage.setItem("pfpStatus", status);
  }
 
- Model.prototype.updateElementStatus = function (table, id,  element, value  ) { 
-
-console.log("-------------");
-
-console.log("Tabla: " + table );
-console.log("id: " + id );
-console.log("Elemento: " + element );
-console.log("Valor: " + value );
-console.log("-------------");
+ Model.prototype.actualizarCondicionElemento = function (idInstancia,  tabla, campo, condicion   ) { 
 
 
   var formData = new FormData();
-  formData.append("tabla", table);
-  formData.append("id", id);
-  formData.append("elemento", element);
-  formData.append("valor", value);
-  
-  
+  formData.append("tabla", tabla);
+  formData.append("idInstancia", idInstancia);
+  formData.append("campo", campo);
+  formData.append("condicion", condicion);  
     
   $.ajax({
-    url: '../../main_app/actualizar_estado_elemento.php',
+    url: '../../main_app/actualizar_condicion_elemento.php',
     type: 'POST',
     data: formData,
     //dataType:'json',
@@ -148,13 +138,10 @@ console.log("-------------");
     contentType: false,
     processData: false,
     beforeSend: function(){
-    console.log("En proceso");
-      
+    console.log("En proceso");      
     }, success: function(mensaje){            
-      console.log(mensaje);      
-      let tmp = "Estado actualizado a " + value;
-    
-      alertify.success(tmp );
+      console.log(mensaje);            
+      alertify.success("Condición de: " + condicion);
       //call back
     }, error: function(mError){
         console.log(mError);

@@ -72,12 +72,15 @@ function eJust(array) {
 
 function eLimit(array) {
     $(".fa-limit").off("click");
-    $(".fa-limit").click(function () { 
-        let idItem = $(this).attr("id").slice(6);
+    $(".fa-limit").click(function (e) { 
+       tmpIdInstancia = e.target.dataset.id_instancia;
+       let item = e.target.dataset.item;
+       console.log("item", item);
+       
         $("#mdllimitaciones").modal();
         //Se carga con el id de la limitacion
         //tmpId = eLimit[idItem].interna;               
-        v.limitaciones( array[idItem].interna );       
+        v.limitaciones( array[item].interna );       
         
     });
 }
@@ -102,9 +105,9 @@ function eSendStatus() {
     $(".fa-status").click(function (e) {         
         let tabla = e.target.dataset.tabla;
         let campo = e.target.dataset.campo;
-        let idEstado = e.target.dataset.id_estado;
-        console.log( "-1: Tabla", tabla, "-2: Campo", campo, "-3: Estado", idEstado  );      
-        //m.updateElementStatus(table, tmpId, field, status);
+        let condicion = e.target.dataset.condicion;
+        console.log( "-1: Tabla", tabla, "-2: Campo", campo, "-3: Condicion", condicion );      
+        m.actualizarCondicionElemento(tmpIdInstancia, tabla, campo, condicion);
         //Cierra el modal     
        $("#mdl"+tabla ).modal("hide");
     });

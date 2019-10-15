@@ -152,11 +152,11 @@
 
 
 <!-- Modal limitaciones-->
-<div class="modal fade" id="mdllimitaciones" tabindex="-1" role="dialog" aria-labelledby="lblJustificacion" aria-hidden="true">
+<div class="modal fade" id="mdllimitaciones" tabindex="-1" role="dialog" aria-labelledby="lblLimitaciones" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="lblJustificacion">  Limitaciones: </h5>
+        <h5 class="modal-title" id="lblLimitaciones">  Limitaciones: </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -169,10 +169,10 @@
       <div class="modal-footer">
       <div class="row">         
             <div class="col-6">
-            <i class="fas fa-times-circle fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-id_estado=4 ></i>
+            <i class="fas fa-times-circle fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-condicion="Rechazado" ></i>
             </div>
             <div class="col-6">
-            <i class="fas fa-check-circle  fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-id_estado=5 ></i>
+            <i class="fas fa-check-circle  fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-condicion="Aceptado" ></i>
             </div>          
         </div>
       </div>

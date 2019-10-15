@@ -73,7 +73,7 @@ View.prototype.table = function (array, visor) {
                     "<i  id='btnfil"+  index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnLim"+ index +"' class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
+                    "<i  data-id_instancia="+  array[index].id_instancia  +"   data-item="+ index +"  class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
                 "</td>" +
                 "<td class='text-center'>" + 
                      fechaPlan +
