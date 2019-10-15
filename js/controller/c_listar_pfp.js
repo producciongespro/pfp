@@ -85,16 +85,16 @@ function eventViewDetails() {
 function eventSendPfp() {
     $("#btnSendPfp").click(function (e) { 
         
-        alertify.confirm("Sistema PFP - Atención", "Una vez que envíe el documento PFP no podrá agregar más actividades ni tendrá posibilidad de editar ningún campo hasta que haya sido notificado por la asesorìa del IDP. ¿Desea enviar el documento PFP de todas formas?  ",
+        alertify.confirm (
+            "Sistema PFP - Atención", "Una vez que envíe el documento PFP no podrá agregar más actividades ni tendrá posibilidad de editar ningún campo hasta que haya sido notificado por la asesorìa del IDP. ¿Desea enviar el documento PFP de todas formas?  ",
                 function(){
                     //envio de documento pfp
                     console.log("envio");
-                    m.sendPfp(userInfo.id_instancia, statusEnviado );
-                    
+                    m.sendPfp(userInfo.id_instancia, statusEnviado );                    
                 },
                 function(){
-                    alertify.error('Cancel');
-                });
+                    console.log("Se cancela envio");                    
+                }).set('labels', {ok:'Enviar PFP', cancel:'Cancelar'});
         
     });
 }

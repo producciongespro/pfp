@@ -273,7 +273,7 @@ function reloadForm() {
   function(){
       //Cancel
       window.location.assign("menu.php");
-  });
+  }).set('labels', {ok:'Agregar otra actividad', cancel:'Volver al menú'});
 
 }
 
