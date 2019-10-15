@@ -193,10 +193,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="alert alert-success alert-unlock cursor-pointer" opt="Avalado">
+        <div class="btn-desbloquear alert alert-success alert-unlock cursor-pointer" data-idestado="5">
               <i class="far fa-arrow-alt-circle-right"></i>  PFP Avalado.
         </div>
-        <div class="alert alert-danger alert-unlock cursor-pointer" opt="Corregir" >
+        <div class="btn-desbloquear alert alert-danger alert-unlock cursor-pointer" data-idestado="4" >
               <i class="far fa-arrow-alt-circle-right"></i>  Desbloquear para corregir.
         </div>
        

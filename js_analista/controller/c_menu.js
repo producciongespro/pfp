@@ -4,15 +4,14 @@ var  user,
 dataObjetivos, //arreglo de la tabla objetivos
 tmpId =  "",  //registro actual con los campos de id para cambiar el estado del archivo, justifcacion y limitaciones
 //El id se carga cuando se abre un modal para asignarle el id que le corresponde
-tmpInstancia;
+//instancia seleccionada
+tmpIdInstancia;
 
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
     loadUserInfo();
     //evento para cerar secion:
-    eCloseSession();
-    //Evento para desbloquear el pfp
-    eSendUnlock();
+    eCloseSession();    
     loadDataset();
 });
 
@@ -33,6 +32,9 @@ function loadDataset() {
         eLimit(array);
         eFile(array);
         handlerShowModalObjetivos();
+        eModalUnlock();
+        //eSendStatus();
+        eSendUnlock();
      });
       
 }
@@ -54,6 +56,7 @@ function rebnderizarTabla(array) {
 
 function eJust(array) {
     //Ver jsutificaciones
+    $(".fa-justif").off("click");
     $(".fa-justif").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         //ide de la justificacion:
@@ -68,6 +71,7 @@ function eJust(array) {
 }
 
 function eLimit(array) {
+    $(".fa-limit").off("click");
     $(".fa-limit").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         $("#mdllimitaciones").modal();
@@ -79,7 +83,7 @@ function eLimit(array) {
 }
 
 function eFile(array) {  
-    
+    $(".fa-file-pdf").off("click");
     $(".fa-file-pdf").click(function () { 
         let idItem = $(this).attr("id").slice(6);
         //Carga el id del archivo en la tabla
@@ -95,14 +99,9 @@ function eFile(array) {
 
 function eSendStatus() {
     //Estado de justificacion y pdf
-    $(".fa-status").click(function () { 
-        let 
-        table = $(this).attr("table"),
-        field = $(this).attr("field"),
-        status = $(this).attr("status");
-
-        m.updateElementStatus(table, tmpId, field, status);
-
+    $(".fa-status").off("click");
+    $(".fa-status").click(function () {    
+      //TODO agregar actualizar estado del 
   
         //Cierra el modal 
         console.log("#mdl"+table);      
@@ -113,9 +112,9 @@ function eSendStatus() {
 }
 
 function eViewActividades() {
-
+    $(".fa-view-details").off("click");
     $(".fa-view-details").click(function () { 
-        let tmpInstancia = $(this).attr("instancia");
+        tmpIdInstancia = $(this).attr("instancia");
         
         
         //console.log(tmpInstancia);
@@ -127,11 +126,11 @@ function eViewActividades() {
     
 }
 
-function eModalUnlock() {
-   
+function eModalUnlock() {   
     //Evento del candado
+    $(".fa-unlock").off("click");
     $(".fa-unlock").click(function (e) {         
-                tmpInstancia = $(this).attr("instancia");       
+        tmpIdInstancia = e.target.dataset.id_instancia;      
                 //modal
                 $("#mdlUnlock").modal();
       
@@ -143,9 +142,10 @@ function eModalUnlock() {
 
 function eSendUnlock () {
                         //evento clic a la alerta Avalado - Corregir           
-                        $(".alert-unlock").click(function () {
-                            let opt = $(this).attr("opt");                                 
-                            m.unlockPfp(tmpInstancia, opt, loadDataset ); 
+                        $(".btn-desbloquear").off("click");
+                        $(".btn-desbloquear").click(function (e) {
+                            let idEstado = e.target.dataset.idestado;
+                            m.unlockPfp(tmpIdInstancia,idEstado,loadDataset );
                               $("#mdlUnlock").modal("hide");                             
                         });  
 }

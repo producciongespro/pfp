@@ -165,7 +165,37 @@ console.log("-------------");
   
  }
 
-
+ Model.prototype.desbloquearPfp = function (idInstancia, idEstado ) { 
+  
+    var formData = new FormData();
+    formData.append("id_instancia", idInstancia);
+    formData.append("idEstado", id_estado);
+    
+    $.ajax({
+      url: '../../main_app/desbloquear_pfp.php',
+      type: 'POST',
+      data: formData,
+      //dataType:'json',
+      cache: false,
+      contentType: false,
+      processData: false,
+      beforeSend: function(){
+      console.log("En proceso");
+        
+      }, success: function(mensaje){            
+        console.log(mensaje);      
+        let tmp = "Estado actualizado a " + value;      
+        alertify.success(tmp );
+        //call back
+      }, error: function(mError){
+          console.log(mError);
+          alertify.error('Error al intentar actualizar estado.');
+      }
+    });
+  
+    
+   }
+  
 
 
 
@@ -677,10 +707,10 @@ Model.prototype.eliminarArchivo = function (  idNombre, idValor,  callBack_s   )
   }
 
 
-Model.prototype.unlockPfp = function (  instancia, estado, callBack_s     ) { 
+Model.prototype.unlockPfp = function (  idInstancia, idEstado, callBack_s     ) { 
   var formData = new FormData();
-  formData.append("instancia", instancia);
-  formData.append("estado", estado);
+  formData.append("id_instancia", idInstancia);
+  formData.append("id_estado", idEstado);
   
     
   $.ajax({
