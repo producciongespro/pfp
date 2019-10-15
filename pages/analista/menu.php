@@ -169,10 +169,10 @@
       <div class="modal-footer">
       <div class="row">         
             <div class="col-6">
-            <i class="fas fa-times-circle fa-status" table="limitaciones"  field="e_limitaciones" status="Rechazado" ></i>
+            <i class="fas fa-times-circle fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-id_estado=4 ></i>
             </div>
             <div class="col-6">
-            <i class="fas fa-check-circle  fa-status" table="limitaciones"  field="e_limitaciones" status="Aceptado" ></i>
+            <i class="fas fa-check-circle  fa-status" data-tabla="limitaciones"  data-campo="e_limitaciones" data-id_estado=5 ></i>
             </div>          
         </div>
       </div>

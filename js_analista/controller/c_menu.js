@@ -33,7 +33,7 @@ function loadDataset() {
         eFile(array);
         handlerShowModalObjetivos();
         eModalUnlock();
-        //eSendStatus();
+        eSendStatus();
         eSendUnlock();
      });
       
@@ -98,16 +98,15 @@ function eFile(array) {
 }
 
 function eSendStatus() {
-    //Estado de justificacion y pdf
-    $(".fa-status").off("click");
-    $(".fa-status").click(function () {    
-      //TODO agregar actualizar estado del 
-  
-        //Cierra el modal 
-        console.log("#mdl"+table);      
-
-       $("#mdl"+table ).modal("hide");
-
+    //Estados aprobado o corregir de: justificacion, archivo y limitaciones
+    $(".fa-status").click(function (e) {         
+        let tabla = e.target.dataset.tabla;
+        let campo = e.target.dataset.campo;
+        let idEstado = e.target.dataset.id_estado;
+        console.log( "-1: Tabla", tabla, "-2: Campo", campo, "-3: Estado", idEstado  );      
+        //m.updateElementStatus(table, tmpId, field, status);
+        //Cierra el modal     
+       $("#mdl"+tabla ).modal("hide");
     });
 }
 
