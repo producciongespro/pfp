@@ -105,10 +105,10 @@
       <div class="modal-footer">
       <div class="row">         
             <div class="col-6">
-            <i class="fas fa-times-circle fa-status" table="justificaciones" field="e_justificaciones" status="Rechazado" ></i>
+            <i class="fas fa-times-circle fa-status" data-tabla="justificaciones" data-campo="e_justificaciones" data-condicion="Rechazado" ></i>
             </div>
             <div class="col-6">
-            <i class="fas fa-check-circle  fa-status" table="justificaciones" field="e_justificaciones" status="Aceptado" ></i>
+            <i class="fas fa-check-circle  fa-status" data-table="justificaciones" data-campo="e_justificaciones" data-condicion="Aceptado" ></i>
             </div>          
         </div>
       </div>

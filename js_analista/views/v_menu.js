@@ -64,7 +64,7 @@ View.prototype.table = function (array, visor) {
                     + array[index].cantidad_actividades  +
                   "</td>" +
                 "<td class= 'text-center'>" + 
-                      "<i  id='btnJus"+ index +"' class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
+                      "<i  id='btnJus"+ index +"'  data-id_instancia="+  array[index].id_instancia  +"   class='fas fa-book  fa-justif cursor-pointer' title='Ver la justificacion del PFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
                 "<i   title = '"+   array[index].id_instancia +"'  data-nombre='"+  array[index].nombre +"' class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
