@@ -13,7 +13,7 @@ View.prototype.userInfo = function (user, visor) {
 
 
 
-View.prototype.tablePfp = function (contTable, array) {
+View.prototype.tablePfp = function (contTable, array, status ) {
     //console.log(array);
      
     $(contTable).empty();
@@ -37,6 +37,14 @@ View.prototype.tablePfp = function (contTable, array) {
 
     for (let index = 0; index < limite; index++) {
         cont=index + 1;
+        let htmlBorrar;
+        //Validación para borrar actividades
+        if (status == "Edicion") {
+            htmlBorrar = "<td class='text-center' > <i class='far fa-trash-alt cursor-pointer fa-del-activity'   target='" + index + "'  ></i>   </td>";
+        } else {
+          htmlBorrar = "<td class='text-center' > <i class='fas fa-ban btn-forbidden' ></i>  </td>";
+        }
+
         htmlRow = $("<tr >" +
         "<th scope='row'>"+ cont +"</th>" +
         "<td>" + array[index].nombre_actividad + "</td>" +        
@@ -45,7 +53,7 @@ View.prototype.tablePfp = function (contTable, array) {
         "<td>" + array[index].modalidad + "</td>" +
         "<td class='text-center' >" + array[index].estrategia + "</td>" +
         "<td class='text-center'>" + array[index].duracion + "</td>" +              
-        "<td class='text-center' > <i class='far fa-trash-alt cursor-pointer fa-del-activity'   target='" + index + "'  ></i>   </td>" +
+        htmlBorrar + 
         "<td ><i class='far fa-eye fa-view-details cursor-pointer' id='btnVie" + index +"'  ></i>  </td>" +
       "</tr>" );
       $(htmlTBody).append(htmlRow);        

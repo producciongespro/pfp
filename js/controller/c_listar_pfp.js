@@ -25,7 +25,7 @@ function loadUserInfo() {
 
 function loadMod(array) {       
     dataset=array;     
-    v.tablePfp($("#tablaPfp"), dataset );
+    v.tablePfp($("#tablaPfp"), dataset, userInfo.pfpStatus );
     
    
     eventViewDetails();
