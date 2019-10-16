@@ -85,7 +85,7 @@ View.prototype.table = function (array, visor) {
                   "<i class='fas fa-unlock cursor-pointer' data-id_instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "<td class='text-center' >" + 
-                    "<i class='far fa-eye fa-view-details cursor-pointer ' instancia='"+  array[index].id_instancia + "'  ></i>" +
+                    "<i class='far fa-eye fa-view-details cursor-pointer ' data-id_instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "</tr>"
             );

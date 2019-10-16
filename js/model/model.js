@@ -607,8 +607,8 @@ Model.prototype.getRecordInSession = function () {
 }
 
 
-Model.prototype.setInstanciaInlocal = function ( instancia ) {  
-  sessionStorage.setItem("instancia", instancia);
+Model.prototype.setInstanciaInlocal = function ( idInstancia ) {  
+  sessionStorage.setItem("id_instancia", idInstancia);
 }
 
 

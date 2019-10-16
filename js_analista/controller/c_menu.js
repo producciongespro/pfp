@@ -35,6 +35,7 @@ function loadDataset() {
         eModalUnlock();
         handerenviarCondicionComponente();
         eSendUnlock();
+        handlerVerActividades();
      });
       
 }
@@ -115,14 +116,12 @@ function handerenviarCondicionComponente() {
     });
 }
 
-function eViewActividades() {
+function handlerVerActividades() {
     $(".fa-view-details").off("click");
-    $(".fa-view-details").click(function () { 
-        tmpIdInstancia = $(this).attr("instancia");
-        
-        
-        //console.log(tmpInstancia);
-        m.setInstanciaInlocal(tmpInstancia);
+    $(".fa-view-details").click(function (e) { 
+        tmpIdInstancia =e.target.dataset.id_instancia;    
+        console.log("tmpInstancia:", tmpIdInstancia);
+        m.setInstanciaInlocal(tmpIdInstancia);
         window.location.assign("lista_pfp.php");
         
         
