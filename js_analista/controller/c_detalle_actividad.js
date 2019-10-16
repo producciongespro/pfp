@@ -3,6 +3,7 @@ const m = new Model(), v = new View;
 var userInfo, sedes=0, record, 
 classEstratos, //Alamcena la Clase de controles checkbox con todos los estratos.
 idObj = 0,
+idActividad=0,
 estratos=[]; //array almacena los estratos seleccionados por elusuario.
 
 
@@ -28,18 +29,14 @@ function renderRegiones() {
 
 
 
-
-
-
-
-
 function loadMod() {
     //console.log("ready");
     record = m.getRecordInSession();
     console.log(record);
     
     //Agrega el id del objetivo:
-    idObj = record.id_obj;
+    idObj = record.id_objetivo;
+    idActividad =  record.id_actividad;
 
     //parse el campo sede para obtenr el Json
     sedes = JSON.parse(record.sede);
@@ -47,7 +44,7 @@ function loadMod() {
     m.cloneListGroups(sedes);
 
     //CAerga la información del usuario y la instacnia seleccionada
-    loadUserInfo(record.instancia);
+    loadUserInfo(record.nombre);
 
 
     v.renderData(record);
@@ -296,18 +293,37 @@ function renderGroupsAfterDelete(array ) {
 function eventStatusElement( ) { 
     //establece el estatus de cada elemento
     $(".fa-status").click(function () {
-        let status = $(this).attr("status"),
-        target = $(this).attr("target"),
+        let condicion = $(this).attr("status"),
+        campo = $(this).attr("target"),
         tmpId, // id del elemento a cambiar el estado
-        table; //Nombre de la tabla donde actualiza el estado
+        tabla; //Nombre de la tabla donde actualiza el estado
 
-        if (target == "e_objetivos"  ) {
-            table = "objetivos";
-            tmpId = idObj;
-        } else {
-            table = "planes";
-            tmpId =  record.id;
+      
+
+        //Carga la tabla correspondiente:
+        switch (campo) {
+            case "e_objetivos":
+                tabla = "objetivos";
+                tmpId = idObj;
+            break;
+            case "e_justificaciones":
+                tabla = "justificaciones";
+                tmpId =  userInfo.id_instancia;
+            break;
+            case "e_limitacion":
+                tabla = "limitaciones";
+                tmpId =  userInfo.id_instancia;
+            break;
+            case "e_archivo":
+                tabla = "archivos_enviados";
+                tmpId =  userInfo.id_instancia;
+            break;        
+            default:
+                    tabla = "actividades";
+                    tmpId =  idActividad;                    
+            break;
         }
+
 
         $(this).addClass("resaltado");
 /*
@@ -316,7 +332,8 @@ function eventStatusElement( ) {
         console.log(record.id);
 */
 
-        m.updateElementStatus( table, tmpId, target, status);
+        m.actualizarCondicionElemento(tmpId, tabla, campo, condicion );
+        //m.updateElementStatus( table, tmpId, target, status);
 
         
         

@@ -120,12 +120,12 @@ Model.prototype.setSession = function ( id_instancia, instancia, nombre, apellid
     sessionStorage.setItem("pfpStatus", status);
  }
 
- Model.prototype.actualizarCondicionElemento = function (idInstancia,  tabla, campo, condicion   ) { 
+ Model.prototype.actualizarCondicionElemento = function (idItem,  tabla, campo, condicion   ) { 
 
 
   var formData = new FormData();
   formData.append("tabla", tabla);
-  formData.append("idInstancia", idInstancia);
+  formData.append("idItem", idItem);
   formData.append("campo", campo);
   formData.append("condicion", condicion);  
     
