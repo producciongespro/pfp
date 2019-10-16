@@ -48,7 +48,8 @@
             <div class="row row-nav">
                 <div class="col-sm-4">
                     <div class="alert alert-primary alert-custom" role="alert">
-                        LISTA DE MIS ACTIVIDADES PFP
+                        Actividades de la instancia                         
+                        <span class="font-weight-bold" id="spnInstancia" ></span>
                     </div>
                 </div>
                 <div class="col-sm-6">
