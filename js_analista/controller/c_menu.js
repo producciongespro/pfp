@@ -33,7 +33,7 @@ function loadDataset() {
         eFile(array);
         handlerShowModalObjetivos();
         eModalUnlock();
-        eSendStatus();
+        handerenviarCondicionComponente();
         eSendUnlock();
      });
       
@@ -57,7 +57,8 @@ function rebnderizarTabla(array) {
 function eJust(array) {
     //Ver jsutificaciones
     $(".fa-justif").off("click");
-    $(".fa-justif").click(function () { 
+    $(".fa-justif").click(function (e) {
+        tmpIdInstancia = e.target.dataset.id_instancia;
         let idItem = $(this).attr("id").slice(6);
         //ide de la justificacion:
         tmpId = array[idItem].justificacion;
@@ -87,7 +88,8 @@ function eLimit(array) {
 
 function eFile(array) {  
     $(".fa-file-pdf").off("click");
-    $(".fa-file-pdf").click(function () { 
+    $(".fa-file-pdf").click(function (e) { 
+        tmpIdInstancia = e.target.dataset.id_instancia;
         let idItem = $(this).attr("id").slice(6);
         //Carga el id del archivo en la tabla
         //tmpId = instancias[idItem].id_archivo;
@@ -100,16 +102,16 @@ function eFile(array) {
     
 }
 
-function eSendStatus() {
+function handerenviarCondicionComponente() {
     //Estados aprobado o corregir de: justificacion, archivo y limitaciones
     $(".fa-status").click(function (e) {         
         let tabla = e.target.dataset.tabla;
         let campo = e.target.dataset.campo;
-        let condicion = e.target.dataset.condicion;
-        console.log( "-1: Tabla", tabla, "-2: Campo", campo, "-3: Condicion", condicion );      
+        let condicion = e.target.dataset.condicion;        
+        console.log( "-1: Tabla", tabla, "-2: Campo", campo, "-3: Condicion", condicion, "- 4: id instancia", tmpIdInstancia );      
         m.actualizarCondicionElemento(tmpIdInstancia, tabla, campo, condicion);
         //Cierra el modal     
-       $("#mdl"+tabla ).modal("hide");
+        $("#mdl"+tabla ).modal("hide");
     });
 }
 
