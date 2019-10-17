@@ -1,7 +1,7 @@
 <?php
 $id_instancia = $_GET['id_instancia'];
 include "conectar.php";
-$sql="";
+//$sql="";
 $consultaEstado = "SELECT id_estado from planes WHERE id_instancia = $id_instancia";
    //Creamos la conexion con la funcion anterior
     $conexion = conectarDB();
@@ -12,6 +12,7 @@ if (mysqli_num_rows($resultado)>0)
 			$id_estado = $fila['id_estado'];
 			}
 		if ($id_estado !== '1') {
+		$hayRechazados = consultarObjetivos($id_instancia);
 		$sql = "SELECT * from planes 
 		INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = planes.id_instancia
 		INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
@@ -20,6 +21,7 @@ if (mysqli_num_rows($resultado)>0)
 		
 		# code...
 } else {
+		$hayRechazados = 'false';
 		$sql = "SELECT * from planes  
 		INNER JOIN estados ON estados.id_estado = planes.id_estado 
 		WHERE planes.id_instancia='$id_instancia'";
@@ -48,7 +50,28 @@ function desconectar($conexion){
     return $close;
 }
 
-function obtenerArreglo($sql){
+//$arrayEstados = array();
+function consultarObjetivos($id_instancia){
+	
+	$consultarObjetivo = "SELECT * from objetivos WHERE id_instancia = $id_instancia";
+	$conexion = conectarDB();
+	$resultado=mysqli_query($conexion,$consultarObjetivo);
+	if (mysqli_num_rows($resultado)>0)
+	{
+		while ($fila = $resultado->fetch_array()) {
+			if ($fila['e_objetivos']== "Rechazado"){
+				$rechazados = 'true';
+			}
+			else{
+				$rechazados = 'false';
+			}
+			//array_push($arrayEstados, $fila['e_objetivos']);
+			}
+			return $rechazados;
+}
+}
+
+function obtenerArreglo($sql,$hayRechazados){
     //Creamos la conexion con la funcion anterior
     $conexion = conectarDB();
 
@@ -68,12 +91,12 @@ function obtenerArreglo($sql){
         $arreglo[$i] = $row;
         $i++;
     }
-
+	array_push($arreglo, $hayRechazados);
     desconectar($conexion); //desconectamos la base de datos
 
     return $arreglo; //devolvemos el array
 }
 
-        $r = obtenerArreglo($sql);
+        $r = obtenerArreglo($sql,$hayRechazados);
         echo json_encode($r);
 ?>
