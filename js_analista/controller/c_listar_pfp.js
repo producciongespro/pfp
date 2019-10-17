@@ -1,11 +1,14 @@
 "use strict";
 const m = new Model(),  v = new View();
-var userInfo, tmpDataset   ;
+var userInfo;
 
 
 $(document).ready(function () {
     loadUserInfo();
-    m.loadJson("../../main_app/obtener.php", loadMod);
+    m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+userInfo.id_instancia, function (array) { 
+        console.log("array", array);        
+        loadMod(array);
+     });
 });
 
 
@@ -15,24 +18,24 @@ function loadUserInfo() {
     
 }
 
-function loadMod() {
-    tmpDataset =  m.filterByInstance(userInfo.instancia)
-    v.tablePfp($("#tablaPfp"), tmpDataset );
-    eventViewDetails();
-
+function loadMod(array) {    
+    v.tablePfp($("#tablaPfp"), array );
+    // Carga el nombre de la instancia en la GUI:
+    $("#spnInstancia").html(array[0].nombre );
+    eventViewDetails(array);
 }
 
 
 
 
-function eventViewDetails() {
+function eventViewDetails(array) {
     //Manjeadores de eventos
     $(".fa-view-details").click(function (e) { 
         e.preventDefault();        
         let tmpId = $(this).attr("id").slice(6);        
         //console.log(tmpDataset[ tmpId ]);
-        m.setRecordinSession(tmpDataset[ tmpId ]);
-        window.location.assign("detalle_actividad.php");
+        m.setRecordinSession(array[ tmpId ]);
+       window.location.assign("detalle_actividad.php");
     });
     
 }

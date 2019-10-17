@@ -39,7 +39,7 @@ View.prototype.tablePfp = function (contTable, array) {
         cont=index + 1;
         htmlRow = $("<tr >" +
         "<th scope='row'>"+ cont +"</th>" +
-        "<td>" + array[index].nombre + "</td>" +        
+        "<td>" + array[index].nombre_actividad + "</td>" +        
         "<td>" + array[index].tipo + "</td>" +
         "<td>" + array[index].area + "</td>" +
         "<td>" + array[index].modalidad + "</td>" +

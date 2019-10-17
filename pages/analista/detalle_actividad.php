@@ -328,10 +328,10 @@
                                 <br>
                                         <div class="row">         
                                                         <div class="col-6">
-                                                        <i class="fas fa-times-circle fa-status" target="e_tActividad" status="Rechazado" ></i>
+                                                        <i class="fas fa-times-circle fa-status" target="e_tipo_actividad" status="Rechazado" ></i>
                                                         </div>
                                                         <div class="col-6">
-                                                        <i class="fas fa-check-circle  fa-status" target="e_tActividad" status="Aprobado" ></i>
+                                                        <i class="fas fa-check-circle  fa-status" target="e_tipo_actividad" status="Aprobado" ></i>
                                                         </div>          
                                                 </div>
                         </div>

@@ -21,7 +21,7 @@ View.prototype.renderData = function ( record  ) {
     $("#alrObj").text(record.objetivo );
     $("#alrNeed").text(record.necesidad );
     $("#selTipo").val(record.tipo);
-    $("#txtNombre").val(record.nombre_actividad );
+    $("#txtNombre_actividad").val(record.nombre_actividad );
     $("#selArea").val(record.area);
     $("#selEstrato").val(record.estrato );
 

@@ -70,7 +70,7 @@ View.prototype.table = function (array, visor) {
                 "<i   title = '"+   array[index].id_instancia +"'  data-nombre='"+  array[index].nombre +"' class='fas fa-flag-checkered cursor-pointer btn-objetivos' ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
-                    "<i  id='btnfil"+  index +"' class='far fa-file-pdf cursor-pointer'  title='Ver el documento DNFP'  ></i>" +
+                    "<i  id='btnfil"+  index +"' class='far fa-file-pdf cursor-pointer' data-id_instancia="+  array[index].id_instancia  +"  title='Ver el documento DNFP'  ></i>" +
                 "</td>" +
                 "<td class= 'text-center'>" + 
                     "<i  data-id_instancia="+  array[index].id_instancia  +"   data-item="+ index +"  class='fas fa-exclamation-circle  fa-limit cursor-pointer'  title='Ver las limitaciones'  ></i>" +
@@ -85,7 +85,7 @@ View.prototype.table = function (array, visor) {
                   "<i class='fas fa-unlock cursor-pointer' data-id_instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "<td class='text-center' >" + 
-                    "<i class='far fa-eye fa-view-details cursor-pointer ' instancia='"+  array[index].id_instancia + "'  ></i>" +
+                    "<i class='far fa-eye fa-view-details cursor-pointer ' data-id_instancia='"+  array[index].id_instancia + "'  ></i>" +
                 "</td>" +
                 "</tr>"
             );

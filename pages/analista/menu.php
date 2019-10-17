@@ -108,7 +108,7 @@
             <i class="fas fa-times-circle fa-status" data-tabla="justificaciones" data-campo="e_justificaciones" data-condicion="Rechazado" ></i>
             </div>
             <div class="col-6">
-            <i class="fas fa-check-circle  fa-status" data-table="justificaciones" data-campo="e_justificaciones" data-condicion="Aceptado" ></i>
+            <i class="fas fa-check-circle  fa-status" data-tabla="justificaciones" data-campo="e_justificaciones" data-condicion="Aceptado" ></i>
             </div>          
         </div>
       </div>
@@ -135,10 +135,10 @@
       <div class="modal-footer">
       <div class="row">         
             <div class="col-6">
-            <i class="fas fa-times-circle fa-status" table="archivos_enviados"  field="e_archivo" status="Rechazado" ></i>
+            <i class="fas fa-times-circle fa-status"  data-tabla="archivos_enviados"  data-campo="e_archivo" data-condicion="Rechazado" ></i>
             </div>
             <div class="col-6">
-            <i class="fas fa-check-circle  fa-status" table="archivos_enviados"  field="e_archivo" status="Aceptado" ></i>
+            <i class="fas fa-check-circle  fa-status"  data-tabla="archivos_enviados"  data-campo="e_archivo" data-condicion="Aceptado" ></i>
             </div>          
         </div>
 

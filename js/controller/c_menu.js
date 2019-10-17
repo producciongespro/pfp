@@ -2,6 +2,7 @@
 const m = new Model(), v = new View();
 var plan;
 var user;
+var objetivoRechazado;
 
 
 $(document).ready(function () {
@@ -17,44 +18,74 @@ $(document).ready(function () {
 function loadDataset() {
 
     m.loadJson("../../main_app/obtener_plan.php?id_instancia="+user.id_instancia, function (array) {         
-        plan =  array[0];   
+        plan =  array[0];
+        objetivoRechazado = array[1];
+        console.log("objetivoRechazado", objetivoRechazado);
+        
         //Deermina el estado pfp muestra la notificación y activa los botones                
         console.log("Plan PFP", plan);      
         //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");          
         //Habilitar botones del menú:               
-        // -- 1 - Ver planes
+        // ******** Ver planes en estado vacío:
         if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion"  ) {
-            $("#btnJustificacion").prop("disabled", false);        
-        }     
-        // -- 2 - Ver Objetivos
-        if (plan.justificacion_agregado == true ) {                             
-            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnObjetivos").prop("disabled", false);                      
-            } 
+            // - Ver justificacion
+            $("#btnJustificacion").prop("disabled", false);
+            
+               // -- 2 - Ver Objetivos
+                if (plan.justificacion_agregado == true ) {                                         
+                        $("#btnObjetivos").prop("disabled", false);                                  
+                }
+                // -- 3 - Ver Limitaciones
+                if (plan.cantidad_objetivos > 0 ) {                            
+                        $("#btnLimitaciones").prop("disabled", false);                                        
+                }
+                // -- 4 - Ver archivos    
+                if (plan.limitacion_agregado == true ) {                    
+                        $("#btnArchivoPfp").prop("disabled", false);                                        
+                }
+                // -- 5 - crear actividades pfp    
+                if (plan.archivo_agregado == true ) {         
+                        $("#btnActividad").prop("disabled", false);                                         
+                }             
         }
-        // -- 3 - Ver Limitaciones
-        if (plan.cantidad_objetivos > 0 ) {        
-            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
-                $("#btnLimitaciones").prop("disabled", false);
-               
-            } 
-        }
-        // -- 4 - Ver archivos    
-        if (plan.limitacion_agregado == true ) {
-            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
-                $("#btnArchivoPfp").prop("disabled", false);                    
-            }
-        }
-        // -- 5 - crear actividades pfp    
-        if (plan.archivo_agregado == true ) { 
-            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnActividad").prop("disabled", false);                     
-            } 
-        }
-        // -- 6 - Ver planes
-            if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado" ) {
+        // -- 6 - Ver planes: Se habilita solo si estado es diferente de vacio. Es decir, si tiene al menos una actividad
+        if (plan.etiqueta_estado != "Vacio" ) {
                 $("#btnVerPfP").prop("disabled", false);                
-            }            
+        }
+        
+        // ******* Botones en estado CORREGIR *********************
+        if (plan.etiqueta_estado == "Corregir") {
+            // 1 - Justificación:
+            if (plan.e_justificaciones == "Rechazado") {
+                console.log("justificacion rechazado");                
+                let tmpBoton = $("#btnJustificacion");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                
+            }
+            // 2 - Objetivos:
+            if (objetivoRechazado == "true") {                
+                console.log("objetivo rechazado");                
+                let tmpBoton = $("#btnObjetivos");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );  
+            }
+             // 3 - Limitaciones:
+            if (plan.e_limitaciones == "Rechazado") {
+                console.log("Limitaciones rechazado");                
+                let tmpBoton = $("#btnLimitaciones");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                  
+            }
+            // 4 - Archivo PDF:
+             if (plan.e_archivo == "Rechazado") {                
+                console.log("Archivo rechazado");                
+                let tmpBoton = $("#btnArchivoPfp");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                    
+            }
+            
+                         
+        }                     
    cargarEstado(plan.etiqueta_estado);
    handlerBotonesMenu();
 });
@@ -88,7 +119,6 @@ function cargarEstado (estado) {
 }
 
 
-
 function handlerBotonesMenu() {
     
     $(".btn-menu").click(function (e) { 
@@ -120,7 +150,7 @@ function handlerBotonesMenu() {
                     }
             break;
             case "btnVerPfP": 
-                if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado"  ) {
+                if (plan.etiqueta_estado != "Vacio"  ) {
                     window.location.href = "./lista_pfp.php";
                 }                                  
             break;          

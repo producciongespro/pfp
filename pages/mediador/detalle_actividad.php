@@ -122,12 +122,12 @@
        <div class="row">
            <div class="col-10">
                 <div class="form-group">
-                        <label for="txtNombre"><strong>4 -</strong> Nombre de la actividad de capacitación:</label> 
-                        <input type="text"   class="form-control form-selector " id="txtNombre"  >
+                        <label for="txtNombre_actividad"><strong>4 -</strong> Nombre de la actividad de capacitación:</label> 
+                        <input type="text"   class="form-control form-selector " id="txtNombre_actividad"  >
                     </div>
            </div>
            <div class="col-2">                       
-            <i class="far fa-save  btn-edit-activity item-hide item-edit-inactivo"  edit="false" field="nombre"  id="btntxtNombre" ></i>
+            <i class="far fa-save  btn-edit-activity item-hide item-edit-inactivo"  edit="false" field="Nombre_actividad"  id="btntxtNombre_actividad" ></i>
            </div>
        </div>
 

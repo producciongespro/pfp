@@ -120,12 +120,12 @@ Model.prototype.setSession = function ( id_instancia, instancia, nombre, apellid
     sessionStorage.setItem("pfpStatus", status);
  }
 
- Model.prototype.actualizarCondicionElemento = function (idInstancia,  tabla, campo, condicion   ) { 
+ Model.prototype.actualizarCondicionElemento = function (idItem,  tabla, campo, condicion   ) { 
 
 
   var formData = new FormData();
   formData.append("tabla", tabla);
-  formData.append("idInstancia", idInstancia);
+  formData.append("idItem", idItem);
   formData.append("campo", campo);
   formData.append("condicion", condicion);  
     
@@ -607,8 +607,8 @@ Model.prototype.getRecordInSession = function () {
 }
 
 
-Model.prototype.setInstanciaInlocal = function ( instancia ) {  
-  sessionStorage.setItem("instancia", instancia);
+Model.prototype.setInstanciaInlocal = function ( idInstancia ) {  
+  sessionStorage.setItem("id_instancia", idInstancia);
 }
 
 
@@ -621,7 +621,7 @@ console.log("Valor de campo " + valor);
 
   
   var formData = new FormData();
-  formData.append("id", id);
+  formData.append("id_actividad", id);
   formData.append("elemento", campo);
   if (tipoDato=="json") { 
     console.log(" Json recibido");      
@@ -634,7 +634,7 @@ console.log("Valor de campo " + valor);
   
     
   $.ajax({
-    url: '../../main_app/actualizar_elemento.php',
+    url: '../../main_app/actualizar_elemento_actividad.php',
     type: 'POST',
     data: formData,
     //dataType:'json',
