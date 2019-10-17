@@ -2,6 +2,7 @@
 const m = new Model(), v = new View();
 var plan;
 var user;
+var objetivoRechazado;
 
 
 $(document).ready(function () {
@@ -17,7 +18,10 @@ $(document).ready(function () {
 function loadDataset() {
 
     m.loadJson("../../main_app/obtener_plan.php?id_instancia="+user.id_instancia, function (array) {         
-        plan =  array[0];   
+        plan =  array[0];
+        objetivoRechazado = array[1];
+        console.log("objetivoRechazado", objetivoRechazado);
+        
         //Deermina el estado pfp muestra la notificación y activa los botones                
         console.log("Plan PFP", plan);      
         //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");          

@@ -16,7 +16,8 @@ if (mysqli_num_rows($resultado)>0)
 		$sql = "SELECT * from planes 
 		INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = planes.id_instancia
 		INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
-		INNER JOIN limitaciones ON limitaciones.id_instancia =planes.id_instancia
+		INNER JOIN limitaciones ON limitaciones.id_instancia = planes.id_instancia
+		INNER JOIN estados ON estados.id_estado = planes.id_estado
 		WHERE planes.id_instancia='$id_instancia'";
 		
 		# code...
