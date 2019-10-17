@@ -26,39 +26,54 @@ function loadDataset() {
         console.log("Plan PFP", plan);      
         //console.log("------------ Valor del estado: ", plan.id_estado, plan.etiqueta_estado,  "-----------------");          
         //Habilitar botones del menú:               
-        // -- 1 - Ver planes
+        // ******** Ver planes en estado vacío:
         if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion"  ) {
-            $("#btnJustificacion").prop("disabled", false);        
-        }     
-        // -- 2 - Ver Objetivos
-        if (plan.justificacion_agregado == true ) {                             
-            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnObjetivos").prop("disabled", false);                      
-            } 
-        }
-        // -- 3 - Ver Limitaciones
-        if (plan.cantidad_objetivos > 0 ) {        
-            if ( plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
-                $("#btnLimitaciones").prop("disabled", false);
-               
-            } 
-        }
-        // -- 4 - Ver archivos    
-        if (plan.limitacion_agregado == true ) {
-            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado=="Edicion") {
-                $("#btnArchivoPfp").prop("disabled", false);                    
-            }
-        }
-        // -- 5 - crear actividades pfp    
-        if (plan.archivo_agregado == true ) { 
-            if (plan.etiqueta_estado == "Vacio" || plan.etiqueta_estado == "Edicion") {
-                $("#btnActividad").prop("disabled", false);                     
-            } 
+            // - Ver justificacion
+            $("#btnJustificacion").prop("disabled", false);
+            
+               // -- 2 - Ver Objetivos
+                if (plan.justificacion_agregado == true ) {                                         
+                        $("#btnObjetivos").prop("disabled", false);                                  
+                }
+                // -- 3 - Ver Limitaciones
+                if (plan.cantidad_objetivos > 0 ) {                            
+                        $("#btnLimitaciones").prop("disabled", false);                                        
+                }
+                // -- 4 - Ver archivos    
+                if (plan.limitacion_agregado == true ) {                    
+                        $("#btnArchivoPfp").prop("disabled", false);                                        
+                }
+                // -- 5 - crear actividades pfp    
+                if (plan.archivo_agregado == true ) {         
+                        $("#btnActividad").prop("disabled", false);                                         
+                }             
         }
         // -- 6 - Ver planes
-            if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado" ) {
+        if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado" ) {
                 $("#btnVerPfP").prop("disabled", false);                
-            }            
+        }
+        
+        // ******* Botones en estado CORREGIR *********************
+        if (plan.etiqueta_estado == "Corregir") {
+            // 1 - Justificación:
+            if (plan.e_justificaciones == "Rechazado") {
+                $("#btnJustificacion").prop("disabled", false);
+            }
+            // 2 - Objetivos:
+            if (objetivoRechazado == "true") {
+                $("#btnObjetivos").prop("disabled", false);
+            }
+             // 3 - Limitaciones:
+            if (plan.e_limitaciones == "Rechazado") {
+                $("#btnLimitaciones").prop("disabled", false);
+            }
+            // 4 - Archivo PDF:
+             if (plan.e_archivo == "Rechazado") {
+                $("#btnArchivoPfp").prop("disabled", false);
+            }
+            
+                         
+        }                     
    cargarEstado(plan.etiqueta_estado);
    handlerBotonesMenu();
 });
