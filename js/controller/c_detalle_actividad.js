@@ -89,28 +89,18 @@ function loadEstratos() {
 
 
 function enabledDiskFloppy() {
-
-    console.log(record);
-    
-
-   console.log("Estado del PFP: " + userInfo.pfpStatus);
-   
- 
+    //console.log(record);   
+    console.log("Estado del PFP: " + userInfo.pfpStatus); 
    //Si el estado es edicicón puede editar todos los campos
     if (userInfo.pfpStatus =="Edicion") {
         $(".btn-edit-activity").removeClass("item-hide");
-        $(".btn-edit-activity-json").removeClass("item-hide");
-        
+        $(".btn-edit-activity-json").removeClass("item-hide");        
     };
 
     //Habilita diskette dependiendo del estado e_elemento
-    if (userInfo.pfpStatus == "Corregir") {
-        
-        
-        
-      
+    if (userInfo.pfpStatus == "Corregir") {             
                     if (record.e_nombre == "Rechazado" ) {
-                        $("#btntxtNombre").removeClass("item-hide");
+                        $("#btntxtNombre_actividad").removeClass("item-hide");
                     };
                     if (record.e_duracion == "Rechazado" ) {
                         $("#btntxtDuracion").removeClass("item-hide");
@@ -140,6 +130,7 @@ function enabledDiskFloppy() {
                         $("#btnnmbCosto").removeClass("item-hide");
                     };
 
+                    //TODO: Este método queda inhabilitado hasta que se carge el json con todos los objetivos
                     let objetivoRechazado = sessionStorage.getItem("objetivoRechazado");
                     console.log(objetivoRechazado);
                     if (objetivoRechazado=="true") {
@@ -205,20 +196,20 @@ function eventoCambioSelect() {
 function eventosEdicion() {
 
     //evento para los campos de tipo texto: select y text
-    $(".btn-edit-activity").click(function () { 
+    $(".btn-edit-activity").click(function () {
         let edit = $(this).prop("edit");       
         if (edit) {
-            let opc = $(this).attr("id").slice(3),
+            let 
+            opc = $(this).attr("id").slice(3),
             idSelect = $(this).attr("id"),
-            nameField = $(this).attr("field");
-            //Se carga el control select
-            opc = "#"+opc;        
-            console.log("Update");
+            nombreCampo = $(this).attr("field");           
+             //Se carga el valor del control 
+              opc = "#"+opc;
+            console.log("opcion", opc  );
             
-         
-              
-            //Se realiza la actualizacion del dato
-            m.updateFieldActivity(record.id, nameField, opc, "string", function () { 
+            //console.log("*****Update", record);              
+            //Se realiza la actualizacion del dato                       
+            m.updateFieldActivity(record.id_actividad, nombreCampo, opc, "string", function () { 
                     //Se desactiva el botón de disket 
                     //DEsde el callback del ajax update
                                 
@@ -228,6 +219,7 @@ function eventosEdicion() {
                     
                     
              });
+            
         }
     });
 

@@ -621,7 +621,7 @@ console.log("Valor de campo " + valor);
 
   
   var formData = new FormData();
-  formData.append("id", id);
+  formData.append("id_actividad", id);
   formData.append("elemento", campo);
   if (tipoDato=="json") { 
     console.log(" Json recibido");      
@@ -634,7 +634,7 @@ console.log("Valor de campo " + valor);
   
     
   $.ajax({
-    url: '../../main_app/actualizar_elemento.php',
+    url: '../../main_app/actualizar_elemento_actividad.php',
     type: 'POST',
     data: formData,
     //dataType:'json',
