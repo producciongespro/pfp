@@ -5,6 +5,7 @@ include "conectar.php";
 $consultaEstado = "SELECT id_estado from planes WHERE id_instancia = $id_instancia";
    //Creamos la conexion con la funcion anterior
     $conexion = conectarDB();
+	$rechazados = 'false';
   $resultado=mysqli_query($conexion,$consultaEstado);
 if (mysqli_num_rows($resultado)>0)
 	{
@@ -62,12 +63,8 @@ function consultarObjetivos($id_instancia){
 		while ($fila = $resultado->fetch_array()) {
 			if ($fila['e_objetivos']== "Rechazado"){
 				$rechazados = 'true';
-			}
-			else{
-				$rechazados = 'false';
-			}
-			//array_push($arrayEstados, $fila['e_objetivos']);
-			}
+			}					
+	}
 			return $rechazados;
 }
 }

@@ -48,8 +48,8 @@ function loadDataset() {
                         $("#btnActividad").prop("disabled", false);                                         
                 }             
         }
-        // -- 6 - Ver planes
-        if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado" ) {
+        // -- 6 - Ver planes: Se habilita solo si estado es diferente de vacio. Es decir, si tiene al menos una actividad
+        if (plan.etiqueta_estado != "Vacio" ) {
                 $("#btnVerPfP").prop("disabled", false);                
         }
         
@@ -57,19 +57,31 @@ function loadDataset() {
         if (plan.etiqueta_estado == "Corregir") {
             // 1 - Justificación:
             if (plan.e_justificaciones == "Rechazado") {
-                $("#btnJustificacion").prop("disabled", false);
+                console.log("justificacion rechazado");                
+                let tmpBoton = $("#btnJustificacion");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                
             }
             // 2 - Objetivos:
-            if (objetivoRechazado == "true") {
-                $("#btnObjetivos").prop("disabled", false);
+            if (objetivoRechazado == "true") {                
+                console.log("objetivo rechazado");                
+                let tmpBoton = $("#btnObjetivos");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );  
             }
              // 3 - Limitaciones:
             if (plan.e_limitaciones == "Rechazado") {
-                $("#btnLimitaciones").prop("disabled", false);
+                console.log("Limitaciones rechazado");                
+                let tmpBoton = $("#btnLimitaciones");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                  
             }
             // 4 - Archivo PDF:
-             if (plan.e_archivo == "Rechazado") {
-                $("#btnArchivoPfp").prop("disabled", false);
+             if (plan.e_archivo == "Rechazado") {                
+                console.log("Archivo rechazado");                
+                let tmpBoton = $("#btnArchivoPfp");
+                $(tmpBoton).prop("disabled", false);               
+                $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                    
             }
             
                          
@@ -107,7 +119,6 @@ function cargarEstado (estado) {
 }
 
 
-
 function handlerBotonesMenu() {
     
     $(".btn-menu").click(function (e) { 
@@ -139,7 +150,7 @@ function handlerBotonesMenu() {
                     }
             break;
             case "btnVerPfP": 
-                if (plan.etiqueta_estado == "Edicion" || plan.etiqueta_estado == "Enviado"  ) {
+                if (plan.etiqueta_estado != "Vacio"  ) {
                     window.location.href = "./lista_pfp.php";
                 }                                  
             break;          
