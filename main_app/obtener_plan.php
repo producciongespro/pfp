@@ -1,19 +1,39 @@
 <?php
 $id_instancia = $_GET['id_instancia'];
-
-/*  TODO pregutna para oscar?????
-$sql = "SELECT * from planes 
-INNER JOIN archivos_enviados ON archivos_enviados.id_archivo =planes.id_archivo 
-INNER JOIN justificaciones ON justificaciones.id_justificacion = planes.id_justificacion
-INNER JOIN limitaciones ON limitaciones.id_limitacion =planes.id_limitacion
-WHERE planes.id_instancia='$id_instancia'";
-*/
-
-$sql = "SELECT * from planes  
-INNER JOIN estados ON estados.id_estado = planes.id_estado 
-WHERE planes.id_instancia='$id_instancia'";
-
 include "conectar.php";
+$sql="";
+$consultaEstado = "SELECT id_estado from planes WHERE id_instancia = $id_instancia";
+   //Creamos la conexion con la funcion anterior
+    $conexion = conectarDB();
+  $resultado=mysqli_query($conexion,$consultaEstado);
+if (mysqli_num_rows($resultado)>0)
+	{
+		while ($fila = $resultado->fetch_array()) {
+			$id_estado = $fila['id_estado'];
+			}
+		if ($id_estado !== '1') {
+		$sql = "SELECT * from planes 
+		INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = planes.id_instancia
+		INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
+		INNER JOIN limitaciones ON limitaciones.id_instancia =planes.id_instancia
+		WHERE planes.id_instancia='$id_instancia'";
+		
+		# code...
+} else {
+		$sql = "SELECT * from planes  
+		INNER JOIN estados ON estados.id_estado = planes.id_estado 
+		WHERE planes.id_instancia='$id_instancia'";
+	
+	}
+	} else {
+			
+	}
+$close = mysqli_close($conexion);
+
+
+
+
+
 function desconectar($conexion){
 
     $close = mysqli_close($conexion);
