@@ -292,8 +292,10 @@ function renderGroupsAfterDelete(array ) {
 
 function eventStatusElement( ) { 
     //establece el estatus de cada elemento
+    $(".fa-status").off("click");
     $(".fa-status").click(function () {
-        let condicion = $(this).attr("status"),
+        let 
+        condicion = $(this).attr("status"),
         campo = $(this).attr("target"),
         tmpId, // id del elemento a cambiar el estado
         tabla; //Nombre de la tabla donde actualiza el estado
@@ -326,19 +328,12 @@ function eventStatusElement( ) {
 
 
         $(this).addClass("resaltado");
-/*
-        console.log(status);
-        console.log(target);
-        console.log(record.id);
-*/
 
-        m.actualizarCondicionElemento(tmpId, tabla, campo, condicion );
-        //m.updateElementStatus( table, tmpId, target, status);
-
-        
-        
-        
-        
+        console.log("condicion", condicion);
+        console.log("campo", campo);
+        console.log("tmpId", tmpId);
+        console.log("tabla", tabla);      
+        m.actualizarCondicionElemento(tmpId, tabla, campo, condicion );              
     });
 }
 
