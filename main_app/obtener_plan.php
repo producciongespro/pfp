@@ -19,15 +19,16 @@ if (mysqli_num_rows($resultado)>0)
 		INNER JOIN justificaciones ON justificaciones.id_instancia = planes.id_instancia
 		INNER JOIN limitaciones ON limitaciones.id_instancia = planes.id_instancia
 		INNER JOIN estados ON estados.id_estado = planes.id_estado
-		WHERE planes.id_instancia='$id_instancia'";
+		WHERE planes.id_instancia='$id_instancia'
+		ORDER BY planes.id_plan";
 		
 		# code...
 } else {
 		$hayRechazados = 'false';
 		$sql = "SELECT * from planes  
 		INNER JOIN estados ON estados.id_estado = planes.id_estado 
-		WHERE planes.id_instancia='$id_instancia'";
-	
+		WHERE planes.id_instancia='$id_instancia'
+		ORDER BY planes.id_plan";	
 	}
 	} else {
 			

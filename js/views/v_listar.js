@@ -39,8 +39,8 @@ View.prototype.tablePfp = function (contTable, array, status ) {
         cont=index + 1;
         let htmlBorrar;
         //Validación para borrar actividades
-        if (status == "Edicion") {
-            htmlBorrar = "<td class='text-center' > <i class='far fa-trash-alt cursor-pointer fa-del-activity'   target='" + index + "'  ></i>   </td>";
+        if (status == "Edicion" || status == "Eliminar" ) {
+            htmlBorrar = "<td class='text-center' > <i class='far fa-trash-alt cursor-pointer fa-del-activity'   data-item='" + array[index].id_actividad + "'  ></i>   </td>";
         } else {
           htmlBorrar = "<td class='text-center' > <i class='fas fa-ban btn-forbidden' ></i>  </td>";
         }
@@ -76,7 +76,7 @@ switch (status) {
       $("#divWarningSendPfp").empty();
       $("#divWarningSendPfp").html("<strong> Atención:  </strong> Una vez que envia el documento PFP ya no podrá agregar más actividades ni editarlas.");
   break;
-  case "Corregir": 
+  case "Corregir", "Agregar", "Eliminar": 
       $("#btnSendPfp").fadeIn();
       $("#divWarningSendPfp").empty();
       $("#divWarningSendPfp").html("<strong> Atención:  Envío de documento para revisión </strong> El documento se enviará con los cambios realizados. Una vez que se envíe ya no podrá realizar más cambios");

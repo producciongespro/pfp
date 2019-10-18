@@ -199,6 +199,12 @@
         <div class="btn-desbloquear alert alert-danger alert-unlock cursor-pointer" data-idestado="4" >
               <i class="far fa-arrow-alt-circle-right"></i>  Desbloquear para corregir.
         </div>
+        <div class="btn-desbloquear alert alert-warning alert-unlock cursor-pointer" data-idestado="6" >
+              <i class="far fa-arrow-alt-circle-right"></i>  Desbloquear para eliminar actividades.
+        </div>
+        <div class="btn-desbloquear alert alert-info alert-unlock cursor-pointer" data-idestado="7" >
+              <i class="far fa-arrow-alt-circle-right"></i>  Desbloquear para agregar actividades.
+        </div>
        
       </div>
       <div class="modal-footer">

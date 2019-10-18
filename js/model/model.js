@@ -376,6 +376,32 @@ Model.prototype.eliminarRegistro = function (idNombre, idValor  , tabla, mCallBa
     });
 
   }
+ 
+Model.prototype.eliminarActividad = function (idActividad, mCallBack )  {
+
+  var formData = new FormData();
+  formData.append("idActividad", idActividad);  
+
+  $.ajax({
+    url: "../../main_app/eliminar_actividad.php",
+    type: 'POST',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+      console.log(response);
+      alertify.success('Actividad eliminada satisfactoriamente');
+      mCallBack();
+    },
+    error: function (response) {
+      console.log(response);
+      alertify.error('Error al intentar eliminar registro');
+      }
+  });
+
+}
+
 
 
 
@@ -447,11 +473,11 @@ Model.prototype.closeSession = function () {
   window.location.assign("main_app/destroy_session.php");
   }
 
-  Model.prototype.updateObjNeed = function (id, need, obj, mCallBack  ) { 
+  Model.prototype.updateObjNeed = function (id, necesidad, objetivo, mCallBack  ) { 
     var formData = new FormData();
     formData.append("id_objetivo", id);
-    formData.append("campo1", obj );
-    formData.append("campo2", need );
+    formData.append("objetivo", objetivo );
+    formData.append("necesidad", necesidad );
 
 
     $.ajax({

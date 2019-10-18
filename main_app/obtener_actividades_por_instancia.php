@@ -6,7 +6,8 @@ INNER JOIN limitaciones ON limitaciones.id_instancia = actividades.id_instancia
 INNER JOIN archivos_enviados ON archivos_enviados.id_instancia = actividades.id_instancia 
 INNER JOIN instancias ON instancias.id_instancia = actividades.id_instancia
 INNER JOIN objetivos ON objetivos.id_objetivo = actividades.id_objetivo
-WHERE actividades.id_instancia = $id_instancia"; 
+WHERE actividades.id_instancia = $id_instancia
+ORDER BY actividades.id_actividad";
 
 
 

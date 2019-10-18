@@ -45,9 +45,16 @@ function loadDataset() {
                 }
                 // -- 5 - crear actividades pfp    
                 if (plan.archivo_agregado == true ) {         
-                        $("#btnActividad").prop("disabled", false);                                         
-                }             
-        }
+                    $("#btnActividad").prop("disabled", false);                                         
+                }                                   
+        }           
+
+        //5 Agregar actividades cuando se ha enviado pfp: (Se habilita si el estado es Agregar) 
+              if (plan.etiqueta_estado == "Agregar") {
+                $("#btnActividad").prop("disabled", false);  
+            }
+       
+
         // -- 6 - Ver planes: Se habilita solo si estado es diferente de vacio. Es decir, si tiene al menos una actividad
         if (plan.etiqueta_estado != "Vacio" ) {
                 $("#btnVerPfP").prop("disabled", false);                
@@ -82,9 +89,7 @@ function loadDataset() {
                 let tmpBoton = $("#btnArchivoPfp");
                 $(tmpBoton).prop("disabled", false);               
                 $(tmpBoton).html(  $(tmpBoton).text( ) +" "+ "&#9971;" );                    
-            }
-            
-                         
+            }                           
         }                     
    cargarEstado(plan.etiqueta_estado);
    handlerBotonesMenu();
@@ -108,7 +113,13 @@ function cargarEstado (estado) {
         break;
         case "Corregir":        
             v.alertMasg("El PFP debe ser corregido.");                
-        break;    
+        break;
+        case "Eliminar":        
+            v.alertMasg("Desbloqueado para eliminar actividades");                
+        break;
+        case "Agregar":        
+            v.alertMasg("Desbloqueado para agregar actividades");                
+        break;      
         default:
             console.log("Opciòn fuera de rango");            
         break;
@@ -145,7 +156,7 @@ function handlerBotonesMenu() {
                     }
             break;
             case "btnActividad":                
-                    if (plan.archivo_agregado == true ) {
+                    if (plan.archivo_agregado == true  || plan.etiqueta_estado == "Agregar" ) {
                         window.location.href = "./actividad_pfp.php";
                     }
             break;
