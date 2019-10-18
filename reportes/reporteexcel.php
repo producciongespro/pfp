@@ -130,7 +130,7 @@
 				'type'		=> PHPExcel_Style_Fill::FILL_GRADIENT_LINEAR,
 				'rotation'   => 90,
         		'startcolor' => array(
-            		'rgb' => 'c47cf2'
+            		'rgb' => 'CCE5FF'
         		),
         		'endcolor'   => array(
             		'argb' => 'FF431a5d'
@@ -167,7 +167,7 @@
            	),
            	'fill' 	=> array(
 				'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-				'color'		=> array('argb' => 'FFd9b7f4')
+				'color'		=> array('argb' => 'CCE5FF')
 			),
            	'borders' => array(
                	'left'     => array(

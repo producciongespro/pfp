@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 
 function loadDataset() {
-            $.getJSON("../obtener.php", 
+            $.getJSON("../obtener_actividad.php", 
             function (data, textStatus, jqXHR) {
                 dataset = data;
                 loadMod();
@@ -31,10 +31,11 @@ function filtrarInstancia() {
     console.log( "Instancia seleccionada: " +  instanciaSeleccionada);
     //Si encuentra una concidencia agrega el objeto en el vector actividades
     for (let index = 0; index < limiteDataSet; index++) {
-        //console.log(dataset[index].instancia);          
-            if (dataset[index].instancia  ==  instanciaSeleccionada) {
+        console.log(dataset[index].nombre);   
+        console.log(instanciaSeleccionada);        
+            if (dataset[index].nombre  ==  instanciaSeleccionada) {
                 //Segundo filtro: solo paasa instacioas con estados PFP = enviado
-                if (dataset[index].estado == "Enviado"  ||  dataset[index].estado == "Avalado"   ) {
+                if (dataset[index].id_estado == "3"  ||  dataset[index].id_estado == "5"   ) {
                     //console.log("Instancia Encontrada");   
                     actividades.push(dataset[index]);
                 }                
@@ -82,7 +83,7 @@ function renderTablaSedes(stringRecord) {
             "<th scope='col'>Sede Regional</th>" +
             "<th scope='col'>Inicio</th>" +
             "<th scope='col'>Fin</th>" +
-            "<th scope='col'> Grupos </th>" +
+            "<th scope='col'> Participantes </th>" +
           "</tr>" +
         "</thead>" +
         "</table>"    
@@ -104,7 +105,7 @@ function renderTablaSedes(stringRecord) {
                     "</td>" +
                     "</td>" +
                     "<td>" + 
-                        tmpListaSedes[index].grupos +
+                        tmpListaSedes[index].cantParticipantes +
                     "</td>" +           
                   "</tr>"
               );
@@ -128,8 +129,7 @@ function renderHtml(instanciaSeleccionada, array) {
         " <div>"),
     htmlContainer = $("<div class='container'> "+
     "<strong> Justificación:  </strong>" +  array[0].justificacion  + "</br>" +
-    "<strong> Limitación interna:  </strong>" +  array[0].interna  + "</br>" +
-    "<strong> Limitación externa:  </strong>" +  array[0].externa  + "</br>" +
+    "<strong> Limitaciones:  </strong>" +  array[0].interna  + "</br>" +
     " </div>");
 
 

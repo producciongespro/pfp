@@ -1,14 +1,11 @@
 <?php
-// $sql = "SELECT * FROM planes";
 $sql = "SELECT * from actividades 
 INNER JOIN objetivos ON objetivos.id_objetivo =actividades.id_objetivo 
 INNER JOIN justificaciones ON justificaciones.id_instancia = actividades.id_instancia 
 INNER JOIN limitaciones ON limitaciones.id_instancia =actividades.id_instancia  
 INNER JOIN planes ON planes.id_instancia = actividades.id_instancia 
 INNER JOIN instancias ON instancias.id_instancia = actividades.id_instancia
-WHERE planes.id_estado = '5' 
-ORDER BY planes.id_instancia";
-
+ORDER BY planes.id_plan";
 include "conectar.php";
 function desconectar($conexion){
 
