@@ -5,7 +5,7 @@ include "conectar.php";
 $consultaEstado = "SELECT id_estado from planes WHERE id_instancia = $id_instancia";
    //Creamos la conexion con la funcion anterior
     $conexion = conectarDB();
-	$rechazados = 'false';
+	
   $resultado=mysqli_query($conexion,$consultaEstado);
 if (mysqli_num_rows($resultado)>0)
 	{
@@ -54,7 +54,7 @@ function desconectar($conexion){
 
 //$arrayEstados = array();
 function consultarObjetivos($id_instancia){
-	
+	$rechazados = 'false';
 	$consultarObjetivo = "SELECT * from objetivos WHERE id_instancia = $id_instancia";
 	$conexion = conectarDB();
 	$resultado=mysqli_query($conexion,$consultarObjetivo);
