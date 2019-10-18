@@ -44,13 +44,13 @@
 <?php
 	include("../login/funcs/conexion.php");
 	$conectar = conectarDB();
-	$strConsulta = "SELECT * from planes WHERE estado = 'avalado'";
+	$strConsulta = "SELECT * from planes INNER JOIN instancias ON planes.id_instancia=instancias.id_instancia WHERE planes.id_estado = 5";
 	$instanciasConPlanes = $conectar->query($strConsulta);
 	$numlista = 0;
   $instanciasAEscribir=array();
   foreach ($instanciasConPlanes as $fila) {
   // if (!in_array(utf8_encode($fila['instancia']), $instanciasAEscribir)) {
-    array_push($instanciasAEscribir,utf8_encode($fila['instancia']));
+    array_push($instanciasAEscribir,utf8_encode($fila['nombre']));
     // echo "<script>console.log('$instanciasAEscribir[$numlista]')</script>";
   // }
 }
