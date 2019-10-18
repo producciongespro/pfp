@@ -83,7 +83,7 @@ function renderTablaSedes(stringRecord) {
             "<th scope='col'>Sede Regional</th>" +
             "<th scope='col'>Inicio</th>" +
             "<th scope='col'>Fin</th>" +
-            "<th scope='col'> Grupos </th>" +
+            "<th scope='col'> Participantes </th>" +
           "</tr>" +
         "</thead>" +
         "</table>"    
@@ -105,7 +105,7 @@ function renderTablaSedes(stringRecord) {
                     "</td>" +
                     "</td>" +
                     "<td>" + 
-                        tmpListaSedes[index].grupos +
+                        tmpListaSedes[index].cantParticipantes +
                     "</td>" +           
                   "</tr>"
               );

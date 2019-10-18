@@ -6,14 +6,15 @@ var arrayTemp = [];
 var instancias = [];
 var justificaciones = [];
 var internas = [];
-var externas = [];
+// var externas = [];
 var arrayTemp = [];
 for (var i = 0; i < data.length; i++) {
-    if (!instancias.includes((data[i].instancia))) {
-    instancias.push(data[i].instancia);
+  console.log(data[i].nombre);
+    if (!instancias.includes((data[i].nombre))) {
+    instancias.push(data[i].nombre);
     justificaciones.push(data[i].justificacion);
     internas.push(data[i].interna);
-    externas.push(data[i].externa);
+    // externas.push(data[i].externa);
   }
 }
 
@@ -24,7 +25,7 @@ for (var p = 0; p < instancias.length; p++) {
 var cual = instancias[p];
 var justificacion = justificaciones[p];
 var interna = internas[p];
-var externa = externas[p];
+// var externa = externas[p];
 console.log(cual);
 var table = [];
 var cuantas = 0;
@@ -36,12 +37,11 @@ var necesidad = [];
   $("#page-content").append("<b>Institución: </b>Ministerio de Educación Pública - "+cual+"<br>");
   $("#page-content").append("<b>Justificación: </b>"+justificacion+"<br>");
   $("#page-content").append("<b>Limitación interna: </b>"+interna+"<br>");
-  $("#page-content").append("<b>Limitación externa: </b>"+externa+"<br>");
-for (var i = 0; i < data.length; i++) {
-  if ((data[i].instancia)==cual) {
+  for (var i = 0; i < data.length; i++) {
+  if ((data[i].nombre)==cual) {
     consecutivo = i + 1;
     $("#page-content").append("<h2>Actividad: "+consecutivo+"</h2>");
-    $("#page-content").append("<b>A. Nombre general de la actividad: </b>"+data[i].nombre+"<br>");
+    $("#page-content").append("<b>A. Nombre general de la actividad: </b>"+data[i].nombre_actividad+"<br>");
     $("#page-content").append("<b>B. Necesidad: </b>"+data[i].necesidad+"<br>");
     $("#page-content").append("<b>C. Objetivo estratégico: </b>"+data[i].objetivo+"<br>");
     $("#page-content").append("<b>D. Área estratégica de formación permanente: </b>"+data[i].area+"<br>");
@@ -97,7 +97,7 @@ function renderTablaSedes(stringRecord) {
             "<th scope='col'>Sede Regional</th>" +
             "<th scope='col'>Inicio</th>" +
             "<th scope='col'>Fin</th>" +
-            "<th scope='col'> Grupos </th>" +
+            "<th scope='col'> Participantes </th>" +
           "</tr>" +
         "</thead>" +
         "</table>"
@@ -119,7 +119,7 @@ function renderTablaSedes(stringRecord) {
                     "</td>" +
                     "</td>" +
                     "<td>" +
-                        tmpListaSedes[index].grupos +
+                        tmpListaSedes[index].cantParticipantes +
                     "</td>" +
                   "</tr>"
               );
