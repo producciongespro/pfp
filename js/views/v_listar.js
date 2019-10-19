@@ -78,7 +78,9 @@ switch (status) {
       $("#divWarningSendPfp").empty();
       $("#divWarningSendPfp").html("<strong> Atención:  </strong> Una vez que envia el documento PFP ya no podrá agregar más actividades ni editarlas.");
   break;
-  case "Corregir", "Agregar", "Eliminar": 
+  case "Corregir": 
+  case "Agregar": 
+  case "Eliminar": 
       $("#btnSendPfp").fadeIn();
       $("#divWarningSendPfp").empty();
       $("#divWarningSendPfp").html("<strong> Atención:  Envío de documento para revisión </strong> El documento se enviará con los cambios realizados. Una vez que se envíe ya no podrá realizar más cambios");

@@ -64,7 +64,7 @@ function handlerEliminarActividad() {
                     console.log("idActividad", idActividad);                    
                     m.eliminarActividad(idActividad, function () {  
                          //Recarga el json y el módulo una vez eliminado el registro de la actividad                         
-                         cargarDataset(function (array) { 
+                         cargarDataset(function (array) {                            
                             loadMod(array)
                          });
                          alertify.success('Actividad eliminada satisfactoriamente');     
