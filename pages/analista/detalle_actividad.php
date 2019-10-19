@@ -155,7 +155,7 @@
                     </div>
            </div>
            <div class="col-1">                       
-            <i class="far fa-save  btn-edit-activity item-edit-inactivo"  edit="false" field="nombre"  id="btntxtNombre" ></i>
+            <i class="far fa-save  btn-edit-activity item-edit-inactivo"  edit="false" field="nombre_actividad"  id="btntxtNombre" ></i>
            </div>
 
            <div class="col-3">

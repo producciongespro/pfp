@@ -125,7 +125,7 @@ console.log(estratos);
     //Evento para guardar los estratos:
     $("#btnselEstrato").click(function (e) { 
         e.preventDefault();
-        m.updateFieldActivity(record.id, "estrato", JSON.stringify(estratos), "json", function () { 
+        m.updateFieldActivity(record.id_actividad, "estrato", JSON.stringify(estratos), "json", function () { 
             console.log("actualizado");
             $("#btnselEstrato").off("click");
 
@@ -148,7 +148,8 @@ function eventoActualizarSedeGruposDB() {
         let edit = $(this).prop("edit"); 
         //JSON.stringify( m.getListGroups())
             if (edit) {
-                m.updateFieldActivity(record.id, "sede", JSON.stringify( m.getListGroups()), "json",  function () {
+                
+                m.updateFieldActivity(record.id_actividad, "sede", JSON.stringify( m.getListGroups()), "json",  function () {
                     //callback del metodo update en el campo Sede
                     
                     $("#btnJsonGrupos").removeClass("item-edit-activo");
@@ -177,19 +178,22 @@ function eventosEdicion() {
     $(".btn-edit-activity").click(function () { 
         let edit = $(this).prop("edit");       
         if (edit) {
-            let opc = $(this).attr("id").slice(3),
+            let 
+            opc = $(this).attr("id").slice(3),
             idSelect = $(this).attr("id"),
-            nameField = $(this).attr("field");
+            nombreCampo = $(this).attr("field");
             //Se carga el control select
             opc = "#"+opc; 
 
         
 
-            console.log(opc);
-            console.log(nameField);
+            console.log("opc", opc);
+            console.log("nombreCampo", nombreCampo );
+            console.log("record.id_actividad", record.id_actividad);
+            
               
             //Se realiza la actualizacion del dato
-            m.updateFieldActivity(record.id, nameField, opc, "string", function () { 
+            m.updateFieldActivity(record.id_actividad, nombreCampo, opc, "string", function () { 
                     //Se desactiva el botón de disket 
                     //DEsde el callback del ajax update
                                 
