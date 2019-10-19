@@ -265,7 +265,7 @@ function eventosEdicion() {
 
               //Si edit es es vardadero active la edicion
               if (edit) {
-                    m.updateFieldActivity(record.id, field, stringJson, "json", function () { 
+                    m.updateFieldActivity(record.id_actividad, field, stringJson, "json", function () { 
                     //Se desactiva el botón de disket 
                     //DEsde el callback del ajax update
                                 
