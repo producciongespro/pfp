@@ -391,8 +391,7 @@ Model.prototype.eliminarActividad = function (idActividad, mCallBack )  {
     processData: false,
     success: function (response) {
       console.log(response);
-      alertify.success('Actividad eliminada satisfactoriamente');
-      mCallBack();
+      mCallBack();      
     },
     error: function (response) {
       console.log(response);

@@ -45,6 +45,7 @@ function loadApp(array) {
         //Se habilita la funcionalidad para enviar la justificación:
         $("#btnEnviar").slideDown(1000);
             //Evento clic del botón enviar
+            $("#btnEnviar").off("click");
             $("#btnEnviar").click(function () {
                 if ($("#txtJustificacion").val() == "") {
                     alertify
@@ -77,12 +78,15 @@ function prepareUpdate(dataSet) {
 
 
     //Activa evento de edición
+    $("#btnActivarEdicion").off("click");
     $("#btnActivarEdicion").click(function (e) {
         //Se habilita la caja de texto
         document.getElementById("txtJustificacion").readOnly=false;
         //Se muestra el botón actualizar
+        
+        //Evento para el botón "actualizar" 
         $("#btnActualizarJustif").slideDown();
-        //Evento para el botón "actualizar"        
+        $("#btnActualizarJustif").off("click");       
             $("#btnActualizarJustif").click(function () { 
                 //Actualización del campo
                 

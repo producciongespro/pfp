@@ -6,14 +6,16 @@ var dataset;
 
 
 $(document).ready(function () {
-    $(".div-shadow").removeClass("invisible");
-    loadUserInfo();
-    cargarDataset();
+    $(".div-shadow").removeClass("invisible");    
+    cargarDataset(function (array) { 
+        loadMod(array)
+     });
 });
 
-function cargarDataset() {
+function cargarDataset(loadMod) {
+    loadUserInfo();
     m.loadJson("../../main_app/obtener_actividades_por_instancia.php?id_instancia="+ userInfo.id_instancia, function (array) { 
-        console.log("Array lista", array);        
+        console.log("**********Array json *********");        
         loadMod(array);
         $(".div-shadow").addClass("invisible");
      });
@@ -22,16 +24,16 @@ function cargarDataset() {
 
 function loadUserInfo() {
     userInfo =  m.getSession();
-    //console.log(userInfo);    
+    console.log("userInfo", userInfo); 
     v.userInfo(userInfo, $("#infoUser"));
     
 }
 
 function loadMod(array) {       
-    dataset=array;     
-    v.tablePfp($("#tablaPfp"), dataset, userInfo.pfpStatus );
-    
-   
+    dataset=array;
+    console.log("datasetd", dataset);
+         
+    v.tablePfp($("#tablaPfp"), dataset, userInfo.pfpStatus );  
     eventViewDetails();
     handlerEliminarActividad()
  
@@ -61,8 +63,11 @@ function handlerEliminarActividad() {
                     //Eliminar actividad:                   
                     console.log("idActividad", idActividad);                    
                     m.eliminarActividad(idActividad, function () {  
-                         //Recarga el json y el módulo una vez eliminado el registro de la actividad
-                         cargarDataset();
+                         //Recarga el json y el módulo una vez eliminado el registro de la actividad                         
+                         cargarDataset(function (array) { 
+                            loadMod(array)
+                         });
+                         alertify.success('Actividad eliminada satisfactoriamente');     
                     })                   
                 },
                 function(){
@@ -95,7 +100,12 @@ function eventSendPfp() {
                 function(){
                     //envio de documento pfp
                     console.log("envio");
-                    m.sendPfp(userInfo.id_instancia, statusEnviado );                    
+                    m.sendPfp(userInfo.id_instancia, function () {                         
+                        cargarDataset(function (array) {
+                            statusEnviado(); 
+                            loadMod(array)
+                         });
+                     });                    
                 },
                 function(){
                     console.log("Se cancela envio");                    
@@ -108,6 +118,7 @@ function eventSendPfp() {
 function statusEnviado() {
     //guarda en sesión el status de pfp enviado
     m.setStatus("Enviado");
+    userInfo.pfpStatus = "Enviado";
     //Oculta el botón  enviar pfp
     v.messageStatusPfp("Enviado");
     

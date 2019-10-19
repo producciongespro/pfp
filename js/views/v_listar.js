@@ -15,6 +15,8 @@ View.prototype.userInfo = function (user, visor) {
 
 View.prototype.tablePfp = function (contTable, array, status ) {
     //console.log(array);
+    console.log("status de sde vista tabla:", status);
+    
      
     $(contTable).empty();
     var cont, htmlRow, htmlTBody = $("<tbody></tbody>"), 
