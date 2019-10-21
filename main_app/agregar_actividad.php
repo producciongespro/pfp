@@ -25,9 +25,11 @@
 	  /*update 2 en la tabla planes*/
   if ($mysqli)
   {
-  $actualizacionPlan = 
-			"UPDATE planes SET cantidad_actividades = 1 WHERE id_instancia = $id_instancia"; 			
-     mysqli_query($mysqli,  $actualizacionPlan  ) or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
+    $consulta = "SELECT * FROM `actividades` WHERE id_instancia = $id_instancia";
+    $resultado = mysqli_query($mysqli, $consulta);
+    $cantidad_actividades = mysqli_num_rows($resultado);
+    $actualizacionPlan = "UPDATE planes SET cantidad_actividades = $cantidad_actividades WHERE id_instancia = $id_instancia";
+    mysqli_query($mysqli,  $actualizacionPlan  ) or die ("Problemas al añadir elementos a la BD".mysqli_error($mysqli));
 
 	 //TODO: Eliminar esta seguna consulta
 $actualizacionPlan = 

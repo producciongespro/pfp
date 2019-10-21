@@ -139,7 +139,7 @@ function renderHtml(instanciaSeleccionada, array) {
         consecutivo=index + 1;
         $(htmlContainer).append(  "<hr>" );    
         $(htmlContainer).append(  "<h3> <strong> Actividad " +  consecutivo  + "</h3>" ); 
-        $(htmlContainer).append(  "<p> <strong> a. Nombre general de la actividad:  </strong> " +  array[index].nombre  + "</p>" ); 
+        $(htmlContainer).append(  "<p> <strong> a. Nombre general de la actividad:  </strong> " +  array[index].nombre_actividad  + "</p>" ); 
         $(htmlContainer).append(  "<p> <strong> b. Necesidad:  </strong> " +  array[index].necesidad  + "</p>" ); 
         $(htmlContainer).append(  "<p> <strong> c. Objetivo estratégico:  </strong> " +  array[index].objetivo  + "</p>" ); 
         $(htmlContainer).append(  "<p> <strong> d. Área estratégica de formación permanente:  </strong> " +  array[index].area  + "</p>" ); 
