@@ -187,7 +187,18 @@ function handlerEvents() {
             //alertify.error('Cancel');
         });
         
-    });    
+    });
+    //Btn Ayuda 
+    $("#btnAyuda").click(function (e) { 
+        window.location.assign("./ayuda.php");
+    });
+
+    //Btn modal de "acerca de"
+    $("#btnAcercaDe").click(function (e) { 
+        e.preventDefault();
+        $("#modalAcercaDe").modal();
+    });
+    
 }
 
 function loadUserInfo() {    
