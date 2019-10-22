@@ -145,11 +145,12 @@ View.prototype.renderEstreetegia = function ( ) {
       $("#selEstrategia").empty();
       var htmlOptions = $(
         "<option class='estrategia-no-presencial'  disabled selected >Seleccione una estretegia</option>" +
-        "<option>Presencial</option>" +
-        "<option class='estrategia-no-presencial'>Virtual</option>" +
-        "<option class='estrategia-no-presencial'>A distancia</option>" +
-        "<option class='estrategia-no-presencial' >Mixta (presencial/virtual)  </option>" +
-        "<option class='estrategia-no-presencial' >Mixta (presencial/a distancia)  </option>"
+        '<option>Presencial</option>' + 
+        '<option class="estrategia-no-presencial">No presencial: A distancia</option>' + 
+        '<option class="estrategia-no-presencial">No presencial: Autoformación</option>' +
+        '<option class="estrategia-no-presencial">No presencial: Virtual</option>' +                                                 
+        '<option class="estrategia-no-presencial" >Mixta (presencial/virtual)  </option>' + 
+        '<option class="estrategia-no-presencial" >Mixta (presencial/a distancia)  </option>'
       );
       $("#selEstrategia").append(htmlOptions);
 
