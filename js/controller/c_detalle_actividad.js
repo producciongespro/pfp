@@ -154,7 +154,9 @@ function eModalEstrato() {
             $("#modalEst").modal();
             $("#btnGuardarEstratos").click(function (e) { 
                 $("#modalEst").modal("hide");
-                $("#btnselEstrato").prop("edit", true );
+                $("#btnselEstrato").prop("edit", true );                
+                $("#btnselEstrato").removeClass("item-edit-inactivo");
+                $("#btnselEstrato").addClass("item-edit-activo");
             });
     });
 
