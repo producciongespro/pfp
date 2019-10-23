@@ -1,6 +1,7 @@
 <?php
-$instancia = $_GET['instancia'];
-$sql = "SELECT * FROM actividades WHERE instancia = '$instancia' ORDER BY instancia";
+$sql = "SELECT * FROM actividades 
+INNER JOIN instancias ON instancias.id_instancia = actividades.id_instancia
+ORDER BY actividades.id_actividad";
 include "conectar.php";
 function desconectar($conexion){
 

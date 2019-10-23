@@ -191,12 +191,11 @@
                                         <label for="selEstrategia"><strong>8 -</strong> Estrategia metodológica:</label>
                                         <select class="form-control form-selector" id="selEstrategia">
                                                 <option>Presencial</option>
-                                                <option class="estrategia-no-presencial">No presencial Autoformación</option>
-                                                <option class="estrategia-no-presencial">No presencial Virtual</option>
-                                                <option class="estrategia-no-presencial">A distancia</option>
-                                                <option class="estrategia-no-presencial">Mixta (presencial/virtual)  </option>
-                                                <option class="estrategia-no-presencial">Mixta (presencial/a distancia)  </option>
-                                                
+                                                <option class="estrategia-no-presencial">No presencial: A distancia</option>
+                                                <option class="estrategia-no-presencial">No presencial: Autoformación</option>
+                                                <option class="estrategia-no-presencial">No presencial: Virtual</option>                                                
+                                                <option class="estrategia-no-presencial" >Mixta (presencial/virtual)  </option>
+                                                <option class="estrategia-no-presencial" >Mixta (presencial/a distancia)  </option>
                                         </select>
                                 </div>                            
                         </div>
