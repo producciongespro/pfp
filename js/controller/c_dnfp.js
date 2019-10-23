@@ -1,6 +1,7 @@
 "use strict";
 const m = new Model(), v = new View;
 var userInfo, tmpRecord;
+var estadoArchivo = null;
 $(document).ready(function () {
     loadUserInfo();
     loadDataset();
@@ -30,10 +31,12 @@ function loadMod(array) {
     //si el registro está vacío habilite la funcionalidad para publicar 
     //Realiza un insert en la BD
     if (tmpRecord == undefined) {
+        estadoArchivo=null;
         eventUploadFile();
     } else {
         console.log("lleno");     
         v.fileField("#colFile", tmpRecord );
+        estadoArchivo="enviado";
         eventDeleteFile();
     }    
 }
@@ -45,7 +48,9 @@ function eventDeleteFile() {
         alertify.confirm("Sistema PFP", "¿Realmente desea eliminar el archivo?"  ,
   function(){
     console.log("eliminando archivo", tmpRecord.id_archivo);
-    m.eliminarArchivo ("id_archivo", tmpRecord.id_archivo, renderFieldUpload  );    
+    estadoArchivo = "eliminado";
+    //m.eliminarArchivo ("id_archivo", tmpRecord.id_archivo, renderFieldUpload  );
+    renderFieldUpload();
   },
   function(){
     console.log("cancel");    
@@ -68,10 +73,17 @@ function eventUploadFile() {
         $("#btnEnviar").prop("disabled", false ); 
         $("#btnEnviar").slideDown();       
     }); 
-    
+    $("#btnEnviar").off("click");
     $("#btnEnviar").click(function (e) { 
-        e.preventDefault();        
-        m.uploadFile(userInfo.id_instancia, $("#inputGroupFile01"), loadDataset  );       
+        e.preventDefault();
+        if (estadoArchivo == null) {
+            console.log("enviar archivo"); 
+            m.uploadFile(userInfo.id_instancia, $("#inputGroupFile01"), loadDataset  );           
+        } else {
+            console.log("actualizar archivo");
+            m.actualizarArchivo(userInfo.id_instancia, $("#inputGroupFile01"), loadDataset );
+        }        
+        
       
     });
 }
