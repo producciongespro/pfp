@@ -60,9 +60,8 @@ function handlerEliminarActividad() {
         e.preventDefault();
         alertify.confirm("Sistema PFP", "¿Desea eliminar la actividad?",
                 function(){
-                    //Eliminar actividad:                   
-                    console.log("idActividad", idActividad);                    
-                    m.eliminarActividad(idActividad, function () {  
+                    //Eliminar actividad:                                                       
+                    m.eliminarActividad(idActividad, userInfo.id_instancia, function () {  
                          //Recarga el json y el módulo una vez eliminado el registro de la actividad                         
                          cargarDataset(function (array) {                            
                             loadMod(array)

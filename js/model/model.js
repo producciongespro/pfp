@@ -377,10 +377,14 @@ Model.prototype.eliminarRegistro = function (idNombre, idValor  , tabla, mCallBa
 
   }
  
-Model.prototype.eliminarActividad = function (idActividad, mCallBack )  {
+Model.prototype.eliminarActividad = function (idActividad, idInstancia, mCallBack )  {
+
+  console.log("eliminar actividad", idActividad, idInstancia);
+  
 
   var formData = new FormData();
   formData.append("idActividad", idActividad);  
+  formData.append("idInstancia", idInstancia); 
 
   $.ajax({
     url: "../../main_app/eliminar_actividad.php",
