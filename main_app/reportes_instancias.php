@@ -34,11 +34,26 @@
 
 <body>
 <div id="content">
-<center>
-<h1>Planes de formación por instancia</h1>
-<a href='../reportes/index.html'> <img src="../img/volver.png" alt="">  </a>
-
-</center>
+<div class="row row-nav">
+        <div class="col-sm-4">
+            <div class="alert alert-primary alert-custom" role="alert">
+                PLANES DE FORMACIÓN AVALADOS POR INSTANCIA
+            </div>
+        </div>
+        <div class="col-sm-6">
+                <div class="alert alert-primary alert-custom" id="infoUser" role="alert">
+                   
+                </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="alert alert-secondary alert-custom" role="alert">
+                <a href='../reportes'>
+                        VOLVER
+                </a>
+            </div>
+        </div>
+  
+      </div>
 <hr />
 
 <?php
