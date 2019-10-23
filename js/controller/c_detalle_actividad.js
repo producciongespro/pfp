@@ -49,7 +49,7 @@ function loadMod() {
 
 
     v.renderData(record);
-    v.table("#colTableGroupos", m.getListGroups());
+    v.table("#colTableGroupos", m.getListGroups(), userInfo.pfpStatus, record.e_sede );
     eventDeleteGroup();
     loadEstratos();
     eModalEstrato();
@@ -291,10 +291,11 @@ function closeModal() {
 
 
 function eventAddGroup() {
+    //Botón para agregar sedes
     $("#btnAgregarGrupo").click(function () {
         // console.log($("#nmbGrupos").val());       
          if ($("#nmbGrupos").val() != "" ) {
-             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(), $("#nmbCantidadParticipantes").val()   )  );
+             v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(), $("#nmbCantidadParticipantes").val()   ), userInfo.pfpStatus, record.e_sede   );
              //limpia los campos del sub formulario
              $("#selRegional").val("");
              $("#selMesIni").val("");
@@ -344,7 +345,7 @@ function eventDeleteGroup() {
 
 
 function renderGroupsAfterDelete(array ) {
-    v.table( "#colTableGroupos", array);
+    v.table( "#colTableGroupos", array, userInfo.pfpStatus, record.e_sede );
     eventDeleteGroup();
 
 }

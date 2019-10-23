@@ -51,8 +51,11 @@ View.prototype.renderData = function ( record  ) {
       }
 
        
-View.prototype.table = function (visor, array ) {
+View.prototype.table = function (visor, array, estadoPfp, estadoSede ) {
  
+  console.log("******estadoPfp en vista", estadoPfp );
+  console.log("******estadoSede en vista", estadoSede );
+  
   
   $(visor).empty();
   var limite = array.length,
@@ -72,7 +75,19 @@ View.prototype.table = function (visor, array ) {
     "</table>"    
   ), tBody = $("<tbody></tbody>");
 
-          for (let index = 0; index < limite; index++) {              
+          for (let index = 0; index < limite; index++) {
+            
+            let htmlBorrar;              
+            if (estadoPfp == "Edicion"  ) {
+              htmlBorrar = "<i id='faiDel"+ index +"'  target='"+ index +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>";  
+            } else {
+                if (estadoPfp == "Corregir"  &&  estadoSede == "Rechazado" ) {                  
+                  htmlBorrar = "<i id='faiDel"+ index +"'  target='"+ index +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>";  
+                } else {
+                  htmlBorrar = "<i class='fas fa-ban btn-forbidden' ></i>";
+                }              
+            }
+            
             let rowNumb = index + 1,
             row = $(
               "<tr>" +
@@ -91,10 +106,9 @@ View.prototype.table = function (visor, array ) {
                 "</td>" +
                 "<td class='text-center'>" + 
                    array[index].cantParticipantes +
-              "</td>" +
-                
+              "</td>" +                
               "<td>" +                       
-                    "<i id='faiDel"+ index +"'  target='"+ index +"'   class='far fa-trash-alt fa-btn-obj btn-del'></i>" +   
+                    htmlBorrar +
               "</td>" +
               "</tr>"
           );
