@@ -575,10 +575,6 @@ Model.prototype.uploadFile = function (  id_instancia, objFile, callBack_s) {
       var formData = new FormData();   
       formData.append("id_instancia", id_instancia);
       formData.append("archivo",  objFile[0].files[0]);
-     
-      
-    
-    
       $.ajax({
         url: '../../main_app/agregar_archivo.php',
         type: 'POST',
@@ -588,8 +584,7 @@ Model.prototype.uploadFile = function (  id_instancia, objFile, callBack_s) {
         contentType: false,
         processData: false,
         beforeSend: function(){
-        console.log("En proceso");
-          
+        console.log("En proceso");          
         }, success: function(mensaje){
                   alertify
                     .alert("Sistema PFP", "Archivo enviado satisfactoriamente.", function(){
@@ -598,14 +593,40 @@ Model.prototype.uploadFile = function (  id_instancia, objFile, callBack_s) {
           console.log(mensaje);
           callBack_s();
         }, error: function(mError){
-            console.log(mError);
-            
+            console.log(mError);            
         }
-      });
-    
-    
-    
+      });      
+}
+
+
+Model.prototype.actualizarArchivo = function (  id_instancia, objFile, callBack_s) {
+   
+  var formData = new FormData();   
+  formData.append("id_instancia", id_instancia);
+  formData.append("archivo",  objFile[0].files[0]);
+  $.ajax({
+    url: '../../main_app/actualizar_archivo.php',
+    type: 'POST',
+    data: formData,
+    //dataType:'json',
+    cache: false,
+    contentType: false,
+    processData: false,
+    beforeSend: function(){
+    console.log("En proceso");          
+    }, success: function(mensaje){
+              alertify
+                .alert("Sistema PFP", "Archivo enviado satisfactoriamente.", function(){
+                console.log("ok");                
+              });
+      console.log(mensaje);
+      callBack_s();
+    }, error: function(mError){
+        console.log(mError);            
     }
+  });      
+}
+
     
 
 

@@ -218,7 +218,7 @@ function eventosEdicion() {
     $("#btnActualizarObj").click(function (e) { 
         e.preventDefault();
         //console.log(record.id_obj);
-        m.updateObjNeed(record.id_obj,  $("#txtNec").val(),   $("#txtObj").val(),  closeModal );
+        m.updateObjNeed(record.id_objetivo,  $("#txtNec").val(),   $("#txtObj").val(),  closeModal );
         
     });
     
