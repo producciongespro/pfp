@@ -100,7 +100,9 @@ function eventModalEstrato() {
     
     //Boton que cierra elmodal para lanzar el evento hide
     $("#btnGuardarEstratos").click(function () { 
-        $("#modalEst").modal("hide"); 
+        $("#modalEst").modal("hide");
+        $("#btnselEstrato").removeClass("item-edit-inactivo"); 
+        $("#btnselEstrato").addClass("item-edit-activo"); 
     });
 
 
@@ -128,8 +130,9 @@ console.log(estratos);
         m.updateFieldActivity(record.id_actividad, "estrato", JSON.stringify(estratos), "json", function () { 
             console.log("actualizado");
             $("#btnselEstrato").off("click");
-
-             }  )
+            $("#btnselEstrato").removeClass("item-edit-activo"); 
+            $("#btnselEstrato").addClass("item-edit-inactivo"); 
+             })
         
     });
 
