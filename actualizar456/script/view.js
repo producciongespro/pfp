@@ -127,13 +127,13 @@ View.prototype.tableExcel = function ( nCapacit, array) {
                   
                    row = $(
                      "<tr>" +                              
-                       "<td class='text-center'>" +
+                       "<td class='text-left'>" +
                         nCapacit +
                        "</td>" +
-                       "<td class='text-center'>" +
+                       "<td class='text-left'>" +
                          array[index].regional +
                        "</td>" + 
-                       "<td class='text-center'>" +
+                       "<td class='text-left'>" +
                        array[index].inicio +
                      "</td>" + 
                      "<td class='text-center'>" +

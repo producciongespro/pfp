@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 m.loadJson("../../../data/instancias.json", function (array) { 
     //console.log(array);
-    console.log(jsonToArray(array));
+    //console.log(jsonToArray(array));
     
     //TODO: cargar el select
 
@@ -36,10 +36,10 @@ m.loadJson("../../../data/instancias.json", function (array) {
 });
 
 function loadInstancia(instancia) {
-    let urlPhp = "../../server/obtener_excel.php?instancia="+instancia;
+    let urlPhp = "../../server/obtener_sedes.php";
     $(".div-shadow").removeClass("invisible");
     m.loadJson(urlPhp, function (array) {
-      //console.log(array);
+      console.log(array);
       
     if (array.length==0) {
         $(".div-shadow").addClass("invisible");
@@ -66,10 +66,10 @@ function loadInstancia(instancia) {
             "<thead>" +
             "<tr>" +
               "<th class='text-center' scope='col'>Nombre</th>" +
-              "<th scope='col'>Sede</th>" +       
-              "<th scope='col'>Inicio</th>" + 
-              "<th scope='col'>Fin</th>" + 
-              "<th scope='col'>Grupos</th>" +           
+              "<th class='text-center' scope='col'>Sede</th>" +       
+              "<th class='text-center' scope='col'>Inicio</th>" + 
+              "<th class='text-center' scope='col'>Fin</th>" + 
+              "<th class='text-center' scope='col'>Grupos</th>" +           
             "</tr>" +
             "</thead>" +
             "</table>"
@@ -79,9 +79,9 @@ function loadInstancia(instancia) {
        
         for (let index = 0; index < limite; index++) {
           // console.log(array[index].instancia );
-           // console.log(array[index].nombre );
+           console.log(array[index].sede );
            
-           $(htmlTable).append( v.tableExcel( array[index].nombre,  convertJson(array[index].sede)  ));
+           $(htmlTable).append( v.tableExcel( array[index].nombre_actividad,  convertJson(array[index].sede)  ));
           //v.tableExcel( array[index].nombre,  convertJson(array[index].sede)  )
      
            
