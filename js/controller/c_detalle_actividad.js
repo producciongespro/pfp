@@ -19,10 +19,18 @@ function loadDataSet() {
 
 function renderRegiones() {
     v.instances(m.getDataSet(), $("#gorupSelectorInstance") );
-    eventAddGroup();    
+    eventAddGroup();
+    mostrarOcultarBtnSede();
 }
 
-
+function mostrarOcultarBtnSede() {
+    if (userInfo.pfpStatus != "Edicion"  ) {
+        if (record.e_sede != "Rechazado") {
+            //$("#divformSede").addClass("invisible");
+            $("#divformSede").fadeOut();
+        }
+    } 
+}
 
 
 
