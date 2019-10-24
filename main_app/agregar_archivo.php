@@ -5,7 +5,7 @@
    $archivo  = $fecha.basename($_FILES['archivo']['name'], ".pdf");
    echo $archivo;
    $directorio = "../enviados/";
-
+   //sleep(2);
   $archivo = preg_replace("/[^A-Za-z0-9_-]/", "", $archivo).".pdf";
    if(move_uploaded_file($_FILES['archivo']['tmp_name'], $directorio.$archivo)) {
    $urlArchivo = $directorio.$archivo;

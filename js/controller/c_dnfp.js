@@ -77,10 +77,14 @@ function eventUploadFile() {
     $("#btnEnviar").click(function (e) { 
         e.preventDefault();
         if (estadoArchivo == null) {
-            console.log("enviar archivo"); 
+            console.log("enviar archivo");
+            $("#btnEnviar").html("Enviado archivo, por favor espere..."); 
+            $("#btnEnviar").prop("disabled", true);            
             m.uploadFile(userInfo.id_instancia, $("#inputGroupFile01"), loadDataset  );           
         } else {
             console.log("actualizar archivo");
+            $("#btnEnviar").html("Enviado archivo, por favor espere..."); 
+            $("#btnEnviar").prop("disabled", true);            
             m.actualizarArchivo(userInfo.id_instancia, $("#inputGroupFile01"), loadDataset );
         }        
         
