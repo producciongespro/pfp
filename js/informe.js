@@ -174,7 +174,6 @@ const data = new FormData();
           buttons: [
               {extend: 'copy',text: '<i class="far fa-copy"></i> Copiar'},
               {extend: 'excel',text: '<i class="far fa-file-excel"></i> Exportar a Excel'},
-              {extend: 'pdf',text: '<i class="far fa-file-pdf"></i> Exportar como PDF'},
               {extend: 'print',text: '<i class="fas fa-print"></i> Imprimir'}
           ],
           "language": {
