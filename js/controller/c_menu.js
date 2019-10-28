@@ -109,7 +109,7 @@ function cargarEstado (estado) {
             v.alertMasg("PFP enviado");              
         break;
         case "Avalado":
-            v.alertMasg("PFP avaldo por la asesorìa del IDP.");             
+            v.alertMasg("PFP avaldo por el departamento Planes y Programas.");             
         break;
         case "Corregir":        
             v.alertMasg("El PFP debe ser corregido.");                

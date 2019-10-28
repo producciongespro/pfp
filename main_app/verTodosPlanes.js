@@ -33,7 +33,7 @@ var instancia = [];
 var consecutivo;
 var necesidad = [];
   $("#page-content").append("<img src='../../img/encabezadoIDP.jpg'>");
-  $("#page-content").append("<h1>Plan de Formación Profesional</h1>");
+  $("#page-content").append("<h1>Plan de Formación Permanente</h1>");
   $("#page-content").append("<b>Institución: </b>Ministerio de Educación Pública - "+cual+"<br>");
   $("#page-content").append("<b>Justificación: </b>"+justificacion+"<br>");
   $("#page-content").append("<b>Limitación interna: </b>"+interna+"<br>");

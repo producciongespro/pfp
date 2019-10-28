@@ -303,18 +303,25 @@
                                 <div class="form-group"  id="formGroupTipo"  >
                                     <label for='selTipoActividad'> <strong> 9 - </strong> Clase de actividad:</label>
                                     <select  class='form-control form-selector' id='selTipoActividad'>                                        
-                                        <option > Curso </option>
-                                        <option > Taller </option>
-                                        <option > Seminario </option>
-                                        <option> Charla </option> 
-                                        <option> Asesoramiento </option> 
-                                        <option> Taller </option> 
-                                        <option> Seminario </option>
                                         <option> Conferencia </option>
-                                        <option> Encuentro </option>
-                                        <option> Jornada de Trabajo </option>
+                                        <option> Congreso </option>
                                         <option> Conversatorio </option>
-                                        <option> Telepresencia </option>
+                                        <option> Curso </option>
+                                        <option> Charla </option>
+                                        <option> Debate </option>
+                                        <option> Encuentro </option>
+                                        <option> Foro </option>
+                                        <option> Jornada </option>
+                                        <option> Mesa redonda </option>
+                                        <option> Panel </option>
+                                        <option> Pasantía </option>
+                                        <option> Seminario </option>
+                                        <option> Seminario Taller </option>
+                                        <option> Simposio </option>
+                                        <option> Taller </option>
+                                        <option> Tertulia </option>
+                                        <option> Videoconferencia </option>
+                                        <option> Ciclo Videoconferencias </option>
                                 </select>
                                 </div>
                         </div>

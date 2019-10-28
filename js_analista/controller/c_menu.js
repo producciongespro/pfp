@@ -41,8 +41,8 @@ function loadDataset() {
 }
 
 function cargarObjetivos(  ) {
-    m.loadJson("../../main_app/obtener_objetivos", function (array) { 
-        console.log("Objetivos", array);
+    m.loadJson("../../main_app/obtener_objetivos.php", function (array) { 
+        console.log("*********Objetivos", array);
         dataObjetivos = array;        
      })
 }
