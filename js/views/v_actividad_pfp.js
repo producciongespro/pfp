@@ -54,15 +54,26 @@ View.prototype.tipoActividad  = function ( visor, opt ) {
         htmlSel = $(
             "<select  class='form-control' id='selTipoActividad'>" +
                     "<option disabled selected >Seleccione un tipo</option>" +
-                    "<option> Charla </option>" +
-                    "<option> Asesoramiento </option>" +
-                    "<option> Taller </option>" +
-                    "<option> Seminario </option>" +
                     "<option> Conferencia </option>" +
-                    "<option> Encuentro </option>" +
-                    "<option> Jornada de Trabajo </option>" +
+                    "<option> Congreso </option>" +
                     "<option> Conversatorio </option>" +
-                    "<option> Telepresencia </option>" +
+                    "<option> Curso </option>" +
+                    "<option> Charla </option>" +
+                    "<option> Debate </option>" +
+                    "<option> Encuentro </option>" +
+                    "<option> Foro </option>" +
+                    "<option> Jornada </option>" +
+                    "<option> Mesa redonda </option>" +
+                    "<option> Panel </option>" +
+                    "<option> Pasantía </option>" +
+                    "<option> Seminario </option>" +
+                    "<option> Seminario Taller </option>" +
+                    "<option> Simposio </option>" +
+                    "<option> Taller </option>" +
+                    "<option> Tertulia </option>" +
+                    "<option> Videoconferencia </option>" +
+                    "<option> Ciclo Videoconferencias </option>" +                    
+                    
             "</select>");
     }
 
