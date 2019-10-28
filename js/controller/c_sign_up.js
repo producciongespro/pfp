@@ -3,14 +3,14 @@ const m = new Model(), v = new View;
 var infoUser;
 $(document).ready(function () {
     handlerEvents();
-    m.loadJson("../../data/instancias.json", loadInstances );
+    m.loadJson("../../main_app/obtener_instancias.php", function (array) { loadInstances(array) }  );
 });
 
 
 
-function loadInstances() {    
+function loadInstances(array) {    
     //console.log(m.getDataSet());    
-    v.instances(m.getDataSet(), $("#gorupSelectorInstance") );
+    v.instances(array,$("#gorupSelectorInstance") );
     
     
 }

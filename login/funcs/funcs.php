@@ -82,8 +82,7 @@ $mysqli=conectarDB();
 	function emailExiste($email)
 	{
 		global $mysqli;
-		echo $email;
-		$stmt = $mysqli->prepare("SELECT id FROM usuarios WHERE correo = ? LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT id_usuario FROM usuarios WHERE correo = ? LIMIT 1");
 		$stmt->bind_param("s", $email);
 		$stmt->execute();
 		$stmt->store_result();
@@ -124,10 +123,10 @@ $mysqli=conectarDB();
 		}
 	}
 
-	function registraUsuario($pass_hash, $nombre, $apellido1, $apellido2, $instancia, $email, $activo, $token, $tipo_usuario){
+	function registraUsuario($pass_hash, $nombre, $apellido1, $apellido2, $id_instancia, $email, $activo, $token, $tipo_usuario){
 		global $mysqli;
-		$stmt = $mysqli->prepare("INSERT INTO usuarios (password, nombre, apellido1, apellido2, instancia, correo, activacion, token, id_tipo) VALUES(?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param('ssssssisi', $pass_hash, $nombre, $apellido1, $apellido2, $instancia, $email, $activo, $token, $tipo_usuario);
+		$stmt = $mysqli->prepare("INSERT INTO usuarios (password, nombre, apellido1, apellido2, id_instancia, correo, activacion, token, id_tipo) VALUES(?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param('ssssisisi', $pass_hash, $nombre, $apellido1, $apellido2, $id_instancia, $email, $activo, $token, $tipo_usuario);
 
 		if ($stmt->execute()){
 			return $mysqli->insert_id;
@@ -163,10 +162,38 @@ $mysqli=conectarDB();
 		return false;
 	}
 
+	function enviarCorreo($email, $asunto, $cuerpo){
+		// $email_origen = "usuariogespro@gmail.com";
+		$nombre_origen = "Sistema de Usuarios";
+         $headers  = "From: $nombre_origen \r\n";
+        //  $headers .= "Return-Path: <$email_origen> \r\n";
+        // $headers .= "Reply-To: $email_origen \r\n";
+        
+        
+        //  $headers .= "X-Sender: $email_origen \r\n";
+        
+        $headers .= "X-Priority: 3 \r\n";
+        $headers .= "MIME-Version: 1.0 \r\n";
+        $headers .= "Content-Transfer-Encoding: 7bit \r\n";
+        
+        //*****************************************************************//
+         $formato= "html";
+        if($formato == "html")
+         { $headers .= "Content-Type: text/html; charset=iso-8859-1 \r\n";  }
+           else
+            { $headers .= "Content-Type: text/plain; charset=iso-8859-1 \r\n";  } 
+        $cuerpo =utf8_decode($cuerpo);
+        //     if(@mail($email, $asunto, $cuerpo, $headers))
+        //         return true;
+        //     else
+        //         return false;
+				return true;
+  }
+
 	function validaIdToken($id, $token){
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("SELECT activacion FROM usuarios WHERE id = ? AND token = ? LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT activacion FROM usuarios WHERE id_usuario = ? AND token = ? LIMIT 1");
 		$stmt->bind_param("is", $id, $token);
 		$stmt->execute();
 		$stmt->store_result();
@@ -195,7 +222,7 @@ $mysqli=conectarDB();
 	{
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("UPDATE usuarios SET activacion=1 WHERE id = ?");
+		$stmt = $mysqli->prepare("UPDATE usuarios SET activacion=1 WHERE id_usuario = ?");
 		$stmt->bind_param('s', $id);
 		$result = $stmt->execute();
 		$stmt->close();
@@ -217,7 +244,7 @@ $mysqli=conectarDB();
 	{
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("SELECT id, id_tipo, password FROM usuarios WHERE  correo = ? LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT id_usuario, id_tipo, password FROM usuarios WHERE  correo = ? LIMIT 1");
 		$stmt->bind_param("s", $usuario);
 		$stmt->execute();
 		$stmt->store_result();
@@ -256,7 +283,7 @@ $mysqli=conectarDB();
 	{
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("UPDATE usuarios SET last_session=NOW(), token_password='', password_request=1 WHERE id = ?");
+		$stmt = $mysqli->prepare("UPDATE usuarios SET last_session=NOW(), token_password='', password_request=1 WHERE id_usuario = ?");
 		$stmt->bind_param('s', $id);
 		$stmt->execute();
 		$stmt->close();
@@ -288,7 +315,7 @@ $mysqli=conectarDB();
 
 		$token = generateToken();
 
-		$stmt = $mysqli->prepare("UPDATE usuarios SET token_password=?, password_request=1 WHERE id = ?");
+		$stmt = $mysqli->prepare("UPDATE usuarios SET token_password=?, password_request=1 WHERE id_usuario = ?");
 		$stmt->bind_param('ss', $token, $user_id);
 		$stmt->execute();
 		$stmt->close();
@@ -322,7 +349,7 @@ $mysqli=conectarDB();
 	{
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("SELECT password_request FROM usuarios WHERE id = ?");
+		$stmt = $mysqli->prepare("SELECT password_request FROM usuarios WHERE id_usuario = ?");
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
 		$stmt->bind_result($_id);
@@ -342,7 +369,7 @@ $mysqli=conectarDB();
 
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("SELECT activacion FROM usuarios WHERE id = ? AND token_password = ? AND password_request = 1 LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT activacion FROM usuarios WHERE id_usuario = ? AND token_password = ? AND password_request = 1 LIMIT 1");
 		$stmt->bind_param('is', $user_id, $token);
 		$stmt->execute();
 		$stmt->store_result();
@@ -371,7 +398,7 @@ $mysqli=conectarDB();
 
 		global $mysqli;
 
-		$stmt = $mysqli->prepare("UPDATE usuarios SET password = ?, token_password='', password_request=0 WHERE id = ? AND token_password = ?");
+		$stmt = $mysqli->prepare("UPDATE usuarios SET password = ?, token_password='', password_request=0 WHERE id_usuario = ? AND token_password = ?");
 		$stmt->bind_param('sis', $password, $user_id, $token);
 
 		if($stmt->execute()){

@@ -4,18 +4,19 @@
 	require 'funcs/funcs.php';
 
 	$errors = array();
-
+	$mensajes = array();
 	if(!empty($_POST))
 	{
 		$nombre = utf8_decode($_POST['nombre']);
 		$apellido1 = utf8_decode($_POST['apellido1']);
 		$apellido2 = utf8_decode($_POST['apellido2']);
-		$instancia = utf8_decode($_POST['instancia']);
+		$id_instancia = utf8_decode($_POST['id_instancia']);
 		$email = ($_POST['email']);
 		$password = ($_POST['password']);
 		$con_password = ($_POST['con_password']);
 		$activo = 0;
 		$tipo_usuario = 1;
+		// echo "<script> console.log('correo: '$email)</script>";
 		if(isNull($nombre, $apellido1, $apellido2, $password, $con_password, $email))
 		{
 			$errors[] = "Debe llenar todos los campos";
@@ -54,36 +55,38 @@
 				$pass_hash = hashPassword($password);
 				$token = generateToken();
 
-				$registro = registraUsuario($pass_hash, $nombre, $apellido1, $apellido2, $instancia, $email, $activo, $token, $tipo_usuario);
+				$registro = registraUsuario($pass_hash, $nombre, $apellido1, $apellido2, $id_instancia, $email, $activo, $token, $tipo_usuario);
 
 				if($registro > 0 )
 				{
 
-					$url = 'http://'.$_SERVER["SERVER_NAME"].'/login/activar.php?id='.$registro.'&val='.$token;
-
+					$url = 'http://'.$_SERVER["SERVER_NAME"].'/pfp/login/activar.php?id='.$registro.'&val='.$token;
+					
 					$asunto = 'Activar Cuenta - Sistema de Usuarios';
-					$cuerpo = "Saludos! $nombre: <br /><br />Para continuar con el proceso de registro, es indispensable que acceda el siguiente link: <a href='$url'>Activar Cuenta</a>";
+					$cuerpo = "Hola ".utf8_decode($nombre).": <br /><br />Para continuar con el proceso de registro, es indispensable que d&#233; clic en el siguiente enlace: <a href='$url'>activar cuenta</a>";
 
 					if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
-
-					echo "<br>  Para terminar el proceso de registro siga las instrucciones que le hemos enviado la direccion de correo electronico indicado anteriormente." ;
-
-				
+						$mensajes[]="Para terminar el proceso de registro siga las instrucciones que le hemos enviado a la direccion de correo electronico: ".$email;
+				   	echo json_encode(array('error'=>false,'mensaje'=>$mensajes));
 					exit;
 
 					} else {
-						$erros[] = "Error al enviar Email";
+						$errors[] = "Error al enviar correo electrónico";
+						echo json_encode(array('error'=>true, 'mensaje'=>$errors ));
 					}
 
 					} else {
-					$errors[] = "Error al Registrar";
+					  $errors[] = "Error al Registrar";
+						echo json_encode(array('error'=>true, 'mensaje'=>$errors ));
 				}
 
 
 
 		}
-
+		else {
+			echo json_encode(array('error'=>true, 'mensaje'=>$errors ));
+		}
 	}
-	echo json_encode($errors);
+	//echo json_encode($errors);
 	//echo ($errors);
 ?>
