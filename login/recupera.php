@@ -21,12 +21,12 @@
 		
 		if(emailExiste($email))
 		{			
-			$user_id = getValor('id', 'correo', $email);
+			$user_id = getValor('id_usuario', 'correo', $email);
 			$nombre = getValor('nombre', 'correo', $email);
 			
 			$token = generaTokenPass($user_id);
 			
-			$url = 'http://'.$_SERVER["SERVER_NAME"].'/login/cambia_pass.php?user_id='.$user_id.'&token='.$token;
+			$url = 'http://'.$_SERVER["SERVER_NAME"].'/pfp/login/cambia_pass.php?user_id='.$user_id.'&token='.$token;
 			
 			$asunto = 'Recuperar Password - Sistema de Usuarios';
 			$cuerpo = "Hola $nombre: <br /><br />Se ha solicitado un reinicio de contrase&ntilde;a. <br/><br/>Para restaurar la contrase&ntilde;a, visita la siguiente direcci&oacute;n: <a href='$url'>$url</a>";
@@ -47,10 +47,10 @@
 	        <div class="jumbotron jumbo-encabezado">
         <div class="row">
             <div class="col-sm-2">
-                <img src="../../img/mep_idp.png" alt="Logo MEP - IDP" class="img-fluid">
+                <img src="../img/mep_idp.png" alt="Logo MEP - IDP" class="img-fluid">
             </div>
             <div class="col-sm-8 text-center">
-                    <img src="../../img/pfp.png" alt="Logo MEP - IDP" class="logo-banner">
+                    <img src="../img/pfp.png" alt="Logo MEP - IDP" class="logo-banner">
             </div>
             <div class="col-sm-2"></div>
         </div>
@@ -61,7 +61,7 @@
 		<link rel="stylesheet" href="../vendor/bootstrap-4.1/css/bootstrap.min.css" >
 		<link rel="stylesheet" href="../vendor/bootstrap-4.1/css/bootstrap-theme.min.css" >
 		<script src="../vendor/bootstrap-4.1/js/bootstrap.min.js" ></script>
-		 <link rel="stylesheet" href="../../css/estilos.css">
+		 <link rel="stylesheet" href="../css/estilos.css">
 		<style>
 				body {
                    background-image: url("img/paris3.jpg");

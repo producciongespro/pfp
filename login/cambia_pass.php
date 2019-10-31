@@ -30,17 +30,17 @@ exit;
 		<link rel="stylesheet" href="../vendor/bootstrap-4.1/css/bootstrap.min.css" >
 		<link rel="stylesheet" href="../vendor/bootstrap-4.1/css/bootstrap-theme.min.css" >
 		<script src="../vendor/bootstrap-4.1/js/bootstrap.min.js" ></script>
-		 <link rel="stylesheet" href="../../css/estilos.css">
+		 <link rel="stylesheet" href="../css/estilos.css">
 	</head>
 	
 	<body>
 			        <div class="jumbotron jumbo-encabezado">
         <div class="row">
             <div class="col-sm-2">
-                <img src="../../img/mep_idp.png" alt="Logo MEP - IDP" class="img-fluid">
+                <img src="../img/mep_idp.png" alt="Logo MEP - IDP" class="img-fluid">
             </div>
             <div class="col-sm-8 text-center">
-                    <img src="../../img/pfp.png" alt="Logo MEP - IDP" class="logo-banner">
+                    <img src="../img/pfp.png" alt="Logo MEP - IDP" class="logo-banner">
             </div>
             <div class="col-sm-2"></div>
         </div>
