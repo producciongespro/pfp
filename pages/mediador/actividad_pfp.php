@@ -194,6 +194,8 @@
 
             </div>
 
+
+
             <div class="row">
 
                     <div class="col-2">
@@ -262,6 +264,15 @@
                         </div>
                     </div>
                     <br>
+
+                        <div class="row alert alert-secondary invisible"  id="rowcostoPorParticipante"  >
+                                <div class="col-4">
+                                        <button class="btn btn-secondary" id="btnCalculraCostoParticipante"> Calcular costo por participante </button>
+                                </div>
+                                <div class="col-8" >                                
+                                        <h3 id="spnCostoParticpante"></h3>                                        
+                                </div>                             
+                         </div>
 
                     <div class="row">
                         <div class="col-sm-12 text-center">

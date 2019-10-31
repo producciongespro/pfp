@@ -38,7 +38,8 @@ View.prototype.tipoActividad  = function ( visor, opt ) {
     var htmlSel;
 
     //creacion del select y la primera opcion (generica)
-
+/*
+   NOTA: Se elimina validación el select debido a que no hay exlcusión dependiendo de la opcio´n seleccionada en el putno 7
     if (opt=="Aprovechamiento" || opt=="Participación") {
          htmlSel = $(
             "<select  class='form-control' id='selTipoActividad'>" +
@@ -76,6 +77,34 @@ View.prototype.tipoActividad  = function ( visor, opt ) {
                     
             "</select>");
     }
+*/
+
+    htmlSel = $(
+      "<select  class='form-control' id='selTipoActividad'>" +
+              "<option disabled selected >Seleccione un tipo</option>" +
+              "<option> Conferencia </option>" +
+              "<option> Congreso </option>" +
+              "<option> Conversatorio </option>" +
+              "<option> Curso </option>" +
+              "<option> Charla </option>" +
+              "<option> Debate </option>" +
+              "<option> Encuentro </option>" +
+              "<option> Foro </option>" +
+              "<option> Jornada </option>" +
+              "<option> Mesa redonda </option>" +
+              "<option> Panel </option>" +
+              "<option> Pasantía </option>" +
+              "<option> Seminario </option>" +
+              "<option> Seminario Taller </option>" +
+              "<option> Simposio </option>" +
+              "<option> Taller </option>" +
+              "<option> Tertulia </option>" +
+              "<option> Videoconferencia </option>" +
+              "<option> Ciclo Videoconferencias </option>" +                    
+              
+      "</select>");
+
+
 
     $(visor).append(htmlSel);
 

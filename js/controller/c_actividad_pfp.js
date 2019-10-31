@@ -2,8 +2,9 @@
 const m = new Model(), v = new View ();
 var need, userInfo, actividad="0", sedes=0, idObj,  tmpObj,  tipo, 
 classEstratos, //Alamcena la Clase de controles checkbox con todos los estratos.
-estratos=[]; //array almacena los estratos seleccionados por elusuario.
-
+estratos=[], //array almacena los estratos seleccionados por elusuario.
+cantidadParticipantes=0;
+//Acumuluador de participantes por sedes para generar luego el cotso por partcipante.
 
 $(document).ready(function () {
     $(".div-shadow").removeClass("invisible");
@@ -38,6 +39,8 @@ function loadDataset() {
 
 function loadModule (array) {
      tmpObj = "0";
+     cantidadParticipantes=0;
+     handlerCalcularCostoPorPArticipante();
     //Crea la tabla con los objetivos    
     //v.objectiveList(m.filterByInstance(userInfo.instancia), $("#mdlBody") );
     v.objectiveList(array, $("#mdlBody") );
@@ -162,10 +165,12 @@ function renderModalidad() {
     
     if (actividad == "Dentro") {
         $("#rowCosto").addClass("item-invisible");
+        $("#rowcostoPorParticipante").addClass("invisible");
         v.modalidad("#frmModalidad", "Dentro" );
     }
     if (actividad == "Fuera") {
         $("#rowCosto").removeClass("item-invisible");
+        $("#rowcostoPorParticipante").removeClass("invisible");
         v.modalidad("#frmModalidad", "Fuera" );
         
     }
@@ -196,6 +201,10 @@ function eventAddGroup() {
         // console.log($("#nmbGrupos").val());
        sedes++;
          if ($("#nmbGrupos").val() != "" ) {
+            //Se incrementa la cantidad de participantes cuando se agrega sede
+            cantidadParticipantes = cantidadParticipantes +  parseInt($("#nmbParticipantes").val() );
+            console.log("Cantidad de participantes:", cantidadParticipantes);
+            
              v.table( "#colTableGroupos", m.addGroups( $("#selRegional").val(),  $("#selMesIni").val(),  $("#selMesFin").val(), $("#nmbGrupos").val(),  $("#nmbParticipantes").val()     )  );
              //limpia los campos del sub formulario
              $("#selRegional").val("");
@@ -256,6 +265,7 @@ function reloadForm() {
     v.clearSelect();
     actividad="0";
     sedes=0;
+    cantidadParticipantes=0;
     
     //Limpia los checkbox de estratos
     
@@ -275,6 +285,17 @@ function reloadForm() {
       window.location.assign("menu.php");
   }).set('labels', {ok:'Agregar otra actividad', cancel:'Volver al menú'});
 
+}
+
+
+function handlerCalcularCostoPorPArticipante() {
+$("#btnCalculraCostoParticipante").off("click");
+ $("#btnCalculraCostoParticipante").click(function (e) { 
+     e.preventDefault();
+     const costo =  $("#nmbCosto").val();
+     const costPorParticiapnte = Math.trunc( costo / cantidadParticipantes  );
+     $("#spnCostoParticpante").html( "&#8353;"+ costPorParticiapnte + " por cada participante.");     
+ });
 }
 
 
