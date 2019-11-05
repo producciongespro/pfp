@@ -300,7 +300,7 @@
 
             <hr>
 
-                    <div class="row "  >                        
+                    <div class="row " id="rowCostoActividad"  >                        
                         <div class="col">
                             <div class="form-group"> 
                                     <label for="nmbCosto"><strong>12 -</strong> Costo de la actividad (colones):  </label>                              

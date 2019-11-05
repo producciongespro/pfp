@@ -65,9 +65,13 @@ function loadMod() {
     
     //console.log("SEDES " );
     //console.log(JSON.stringify(m.getListGroups())   );
-    
-    
-    
+
+
+    //Validación para ocultar campo de costo en caso de que la actividad sea dentro
+    console.log("-------record:", record.tipo);
+    if (record.tipo == "Dentro") {
+        $("#rowCostoActividad").addClass("invisible");            
+    }    
 }
 
 

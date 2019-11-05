@@ -69,7 +69,7 @@
            <div class="container">
                <div class="row">
                    <div class="col text-center">
-                        <h4>Informe diagnóstico de brechas de formación permanente</h4>
+                        <h4>Informe de brechas formativas</h4>
                    </div>
                </div>
                <div class="row">
