@@ -251,7 +251,7 @@
 
                     <div class="row  item-invisible " id="rowCosto"  >
                         <div class="col-sm-6 " >
-                            <label for="nmbCosto"><strong>12 -</strong> Costo total aproximado de la actividad (colones):  </label>
+                            <label for="nmbCosto"><strong>12 -</strong> Monto total según cantidad de personas participantes en la actividad  </label>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
