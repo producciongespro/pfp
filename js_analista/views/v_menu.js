@@ -35,7 +35,7 @@ View.prototype.table = function (array, visor) {
         "<th class='text-center' scope='col'>Cant de actividades</th>" +
         "<th class='text-center' scope='col'>Justificación </th>" +
         "<th class='text-center' scope='col'> Objetivos </th>" +
-        "<th class='text-center'  scope='col'>Archivo DNFP </th>" +
+        "<th class='text-center'  scope='col'>Informe Brechas Formativas</th>" +
         "<th class='text-center'  scope='col'> Limitaciones </th>" +
         "<th class='text-center'  scope='col'>Fecha de envío </th>" +
         "<th class='text-center'  scope='col'>Estado PFP </th>" +

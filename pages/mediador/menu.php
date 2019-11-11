@@ -79,7 +79,7 @@
                         <button  type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnJustificacion" disabled> Justificación general</button>                        
                         <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnObjetivos"  disabled > Brechas formativas y objetivos</button>                        
                         <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnLimitaciones" disabled> Limitaciones </button>                        
-                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnArchivoPfp"  disabled>Informe DNFP</button>                    
+                        <button type="button" class="btn btn-outline-info btn-lg btn-block btn-menu" id="btnArchivoPfp"  disabled>Informe de brechas formativas</button>                    
                 </div>
 
                 <div class="col-6 col-menu-botonera">                   
