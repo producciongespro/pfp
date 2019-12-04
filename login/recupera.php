@@ -26,13 +26,13 @@
 			
 			$token = generaTokenPass($user_id);
 			
-			$url = 'http://'.$_SERVER["SERVER_NAME"].'/pfp/login/cambia_pass.php?user_id='.$user_id.'&token='.$token;
+			$url = 'http://'.$_SERVER["SERVER_NAME"].'/login/cambia_pass.php?user_id='.$user_id.'&token='.$token;
 			
 			$asunto = 'Recuperar Password - Sistema de Usuarios';
 			$cuerpo = "Hola $nombre: <br /><br />Se ha solicitado un reinicio de contrase&ntilde;a. <br/><br/>Para restaurar la contrase&ntilde;a, visita la siguiente direcci&oacute;n: <a href='$url'>$url</a>";
-			
-			if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
-				echo ", hemos enviado un correo electronico a la direccion $email para restablecer tu password.<br />";
+		if(enviarCorreo($email, $asunto, $cuerpo)){ 
+		//	if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
+				echo "$nombre, hemos enviado un correo electronico a la direccion $email para restablecer tu password.<br />";
 				echo "<a href='../index.php' >Iniciar Sesion</a>";
 				exit;
 			}

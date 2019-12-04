@@ -60,12 +60,12 @@
 				if($registro > 0 )
 				{
 
-					$url = 'http://'.$_SERVER["SERVER_NAME"].'/pfp/login/activar.php?id='.$registro.'&val='.$token;
+					$url = 'http://'.$_SERVER["SERVER_NAME"].'/login/activar.php?id='.$registro.'&val='.$token;
 					
 					$asunto = 'Activar Cuenta - Sistema de Usuarios';
 					$cuerpo = "Hola ".utf8_decode($nombre).": <br /><br />Para continuar con el proceso de registro, es indispensable que d&#233; clic en el siguiente enlace: <a href='$url'>activar cuenta</a>";
 
-					//if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
+				//	if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
 					if(enviarCorreo($email, $asunto, $cuerpo)){ 
 						$mensajes[]="Para terminar el proceso de registro siga las instrucciones que le hemos enviado a la direccion de correo electronico: ".$email;
 				   	echo json_encode(array('error'=>false,'mensaje'=>$mensajes));

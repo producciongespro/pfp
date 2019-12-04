@@ -42,6 +42,29 @@ function handlerEvents() {
         
     });
     
+        $("#btnSignup2").click(function (e) { 
+        //console.log (camposCompletos());
+		if ( camposCompletos( ) ) {
+			console.log ("Campos completos");
+			if (clavesIguales() ) {
+				console.log("Claves iguales")
+				console.log ("Lamado del método signup");
+				m.signUp2($("#txtNombre").val(), $("#txtApellido1").val(), $("#txtApellido2").val(), $("#txtInstancia").val(), $("#txtEmail").val(), $("#txtPass1").val(),  $("#txtPass1").val()   );	
+			} else { 
+				alertify
+						.alert("Sistema PFP", "Las contraseñas deben coincidir." , function(){
+							console.log ("Ok");
+						});
+			}
+		} else {
+			alertify
+					.alert("Sistema PFP", "Debe completar todos los campos." , function(){
+						console.log ("Ok");
+					});
+		}
+        
+    });
+    
         
 }
 
@@ -52,7 +75,7 @@ function camposCompletos () {
 	if ( $("#txtNombre").val() == ""  || $("#txtApellido1").val() == ""  || $("#txtApellido2").val() == "" ) {
 		completos = false;
 	};
-		if ( $("#selInstancia").val() == null  || $("#txtEmail").val() == ""  || $("#txtPass1").val() == "" ) {
+		if ($("#txtEmail").val() == ""  || $("#txtPass1").val() == "" ) {
 		completos = false;
 	};
 	return completos;

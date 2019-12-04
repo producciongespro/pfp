@@ -135,33 +135,6 @@ $mysqli=conectarDB();
 		}
 	}
 
-	function enviarEmail($email, $nombre, $asunto, $cuerpo){
-
-		require_once '../login/PHPMailer/PHPMailerAutoload.php';
-
-		$mail = new PHPMailer();
-		$mail->isSMTP();
-		$mail->SMTPAuth = true;
-    	$mail->SMTPSecure = 'tls';
-    	$mail->Host = 'smtp.gmail.com';
-    	$mail->Port = 587;
-
-		$mail->Username = 'PFP2019IDP@gmail.com';
-		$mail->Password = 'planesyprogramas';
-
-		$mail->setFrom('PFP2019IDP@gmail.com', 'Sistema de Usuarios');
-		$mail->addAddress($email, $nombre);
-
-		$mail->Subject = $asunto;
-		$mail->Body    = $cuerpo;
-		$mail->IsHTML(true);
-
-		if($mail->send())
-		return true;
-		else
-		return false;
-	}
-
 	function enviarCorreo($email, $asunto, $cuerpo){
 		// $email_origen = "usuariogespro@gmail.com";
 		$nombre_origen = "Sistema de Usuarios";
@@ -183,12 +156,44 @@ $mysqli=conectarDB();
            else
             { $headers .= "Content-Type: text/plain; charset=iso-8859-1 \r\n";  } 
         $cuerpo =utf8_decode($cuerpo);
-        //     if(@mail($email, $asunto, $cuerpo, $headers))
-        //         return true;
-        //     else
-        //         return false;
-				return true;
+            if(@mail($email, $asunto, $cuerpo, $headers))
+                return true;
+            else
+                return false;
+        
   }
+
+
+	function enviarEmail($email, $nombre, $asunto, $cuerpo){
+
+		require_once 'PHPMailer/PHPMailerAutoload.php';
+		$mail = new PHPMailer();
+		$mail->isSMTP();
+		$mail->SMTPAuth = true;
+    	$mail->SMTPSecure = 'tls';
+    	$mail->Host = 'smtp.gmail.com';
+    	$mail->Port = 587;
+
+		$mail->Username = 'usuariogespro@gmail.com';
+		$mail->Password = 'gesprohola456*';
+
+		$mail->setFrom('usuariogespro@gmail.com', 'Sistema de Usuarios');
+		$mail->addAddress($email, $nombre);
+
+		$mail->Subject = $asunto;
+		$mail->Body    = $cuerpo;
+		$mail->IsHTML(true);
+        $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        ));
+		if($mail->send())
+		return true;
+		else
+		return false;
+	}
 
 	function validaIdToken($id, $token){
 		global $mysqli;

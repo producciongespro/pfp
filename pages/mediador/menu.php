@@ -11,8 +11,8 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Menú</title>
@@ -101,7 +101,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Sistema PFP-IDP V 1.0</h5>
+          <h5 class="modal-title" id="modalTitle">Sistema PFP-IDP V 2.0</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -113,12 +113,9 @@
           Orientaciones técnicas: <br>
           <ul>
               
-              <li>Alexander Castro Mena</li>
+              <li>Karla Thomas Powell</li>
               <li>Mario Avendaño Arguedas</li>
-              <li>Adriana Retana Varela</li>
-              <li>Yamilette López Rodríguez</li>
-              <li>Álvaro Artavia Medrano</li>
-              <li>Ileana Ruiz Rodríguez</li>
+              <li>José Luis Jiménez Salazar</li>
           </ul>
 
 

@@ -439,6 +439,37 @@ Model.prototype.signUp = function (name, sName1, sName2, id_instance, email, pwd
 
       }  });
  }
+ 
+ Model.prototype.signUp2 = function (name, sName1, sName2, id_instance, email, pwd1, pwd2 ) {
+  var formData = new FormData();
+  formData.append("nombre", name);
+  formData.append("apellido1", sName1);
+  formData.append("apellido2", sName2);
+  formData.append("id_instancia", id_instance);
+  formData.append("email", email);
+  formData.append("password", pwd1);
+  formData.append("con_password", pwd2);
+
+
+  $.ajax({
+    url: "../../login/registro_asesores.php",
+    type: 'POST',
+    data: formData,
+    cache: false,
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    success: function (response) {
+      console.log("correcto ",response);
+      
+      alertify.alert("Aviso:",  response.mensaje[0]);
+    },
+    error: function (response) {
+      alertify.alert("Aviso:",  response.mensaje[0]);
+      console.log("error ",response);
+
+      }  });
+ }
 
 
 
